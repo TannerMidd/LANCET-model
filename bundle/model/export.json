@@ -1,0 +1,45 @@
+{
+  "candidate": "codet5-balanced",
+  "method": "ORT dynamic QUInt8 MatMul and Gather; no calibration commands; threshold unchanged",
+  "sha256": {
+    "model.onnx": "c656611d33f486c4f1817f3f2f75336d02b550d0e00759d70bac829e20f77a0b",
+    "model-int8.onnx": "e8f2e75580a435eba9744b4a8f14dc851f7c71e579c344bde75dee047f7c07a3",
+    "tokenizer.json": "d30700d23490c46559dcade4d52f0b32950b6d358e00c6d8b340ff819b91c9e7",
+    "model.json": "b373112878f79e776adb32a112e216f20184889914e8d1e187de4bbe7019e2a6"
+  },
+  "bytes": {
+    "model.onnx": 141401984,
+    "model-int8.onnx": 35575377,
+    "tokenizer.json": 2270240,
+    "model.json": 4036
+  },
+  "exporterSha256": "636e6dde9a7baa3056bbcf8d3273bc9492fde9425e6ab8b64b89e9b0a316550a",
+  "portableRuntimeSha256": "6ad88913f33111ffedcfb0f57aaae79c42e1538c2a6085cd80fe02b99094fbf7",
+  "validationSource": "128 randomly chosen fitting commands plus 3 inert input-contract examples; not a held-out quality test",
+  "runtime": "AMD Ryzen 9 3900X; CPU, batch=1, four intra-op / one inter-op threads; 16 warmups, 2 passes; preprocessing included",
+  "validationComplete": true,
+  "fp32": {
+    "maxScoreDifference": 9.693739599914153e-08,
+    "meanScoreDifference": 2.672993228364907e-08,
+    "decisionChanges": 0,
+    "rows": 131,
+    "latency": {
+      "rows": 262,
+      "meanMs": 6.697059923694967,
+      "p50Ms": 6.2037000025156885,
+      "p95Ms": 9.708644985221326
+    }
+  },
+  "int8": {
+    "maxScoreDifference": 0.03807963215225563,
+    "meanScoreDifference": 0.00396822297407858,
+    "decisionChanges": 1,
+    "rows": 131,
+    "latency": {
+      "rows": 262,
+      "meanMs": 5.707012594856129,
+      "p50Ms": 5.322199998772703,
+      "p95Ms": 9.370680000574794
+    }
+  }
+}

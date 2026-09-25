@@ -1,0 +1,4 @@
+# CPU inference only; no torch, transformers, or model download required.
+numpy==2.5.3
+tokenizers==0.23.2
+onnxruntime==1.30.0

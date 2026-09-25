@@ -1,0 +1,328 @@
+{
+  "commandTextPublished": false,
+  "countsMeaning": "Eligible pool rows, not counts of unique examples actually sampled by the optimizer.",
+  "fittingOrEvaluationRun": false,
+  "inputSha256": {
+    ".cache-command-risk/hf/models--Salesforce--codet5-small/snapshots/b1ee9570c289f21b5922b9c768a1ce12957bf968/pytorch_model.bin": "968fb0f45e1efc8cf3dd50012d1f82ad82098107cbadde2c0fdd8e61bac02908",
+    ".cache-command-risk/release-license-audit-1/downloads.json": "9e1aa3d69f9c2e0d1b2207fbe1fd940944576374d9611dce06d5873df135465f",
+    ".cache-command-risk/release-license-audit-1/nl2bash-data-MIT.txt": "4ac5c8b7fb1d1fccfa52916749674d67b2024c76616fed89db7f67a976056750",
+    ".cache-command-risk/release-license-audit-1/nl2bash-readme.md": "d34889633c671f9f939bdd61cc95a3b0f6370be49f52954caf7163ab4c5f68f6",
+    ".cache-command-risk/release-license-audit-1/swesmith-card.md": "5a72ab0f5244b94fc1965b0d05260f7b949042f7ff9c7e734882fd7fb6ea0686",
+    ".cache-command-risk/release-license-audit-1/swesmith-tree.json": "abc4b23c315f1e17a441dcbe7b18809532be64dd250b11fb7a349e0b58f3a590",
+    ".cache-command-risk/release-license-audit-1/terminalbench-card.md": "ae72759dce8437d6d6dbfd56331bb68ec558725d4964a9b5aa715d1635a2462d",
+    ".cache-command-risk/release-license-audit-1/terminalbench-tree.json": "dad85485788485ca6f0f852854cdb9ff036778fdc46e4bb04599d5fb4f01e837",
+    ".cache-command-risk/release-prep-v0.1.0/upstream/ShellRisk-Bench-DATASETS-pinned.md": "68d7e2b41c951bb493990e5495826967ff39fa57994fd856c361f140db7af755",
+    ".cache-command-risk/v1/manifest.json": "b76162c13144d4e0d346dd00b7bd6971f04066e3be67114e7c4cfa28e5bc4db8",
+    ".cache-command-risk/v2/data/authored-calibration.jsonl": "35a78b9ec8e56f49b09eabdd3e404cb20ef9c115c7dcd00ddadd573c4e626dd1",
+    ".cache-command-risk/v2/data/authored-dev.jsonl": "bc16722d2863512d4c671579077bb10dd609548a82dcf9940fef1750aed3f26c",
+    ".cache-command-risk/v2/data/authored-train.jsonl": "35d15252062cf6f9f22cb73e3db9df96ef274679d93ecf38092ad7352a53b6b3",
+    ".cache-command-risk/v2/data/source-calibration.jsonl": "a318bd292efeb62851f42668bc5621926e8d4c7e67cb16ac8f62d1ac353cf2af",
+    ".cache-command-risk/v2/data/source-dev.jsonl": "eaa2584250277ad435bc42cdb1c910268c31c69aef86c89adef1aa0c19d28fb4",
+    ".cache-command-risk/v2/data/source-train.jsonl": "8bbc3d5e73071d1c5cc734b534a127f07b59f463bd8325cc57129502ca25bdf5",
+    ".cache-command-risk/v2/manifest.json": "a36a7fe6c4144b160272f1022d89969a421a70e20f0ec7ea92850cdbaff6b3a2",
+    ".cache-command-risk/v3b/data/project-calibration.jsonl": "245d673a9d7e9d9438b636351d51fdc7600b42a85ae3a9145efe5b00029e60e5",
+    ".cache-command-risk/v3b/data/project-dev.jsonl": "a1ed5b67725eefa7d2289a5f4e9091a7ad7b9d1cf95cc11d5a422b785bce09f4",
+    ".cache-command-risk/v3b/data/project-train.jsonl": "18da9183b885fbcd31281f45328b44cbdc9df514d2573455263a3844df91a16a",
+    ".cache-command-risk/v3b/manifest.json": "3c956dbd7628e713c07ff5cd059894e316f730d2adf16f1a4f666e820bdc2043",
+    ".cache-command-risk/v4/manifest.json": "dab7cb30bfa0d0ba2c542e7a2f2611c16260ed25271bc5779f7ecd9f196f1fca",
+    ".cache-command-risk/v4/models/codet5-small/model.json": "915fd9d906b012f6077a584ecfa4d3ebc33f72f37545ce77500ad73aae3f8597",
+    ".cache-command-risk/v4/models/codet5-small/weights.pt": "b6bad4a0eb1a35612931ebccd67aad42a3aed2919d99e543905a80ed1b733d5b",
+    ".cache-command-risk/v5/data/inspection-calibration.jsonl": "7451960cd872bb51021444c07f66e15fd34f3d5d89c9841e6bf93cd8116b4afd",
+    ".cache-command-risk/v5/data/inspection-dev.jsonl": "e678f6da1e19588de5e4b3cf4e0950f00da9fe998193999cef778743882e6c19",
+    ".cache-command-risk/v5/data/inspection-train.jsonl": "ce64e2e889300f46d8ea99d970df44fb5dc3449a1272a5ff1359192ee3db3fb4",
+    ".cache-command-risk/v5/manifest.json": "18c95a93ce5562d65df2bbcd9b69628162672bf3095453e11f632e27d8ca836c",
+    ".cache-command-risk/v5/models/codet5-balanced/model-int8.onnx": "e8f2e75580a435eba9744b4a8f14dc851f7c71e579c344bde75dee047f7c07a3",
+    ".cache-command-risk/v5/models/codet5-balanced/model.json": "b373112878f79e776adb32a112e216f20184889914e8d1e187de4bbe7019e2a6",
+    ".cache-command-risk/v5/models/codet5-balanced/tokenizer.json": "d30700d23490c46559dcade4d52f0b32950b6d358e00c6d8b340ff819b91c9e7",
+    ".cache-command-risk/v5/models/codet5-balanced/weights.pt": "1e83f69147850f970bcb35b7926b5ed78878accb7d5e3ff73491cae3c1d568f2",
+    ".cache-command-risk/v5/models/codet5-rehearsal/model.json": "eb91cbc01e1133dd74124ca7e30f4c5bee4f1c3d329791ea55946abb50a50749",
+    ".cache-command-risk/v5/models/codet5-rehearsal/weights.pt": "1e83f69147850f970bcb35b7926b5ed78878accb7d5e3ff73491cae3c1d568f2",
+    ".cache-laya-study/train.parquet": "88b2bf56ffba81afe396cf2f1f27b3884dcdf76d588275c44cf9e9a6677fe4af",
+    "LICENSE.md": "12a6d9f626b370d4edf78697cdd2dc20ce2043cc375f3e7fb30e307d265b5ddd",
+    "docs/evaluations/results/devious-v2/jev/devious.json": "1ba4c8a5881dd901489bfdd19718283e813e5389550d6e9f4a48c33bee249bb9",
+    "docs/evaluations/results/jev/devious.json": "c9a0f36997bea558d868bed3dd6b5a26ec52de3c15887ed3966867ffd4cc9645",
+    "docs/evaluations/results/jev/matrix.json": "abdd8a13f898e6cdb5e99e70fa495578f5c834d84bc09534cbbabb9cdd57ebb6",
+    "docs/evaluations/results/jev/redteam.json": "15ec00f432ccefb3653bb6082ef948deb4be979a8272ef21c45630a98a8bcbfb",
+    "licenses/pi-jev-guard-MIT.txt": "41384dc5cf15ef69653ce54c918e0e90e6771eec108ab080ab02021f56b07ebe",
+    "model/export.json": "31613d1771c3311b2997a7625e9ee32f6430ae33dd1ba21317b1b2699346fe1d",
+    "model/model-int8.onnx": "e8f2e75580a435eba9744b4a8f14dc851f7c71e579c344bde75dee047f7c07a3",
+    "model/model.json": "b373112878f79e776adb32a112e216f20184889914e8d1e187de4bbe7019e2a6",
+    "model/tokenizer.json": "d30700d23490c46559dcade4d52f0b32950b6d358e00c6d8b340ff819b91c9e7",
+    "research/command-risk/core.py": "6d4b4d52e97ede2da1bf38a8a41b1797ee8aaaa243f3d63912aab8301dc56c11",
+    "research/command-risk/protocol.json": "947aa4ca69b2f6e9c4b3a43eb0b30af66f4e811379448e0bcfc0f5c6a9695f79",
+    "research/command-risk/train.py": "8fcd810a5f5aa52ca47fcfcf02113abe581826c246f3eb95a0bf102e399e1fca",
+    "research/command-risk/v2_data.py": "5200464d50122ec6fac7f14d7dcf816fb34f460e1145d331898d0c3b2c7ff2cf",
+    "research/command-risk/v2_protocol.json": "5403d612e3ae462226eaea191f4f809de07995ba06c268ec63a8ea9a67bd8b06",
+    "research/command-risk/v3_data.py": "953faf70f6bfc78a87b36788cf2f002907fe43433807d267455054b83cf44204",
+    "research/command-risk/v3_protocol.json": "dc96e366f9da929a290e2d395bbdd1cb88acc4f39f97f8c8d651b45e19d29f3c",
+    "research/command-risk/v4_core.py": "9e334a2937f064b78fbc3fb652395951abb2592c84f4a034bfd22eccf0e08e47",
+    "research/command-risk/v4_protocol.json": "2af4b0669568936c11e889551471d252edfbdce1fe2e21117b3873db49c22307",
+    "research/command-risk/v4_train.py": "307deae183bab84961470e6ae79dc6c3ba8c30d4bf57a2f486b958c2aeaaa837",
+    "research/command-risk/v5_data.py": "c2498b7a14bc5bb27b63f1133a19438ca0b263dba85b2efbe8b439951675e81b",
+    "research/command-risk/v5_protocol.json": "ac0eadf2d3ad72c9dfec886de5b0916d96c161f2cecb3683162eeae0f8dbd716",
+    "research/command-risk/v5_train.py": "a033285c3799b3c6d40cc9a032e436e32b5e558d3a2e2da4dd4ecef29b486d6c",
+    "scripts/audit_v5_release_provenance.py": "53abd73868b1dba15407c5adac918dc8079dc62967c7c49417ee707c64c6fea4"
+  },
+  "limitations": [
+    "Licensor declarations do not verify rights in every embedded third-party snippet or trajectory.",
+    "No audit of CodeT5 pretraining examples, latent memorization, or human authorship.",
+    "Historical evaluation/adaptation exposure remains; this is not independent model validation."
+  ],
+  "lineage": "pinned CodeT5-small -> V4 epoch 13 -> V5 rehearsal epoch 8 -> balanced profile (no additional fitting) -> deployed INT8",
+  "pools": {
+    "v4": {
+      "authored-calibration": {
+        "risky": 1440,
+        "rows": 2880,
+        "sources": {
+          "authored-contrast": 2880
+        }
+      },
+      "authored-dev": {
+        "risky": 1584,
+        "rows": 3168,
+        "sources": {
+          "authored-contrast": 3168
+        }
+      },
+      "authored-train": {
+        "risky": 5576,
+        "rows": 11152,
+        "sources": {
+          "authored-contrast": 11152
+        }
+      },
+      "project-calibration": {
+        "risky": 56,
+        "rows": 92,
+        "sources": {
+          "build-hooks": 12,
+          "cloud-policy": 12,
+          "containers": 6,
+          "deferred": 6,
+          "encoded": 2,
+          "exfil": 1,
+          "filesystem-v2": 6,
+          "git-side-effects": 6,
+          "indirect": 2,
+          "interp": 1,
+          "linux-security": 6,
+          "masquerade": 4,
+          "obfusc": 4,
+          "orchestration": 12,
+          "persist": 1,
+          "privesc": 1,
+          "trap": 1,
+          "trust-boundaries": 6,
+          "unicode": 3
+        }
+      },
+      "project-dev": {
+        "risky": 66,
+        "rows": 120,
+        "sources": {
+          "build-hooks": 12,
+          "chain": 1,
+          "cloud-policy": 6,
+          "containers": 6,
+          "databases": 6,
+          "deferred": 6,
+          "exfil": 1,
+          "exfil-channels": 6,
+          "filesystem-v2": 6,
+          "git-side-effects": 6,
+          "indirect": 2,
+          "inert-vs-active": 18,
+          "interpreters-v2": 6,
+          "linux-security": 12,
+          "masquerade": 4,
+          "obfusc": 2,
+          "persist": 1,
+          "shell-expansion": 6,
+          "tool-callbacks": 6,
+          "trap": 4,
+          "unicode": 1,
+          "windows": 2
+        }
+      },
+      "project-train": {
+        "risky": 254,
+        "rows": 462,
+        "sources": {
+          "build-hooks": 12,
+          "chain": 3,
+          "cloud-policy": 18,
+          "containers": 18,
+          "credential-boundaries": 24,
+          "databases": 30,
+          "deferred": 24,
+          "encoded": 5,
+          "exfil": 6,
+          "exfil-channels": 24,
+          "filesystem-v2": 18,
+          "git-side-effects": 18,
+          "indirect": 5,
+          "inert-vs-active": 18,
+          "interp": 2,
+          "interpreters-v2": 30,
+          "linux-security": 12,
+          "masquerade": 15,
+          "obfusc": 1,
+          "orchestration": 24,
+          "persist": 4,
+          "privesc": 3,
+          "shell-expansion": 24,
+          "storage-recovery": 24,
+          "tool-callbacks": 18,
+          "trap": 9,
+          "trust-boundaries": 30,
+          "unicode": 2,
+          "unsafe-loaders": 36,
+          "windows": 5
+        }
+      }
+    },
+    "v5": {
+      "authored-calibration": {
+        "risky": 1440,
+        "rows": 2880,
+        "sources": {
+          "authored-contrast": 2880
+        }
+      },
+      "authored-dev": {
+        "risky": 1584,
+        "rows": 3168,
+        "sources": {
+          "authored-contrast": 3168
+        }
+      },
+      "authored-train": {
+        "risky": 5576,
+        "rows": 11152,
+        "sources": {
+          "authored-contrast": 11152
+        }
+      },
+      "inspection-calibration": {
+        "risky": 0,
+        "rows": 647,
+        "sources": {
+          "nl2bash": 47,
+          "swesmith": 422,
+          "terminalbench": 178
+        }
+      },
+      "inspection-dev": {
+        "risky": 0,
+        "rows": 577,
+        "sources": {
+          "nl2bash": 31,
+          "swesmith": 417,
+          "terminalbench": 129
+        }
+      },
+      "inspection-train": {
+        "risky": 0,
+        "rows": 3989,
+        "sources": {
+          "nl2bash": 199,
+          "swesmith": 2806,
+          "terminalbench": 984
+        }
+      },
+      "project-calibration": {
+        "risky": 56,
+        "rows": 92,
+        "sources": {
+          "build-hooks": 12,
+          "cloud-policy": 12,
+          "containers": 6,
+          "deferred": 6,
+          "encoded": 2,
+          "exfil": 1,
+          "filesystem-v2": 6,
+          "git-side-effects": 6,
+          "indirect": 2,
+          "interp": 1,
+          "linux-security": 6,
+          "masquerade": 4,
+          "obfusc": 4,
+          "orchestration": 12,
+          "persist": 1,
+          "privesc": 1,
+          "trap": 1,
+          "trust-boundaries": 6,
+          "unicode": 3
+        }
+      },
+      "project-dev": {
+        "risky": 66,
+        "rows": 120,
+        "sources": {
+          "build-hooks": 12,
+          "chain": 1,
+          "cloud-policy": 6,
+          "containers": 6,
+          "databases": 6,
+          "deferred": 6,
+          "exfil": 1,
+          "exfil-channels": 6,
+          "filesystem-v2": 6,
+          "git-side-effects": 6,
+          "indirect": 2,
+          "inert-vs-active": 18,
+          "interpreters-v2": 6,
+          "linux-security": 12,
+          "masquerade": 4,
+          "obfusc": 2,
+          "persist": 1,
+          "shell-expansion": 6,
+          "tool-callbacks": 6,
+          "trap": 4,
+          "unicode": 1,
+          "windows": 2
+        }
+      },
+      "project-train": {
+        "risky": 254,
+        "rows": 462,
+        "sources": {
+          "build-hooks": 12,
+          "chain": 3,
+          "cloud-policy": 18,
+          "containers": 18,
+          "credential-boundaries": 24,
+          "databases": 30,
+          "deferred": 24,
+          "encoded": 5,
+          "exfil": 6,
+          "exfil-channels": 24,
+          "filesystem-v2": 18,
+          "git-side-effects": 18,
+          "indirect": 5,
+          "inert-vs-active": 18,
+          "interp": 2,
+          "interpreters-v2": 30,
+          "linux-security": 12,
+          "masquerade": 15,
+          "obfusc": 1,
+          "orchestration": 24,
+          "persist": 4,
+          "privesc": 3,
+          "shell-expansion": 24,
+          "storage-recovery": 24,
+          "tool-callbacks": 18,
+          "trap": 9,
+          "trust-boundaries": 30,
+          "unicode": 2,
+          "unsafe-loaders": 36,
+          "windows": 5
+        }
+      }
+    }
+  },
+  "schemaVersion": 1,
+  "scope": "recorded V4/V5 fit, development and calibration lineage; not legal clearance",
+  "sourceRowsExactlyMappedToPinnedUpstreamTrain": 5213
+}

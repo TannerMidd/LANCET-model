@@ -1,0 +1,56 @@
+LANCET v0.1.0 — V5 experimental command-risk classifier
+
+LANCET-specific contributions and runtime:
+Copyright (c) 2026 Tanner Middleton
+Model assets: Apache License, Version 2.0; see MODEL-LICENSE.md.
+Runtime and project-authored code: MIT; see licenses/pi-jev-guard-MIT.txt.
+
+Pretrained model and tokenizer: Salesforce/CodeT5-small
+Revision: b1ee9570c289f21b5922b9c768a1ce12957bf968
+The original model card declares Apache-2.0 and is retained in
+licenses/codet5-small-upstream-model-card.md. Full license:
+licenses/Apache-2.0.txt.
+https://huggingface.co/Salesforce/codet5-small/tree/b1ee9570c289f21b5922b9c768a1ce12957bf968
+
+CodeT5 research credit:
+Yue Wang, Weishi Wang, Shafiq Joty, and Steven C. H. Hoi.
+CodeT5: Identifier-aware Unified Pre-trained Encoder-Decoder Models for
+Code Understanding and Generation (2021).
+https://arxiv.org/abs/2109.00859
+https://github.com/salesforce/CodeT5
+
+The separate CodeT5 source-repository notice is preserved verbatim:
+Copyright (c) 2021, Salesforce.com, Inc. All rights reserved.
+Full BSD-3-Clause notice/disclaimer: licenses/CodeT5-BSD-3-Clause.txt,
+from revision 208acbd759fd8014374387b272647ef7ab4b85e3.
+This source-code notice does not replace the model card's Apache-2.0 license.
+
+The original model card credits the Hugging Face team and nielsr for its
+preparation. Their text/disclaimer is retained. The card attributes original
+pretraining data to CodeSearchNet (Husain et al., 2019) and additional C/CSharp
+GitHub/BigQuery data. No such corpus is distributed in this release.
+
+Downstream data provenance credit:
+- Kontext Security / ShellRisk-Bench, the source-data collection/normalization.
+- Kwai-Klear / SWE-smith-mini_swe_agent_plus-trajectories-66k; MIT declaration.
+  The provider credits SWE-bench/SWE-smith and mini-swe-agent-plus.
+- yoonholee / terminalbench-trajectories; Apache-2.0 declaration; the provider
+  identifies public tbench.ai leaderboard trajectories as its source.
+- TellinaTool / NL2Bash dataset, separately MIT-licensed data/bash.
+  Copyright (c) 2020 NL2Bash dataset. Complete dataset notice retained in
+  licenses/NL2Bash-data-MIT.txt.
+
+Pinned source declarations and scope limits: THIRD-PARTY-NOTICES.md.
+Raw datasets, trajectories, private logs and historical fitting checkpoints
+are not included or relicensed. No copyright owner/year absent from the source
+notices has been invented for the trajectory datasets.
+
+MODIFIED UPSTREAM ARTIFACTS: LANCET uses CodeT5's encoder with a risk-classifier
+head, V4/V5 fine-tuning, calibration and CPU INT8 ONNX export. It is not the
+unmodified CodeT5 model. See MODIFICATIONS.md. Release preparation did not change
+the frozen V5 model, tokenizer, runtime, calibration or threshold bytes.
+
+These attribution notices do not amend the applicable licenses. No endorsement
+by Salesforce, the CodeT5 authors, Hugging Face, Kontext Security, the dataset
+providers or other credited contributors is claimed. The model is experimental:
+development and programmatic evidence; not independently validated.
