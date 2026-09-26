@@ -1,9 +1,10 @@
 <h1 align="center">LANCET Nano</h1>
-<p align="center">A small, local classifier for Bash command risk.</p>
-<p align="center"><strong>35.3M parameters · 38 MB · CPU INT8 ONNX · ~3 ms per command · offline</strong></p>
+<p align="center">A local classifier for Bash command risk.</p>
+<p align="center"><strong>v0.3.0 · 110M parameters · 111 MB · CPU INT8 ONNX · ~22 ms per command · offline</strong></p>
 
 <p align="center">
-  <a href="https://github.com/TannerMidd/LANCET-model/releases/tag/v0.2.0">Download v0.2.0</a> ·
+  <a href="https://github.com/TannerMidd/LANCET-model/releases/tag/v0.3.0">Download v0.3.0</a> ·
+  <a href="https://huggingface.co/spaces/fingerthief/lancet-nano">Try it in your browser</a> ·
   <a href="https://tannermidd.github.io/LANCET-model/">Website</a> ·
   <a href="bundle/MODEL_CARD.md">Model card</a> ·
   <a href="bundle/README.md">Usage</a> ·
@@ -12,24 +13,27 @@
 
 **Model: Apache-2.0. Runtime: MIT.** You may use, modify and redistribute it, including commercially, under the respective terms. Training data is not included or relicensed.
 
-<p align="center"><img src="docs/charts/nano-vs-jev.png" alt="LANCET Nano vs Laya vs Jev: parameters, footprint and accuracy on 400 fresh commands" width="100%"></p>
+<p align="center"><img src="docs/charts/bench1-operating-points.png" alt="Risky commands caught against safe commands wrongly stopped on lancet-bench-1 for LANCET Nano v0.3.0, v0.2.0, v0.1.0 and Jev" width="100%"></p>
 
-## Results on 400 fresh commands
+## Results on the 793-command release benchmark
 
-On a sealed diagnostic suite (211 risky, 189 benign, 85 tool families), each model was scored in a single pass:
+Each model was scored in a single pass on `lancet-bench-1`: 409 risky and 384 safe commands across 37 tool areas. The benchmark was frozen and screened against all training data before v0.3.0's training data existed.
 
-| | LANCET Nano | Laya | Jev (hosted) |
-|---|---:|---:|---:|
-| Risky caught | 83.9% | 77.7% | 97.6% |
-| Safe commands wrongly stopped | 5.8% | 42.9% | 4.8% |
-| Parameters | 35 M | 421 M | ~7.5 B (estimate) |
-| Median time per command | 2.7 ms (CPU) | 100 ms (GPU) | 174 ms (network) |
+| | Nano v0.3.0 | Nano v0.2.0 | Nano v0.1.0 | Jev (hosted) |
+|---|---:|---:|---:|---:|
+| Risky caught | **85.8%** | 73.6% | 65.5% | 96.8% |
+| Safe commands wrongly stopped | **5.5%** | 6.2% | 5.5% | 7.8% |
+| Risky **secrets** commands caught (112) | **66%** | 24% | 14% | 98% |
+| Parameters | 110 M | 35 M | 35 M | undisclosed |
+| On disk | 111 MB | 36 MB | 36 MB | hosted |
 
-The suite's labels were written by the developer, an AI agent. This is diagnostic evidence, not independent acceptance. Jev's size is an estimate; it has not been disclosed. Jev and Laya received task context, while Nano sees only the command. The timings come from different hardware. [More charts and details](https://tannermidd.github.io/LANCET-model/).
+- **Benchmark caveat:** the benchmark's labels were written by the developer, an AI agent, so this is diagnostic evidence, not independent acceptance.
+- **Outside check:** on the upstream ShellRisk sets, which are not agent-authored, v0.3.0 catches about as many risky commands as v0.2.0 and stops about a third fewer safe ones. It is weaker on the smaller holdout set.
+- **Release status:** v0.3.0 was released by owner exception after one overly strict preregistered check failed. See the [model card](bundle/MODEL_CARD.md) and [More charts](https://tannermidd.github.io/LANCET-model/).
 
 ## Quick start
 
-Download the [release ZIP](https://github.com/TannerMidd/LANCET-model/releases/download/v0.2.0/lancet-v0.2.0-nano-cpu-int8.zip) and its [checksum](https://github.com/TannerMidd/LANCET-model/releases/download/v0.2.0/SHA256SUMS.txt). Verify the checksum, extract the ZIP, and inside the extracted directory (Python 3.12, Windows / PowerShell) run:
+Download the [release ZIP](https://github.com/TannerMidd/LANCET-model/releases/download/v0.3.0/lancet-v0.3.0-nano-cpu-int8.zip) and its [checksum](https://github.com/TannerMidd/LANCET-model/releases/download/v0.3.0/SHA256SUMS.txt). Verify the checksum and extract the ZIP. Then, inside the extracted directory (Python 3.12, Windows / PowerShell), run:
 
 ```powershell
 python verify_bundle.py --strict
@@ -45,9 +49,13 @@ If you clone the repository instead of downloading the ZIP, install Git LFS, run
 
 ## How it was trained
 
-LANCET Nano continues LANCET V5 (CodeT5-small) with class-balanced fine-tuning. The new training labels come from **documentation, not model opinions**:
-- the wording of the human-written example descriptions in [tldr-pages](https://github.com/tldr-pages/tldr) (CC BY 4.0), such as "Delete…", "Destroy…" or "List…"
-- AWS operation verbs from [botocore](https://github.com/boto/botocore) service models (Apache-2.0)
+LANCET Nano v0.3.0 fine-tunes the Salesforce **CodeT5-base** encoder from its pinned upstream weights, with class-balanced sampling. It does not start from an earlier LANCET checkpoint.
+
+Training labels come from **project authoring and documentation, not model opinions**:
+- the wording of human-written example descriptions in [tldr-pages](https://github.com/tldr-pages/tldr) (CC BY 4.0)
+- AWS operation verbs and the `sensitive` output-field markings in [botocore](https://github.com/boto/botocore) service models (Apache-2.0), so commands that print credentials are risky
+- reference examples from the Azure CLI, GitHub CLI (MIT), kubectl and Docker CLI (Apache-2.0)
+- LANCET's project-authored risky/safe pairs, a secrets family, and its earlier, now-retired agent-authored evaluation suites (original labels)
 
 No language model, hosted API or human labeler produced any training label. See the [model card](bundle/MODEL_CARD.md).
 
@@ -56,15 +64,17 @@ No language model, hosted API or human labeler produced any training label. See 
 - **Bash only.** Nano does not inspect the filesystem, fetched scripts or task context.
 - Other shells, invalid input, more than 8,192 UTF-8 bytes or more than 512 tokens return `review`. Inputs are never silently truncated.
 - **`not_flagged` is not execution authorization or a safety guarantee.**
+- Secrets detection improved but still trails the hosted comparator (66% vs 98%).
 - Independent acceptance and human label adjudication remain unavailable.
 
 ## Versions
 
-- **v0.2.0 — LANCET Nano** (current, pre-release).
-- [v0.1.0 — V5](https://github.com/TannerMidd/LANCET-model/releases/tag/v0.1.0): the previous model, still available unchanged.
+- **v0.3.0 — LANCET Nano, CodeT5-base** (current, pre-release).
+- [v0.2.0 — LANCET Nano, CodeT5-small](https://github.com/TannerMidd/LANCET-model/releases/tag/v0.2.0): smaller (36 MB) and faster (~3–6 ms); still available unchanged.
+- [v0.1.0 — LANCET Nano v0.1.0 (formerly V5)](https://github.com/TannerMidd/LANCET-model/releases/tag/v0.1.0).
 
 ## Credits
 
-LANCET is built on Salesforce CodeT5-small by **Yue Wang, Weishi Wang, Shafiq Joty and Steven C. H. Hoi**. Training commands come from the **tldr-pages** team and contributors and from AWS **botocore**, plus the datasets credited in the notices. Runtime and LANCET contributions: **Tanner Middleton**.
+LANCET is built on Salesforce CodeT5 by **Yue Wang, Weishi Wang, Shafiq Joty and Steven C. H. Hoi**. Training commands come from the **tldr-pages** team and contributors, AWS **botocore**, and the Azure CLI, GitHub CLI, kubectl and Docker CLI projects, plus the datasets credited in the notices. Runtime and LANCET contributions: **Tanner Middleton**.
 
 See the [full credits](bundle/NOTICE.txt), [source notices](bundle/THIRD-PARTY-NOTICES.md) and [model changes](bundle/MODIFICATIONS.md).

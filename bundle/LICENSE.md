@@ -14,8 +14,8 @@ The model and runtime licenses permit use, modification and redistribution, incl
 
 ## Attribution and provenance
 
-The base model is Salesforce/codet5-small at revision `b1ee9570c289f21b5922b9c768a1ce12957bf968`; its [original model card](licenses/codet5-small-upstream-model-card.md) declares Apache-2.0.
+The base model is Salesforce/codet5-base at revision `02cd2d31bb7c6d0e4d91156167b2de044989c733`; its [original model card](licenses/codet5-base-upstream-model-card.md) declares Apache-2.0. The tokenizer file is byte-identical to CodeT5-small's ([card](licenses/codet5-small-upstream-model-card.md)).
 
-Nano continues LANCET V5 (v0.1.0). It adds training on commands from **tldr-pages** (CC BY 4.0) and on AWS CLI command shapes from **botocore** service models (Apache-2.0). Credits and changes are in [NOTICE.txt](NOTICE.txt), [MODIFICATIONS.md](MODIFICATIONS.md) and [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md).
+Nano v0.3.0 is trained from that upstream base, not from an earlier LANCET checkpoint. It uses commands from **tldr-pages** (CC BY 4.0), AWS CLI command shapes from **botocore** (Apache-2.0), and reference examples from the **Azure CLI** and **GitHub CLI** (MIT) and **kubectl** and **Docker CLI** (Apache-2.0). It also uses project-authored material. Credits and changes are in [NOTICE.txt](NOTICE.txt), [MODIFICATIONS.md](MODIFICATIONS.md) and [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md).
 
 The earlier extraction-wide statement is retained unchanged in [licenses/history/LANCET-extraction-provenance.md](licenses/history/LANCET-extraction-provenance.md). Its future-release wording describes a pre-release snapshot, not a restriction on this grant.

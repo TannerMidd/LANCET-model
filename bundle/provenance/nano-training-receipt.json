@@ -1,42 +1,113 @@
 {
   "calibration": {
     "calibration": {
-      "bias": -0.6326081110722507,
+      "bias": -0.7429544835543572,
       "method": "positive-slope group/domain-balanced Platt; calibration only",
-      "scale": 1.022610154824388
+      "scale": 0.8416362250422593
     },
     "domainInterruption": {
-      "api-docs": 0.0,
+      "api-docs": 0.02631578947368421,
       "authored": 0.0,
-      "inspection": 0.00315955766192733,
-      "tool-docs": 0.04949238578680203
+      "cli-docs": 0.013888888888888888,
+      "eval-retired": 0.012698412698412698,
+      "inspection": 0.0,
+      "secrets-authored": 0.14285714285714285,
+      "tool-docs": 0.04871060171919771
     },
     "domainRecall": {
-      "api-docs": 0.95,
-      "authored": 0.869334619093539,
-      "tool-docs": 0.6936936936936937
+      "api-docs": 0.9473684210526315,
+      "authored": 0.9758919961427194,
+      "cli-docs": 1.0,
+      "eval-retired": 0.8823529411764706,
+      "secrets-authored": 0.8571428571428571,
+      "tool-docs": 0.8015873015873016
     },
-    "reviewThreshold": 0.6294868088136047,
-    "riskyThreshold": 0.9609579634556733
+    "reviewThreshold": 0.7715354869912129,
+    "riskyThreshold": 0.8965157725433559
   },
   "commandsIncluded": false,
   "datasetsIncluded": false,
   "hostedModelOutputsUsed": false,
   "humanLabelAdjudication": "unavailable",
   "independentAcceptance": "unavailable and unmet",
-  "inspectionRowsInV5AuditedPool": 5021,
-  "labelRules": "doc-rules-4 (tldr description wording; botocore operation verbs)",
-  "manifestSha256": "801bbdf60e2779008d694b48662ae2637944256cd5c6b3197ed42fdd47340e31",
-  "registrationSha256": "f8e2fdd92fa16e83519790b3af279c4fc109c8ab1ec3ef10574a0e1f09aefcbd",
+  "inspectionRowsInV5AuditedPool": 5019,
+  "labelRules": "doc-rules-7 (description wording; operation verbs; documented secret reveals)",
+  "manifestSha256": "c69f32c19f86d3fea20c93e1c94b40b9bb14d2ac3280707cb1e6b5330dfba384",
+  "registrationSha256": "04e2eaebdf3f481becbedd0f4af310278eb503eda889f7d9fa4f77cda030dccc",
+  "releaseBenchmark": {
+    "benign": 384,
+    "benignInterrupted": 21,
+    "passes": 1,
+    "risky": 409,
+    "riskyCaught": 351,
+    "suite": "lancet-bench-1 (agent-authored, 793 cases)",
+    "use": "use-005-doc6-B3.json"
+  },
   "rowsBySourceAndRole": {
     "calibration": {
+      "azure-cli": {
+        "risky": 14,
+        "rows": 49
+      },
       "botocore": {
-        "risky": 20,
-        "rows": 76
+        "risky": 57,
+        "rows": 171
+      },
+      "devious-v2": {
+        "risky": 29,
+        "rows": 58
+      },
+      "docker-cli": {
+        "risky": 1,
+        "rows": 12
+      },
+      "eval150": {
+        "risky": 12,
+        "rows": 24
+      },
+      "gh-cli": {
+        "risky": 4,
+        "rows": 30
+      },
+      "matrix": {
+        "risky": 16,
+        "rows": 16
       },
       "nl2bash": {
         "risky": 0,
         "rows": 46
+      },
+      "novel-v5-candidates-1": {
+        "risky": 32,
+        "rows": 226
+      },
+      "novel-v5-diagnostic-1": {
+        "risky": 18,
+        "rows": 41
+      },
+      "sealed-eval-1": {
+        "risky": 25,
+        "rows": 54
+      },
+      "sealed-eval-2": {
+        "risky": 18,
+        "rows": 28
+      },
+      "sealed-eval-3": {
+        "risky": 17,
+        "rows": 32
+      },
+      "sealed-eval-3-candidates": {
+        "risky": 1,
+        "rows": 2
+      },
+      "secrets4-authored": {
+        "risky": 504,
+        "rows": 1008
+      },
+      "study-validation": {
+        "risky": 2,
+        "rows": 4
       },
       "swesmith": {
         "risky": 0,
@@ -47,8 +118,8 @@
         "rows": 178
       },
       "tldr": {
-        "risky": 111,
-        "rows": 899
+        "risky": 126,
+        "rows": 824
       },
       "v6-authored": {
         "risky": 2074,
@@ -56,13 +127,77 @@
       }
     },
     "confirmation": {
+      "authored-holdout": {
+        "risky": 120,
+        "rows": 240
+      },
+      "azure-cli": {
+        "risky": 35,
+        "rows": 143
+      },
       "botocore": {
-        "risky": 38,
-        "rows": 153
+        "risky": 30,
+        "rows": 129
+      },
+      "devious-v2": {
+        "risky": 21,
+        "rows": 31
+      },
+      "docker-cli": {
+        "risky": 1,
+        "rows": 3
+      },
+      "eval150": {
+        "risky": 14,
+        "rows": 22
+      },
+      "gh-cli": {
+        "risky": 11,
+        "rows": 13
+      },
+      "kubectl": {
+        "risky": 2,
+        "rows": 14
+      },
+      "matrix": {
+        "risky": 2,
+        "rows": 3
       },
       "nl2bash": {
         "risky": 0,
         "rows": 31
+      },
+      "novel-v5-candidates-1": {
+        "risky": 49,
+        "rows": 257
+      },
+      "novel-v5-diagnostic-1": {
+        "risky": 37,
+        "rows": 64
+      },
+      "sealed-eval-1": {
+        "risky": 20,
+        "rows": 34
+      },
+      "sealed-eval-2": {
+        "risky": 13,
+        "rows": 24
+      },
+      "sealed-eval-3": {
+        "risky": 14,
+        "rows": 27
+      },
+      "sealed-eval-3-candidates": {
+        "risky": 0,
+        "rows": 1
+      },
+      "secrets4-authored": {
+        "risky": 720,
+        "rows": 1440
+      },
+      "study-validation": {
+        "risky": 1,
+        "rows": 2
       },
       "swesmith": {
         "risky": 0,
@@ -73,22 +208,86 @@
         "rows": 119
       },
       "tldr": {
-        "risky": 84,
-        "rows": 732
+        "risky": 97,
+        "rows": 754
       },
       "v6-authored": {
-        "risky": 1913,
-        "rows": 3826
+        "risky": 1889,
+        "rows": 3778
       }
     },
     "fit": {
+      "authored-holdout": {
+        "risky": 314,
+        "rows": 629
+      },
+      "azure-cli": {
+        "risky": 414,
+        "rows": 1118
+      },
       "botocore": {
-        "risky": 242,
-        "rows": 880
+        "risky": 315,
+        "rows": 927
+      },
+      "devious-v2": {
+        "risky": 199,
+        "rows": 346
+      },
+      "docker-cli": {
+        "risky": 40,
+        "rows": 99
+      },
+      "eval150": {
+        "risky": 91,
+        "rows": 167
+      },
+      "gh-cli": {
+        "risky": 10,
+        "rows": 156
+      },
+      "kubectl": {
+        "risky": 18,
+        "rows": 55
+      },
+      "matrix": {
+        "risky": 31,
+        "rows": 70
       },
       "nl2bash": {
         "risky": 0,
         "rows": 152
+      },
+      "novel-v5-candidates-1": {
+        "risky": 348,
+        "rows": 1839
+      },
+      "novel-v5-diagnostic-1": {
+        "risky": 232,
+        "rows": 451
+      },
+      "sealed-eval-1": {
+        "risky": 134,
+        "rows": 247
+      },
+      "sealed-eval-2": {
+        "risky": 124,
+        "rows": 253
+      },
+      "sealed-eval-3": {
+        "risky": 161,
+        "rows": 318
+      },
+      "sealed-eval-3-candidates": {
+        "risky": 10,
+        "rows": 16
+      },
+      "secrets4-authored": {
+        "risky": 2664,
+        "rows": 5328
+      },
+      "study-validation": {
+        "risky": 11,
+        "rows": 22
       },
       "swesmith": {
         "risky": 0,
@@ -99,22 +298,82 @@
         "rows": 748
       },
       "tldr": {
-        "risky": 983,
-        "rows": 5852
+        "risky": 970,
+        "rows": 6126
       },
       "v6-authored": {
-        "risky": 5171,
-        "rows": 10342
+        "risky": 4953,
+        "rows": 9906
       }
     },
     "inner": {
+      "azure-cli": {
+        "risky": 66,
+        "rows": 194
+      },
       "botocore": {
-        "risky": 44,
-        "rows": 117
+        "risky": 30,
+        "rows": 88
+      },
+      "devious-v2": {
+        "risky": 20,
+        "rows": 26
+      },
+      "docker-cli": {
+        "risky": 0,
+        "rows": 26
+      },
+      "eval150": {
+        "risky": 10,
+        "rows": 18
+      },
+      "gh-cli": {
+        "risky": 4,
+        "rows": 8
+      },
+      "kubectl": {
+        "risky": 0,
+        "rows": 7
+      },
+      "matrix": {
+        "risky": 4,
+        "rows": 4
       },
       "nl2bash": {
         "risky": 0,
         "rows": 44
+      },
+      "novel-v5-candidates-1": {
+        "risky": 35,
+        "rows": 207
+      },
+      "novel-v5-diagnostic-1": {
+        "risky": 39,
+        "rows": 77
+      },
+      "sealed-eval-1": {
+        "risky": 23,
+        "rows": 44
+      },
+      "sealed-eval-2": {
+        "risky": 24,
+        "rows": 53
+      },
+      "sealed-eval-3": {
+        "risky": 18,
+        "rows": 36
+      },
+      "sealed-eval-3-candidates": {
+        "risky": 3,
+        "rows": 3
+      },
+      "secrets4-authored": {
+        "risky": 936,
+        "rows": 1872
+      },
+      "study-validation": {
+        "risky": 2,
+        "rows": 4
       },
       "swesmith": {
         "risky": 0,
@@ -122,30 +381,22 @@
       },
       "terminalbench": {
         "risky": 0,
-        "rows": 177
+        "rows": 175
       },
       "tldr": {
         "risky": 159,
-        "rows": 1024
+        "rows": 938
       },
       "v6-authored": {
-        "risky": 1190,
-        "rows": 2380
+        "risky": 1188,
+        "rows": 2376
       }
     }
   },
-  "sealedDiagnostic": {
-    "benign": 189,
-    "benignInterrupted": 11,
-    "passes": 1,
-    "risky": 211,
-    "riskyCaught": 177,
-    "suite": "sealed-eval-1 (agent-authored, 400 cases)"
-  },
-  "seed": 8201,
-  "selectedArm": "N2",
-  "selectedEpoch": 4,
-  "selectionSha256": "fe5eded8f76c57d18a55744e9d42c18ffe0b0f86dfc149316f9770d5b1b766e7",
-  "study": "doc-labels-1",
-  "topTwoAveraged": true
+  "seed": 9201,
+  "selectedArm": "B3",
+  "selectedEpoch": 7,
+  "selectionSha256": "a9bc6ebcad215689431f21a39250966dcf677b1367810e8ae8163b99a0747ec2",
+  "study": "doc-labels-6",
+  "topTwoAveraged": false
 }

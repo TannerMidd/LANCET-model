@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>LANCET Nano: local Bash command-risk classifier</title>
-<meta name="description" content="LANCET Nano: a 35M-parameter, 38 MB CPU model that flags risky Bash commands in about 3 ms, offline. Apache-2.0 model, MIT runtime.">
+<meta name="description" content="LANCET Nano v0.3.0: a 110M-parameter, 111 MB CPU model that flags risky Bash commands in about 22 ms, offline. Apache-2.0 model, MIT runtime.">
 <meta property="og:title" content="LANCET Nano">
-<meta property="og:description" content="A 38 MB local classifier for Bash command risk. 83.9% of risky commands caught, 5.8% of safe ones stopped, on 400 fresh commands.">
-<meta property="og:image" content="https://tannermidd.github.io/LANCET-model/charts/nano-vs-jev.png">
+<meta property="og:description" content="A local classifier for Bash command risk. 85.8% of risky commands caught, 5.5% of safe ones stopped, on a 793-command release benchmark.">
+<meta property="og:image" content="https://tannermidd.github.io/LANCET-model/charts/bench1-operating-points.png">
 <style>
 :root{--bg:#050607;--panel:#0a0d0f;--line:#1b2328;--ink:#e6edf0;--dim:#7d8b92;--green:#2dff9a;--amber:#ffc23d;--violet:#b48cff;--red:#ff3d4f;--cyan:#27d3ff}
 *{box-sizing:border-box;border-radius:0}
@@ -61,41 +61,42 @@ footer{padding:28px 0 60px;color:var(--dim);font-size:12.5px}
 
 <div class="wrap">
 <div class="hero">
-  <span class="tag g">v0.2.0 · pre-release</span><span class="tag">Apache-2.0 model</span><span class="tag">MIT runtime</span>
-  <h1>LANCET Nano<small>A small, local classifier that flags risky Bash commands before an agent or a person runs them.</small></h1>
+  <span class="tag g">v0.3.0 · pre-release</span><span class="tag">Apache-2.0 model</span><span class="tag">MIT runtime</span>
+  <h1>LANCET Nano<small>A local classifier that flags risky Bash commands before an agent or a person runs them.</small></h1>
   <div class="cta">
-    <a class="btn" href="https://github.com/TannerMidd/LANCET-model/releases/download/v0.2.0/lancet-v0.2.0-nano-cpu-int8.zip">Download ZIP · 30 MB</a>
-    <a class="btn o" href="https://github.com/TannerMidd/LANCET-model/releases/tag/v0.2.0">Release notes &amp; checksum</a>
+    <a class="btn" href="https://github.com/TannerMidd/LANCET-model/releases/download/v0.3.0/lancet-v0.3.0-nano-cpu-int8.zip">Download ZIP · 100 MB</a>
+    <a class="btn o" href="https://huggingface.co/spaces/fingerthief/lancet-nano">Try it in your browser</a>
+    <a class="btn o" href="https://github.com/TannerMidd/LANCET-model/releases/tag/v0.3.0">Release notes &amp; checksum</a>
     <a class="btn o" href="https://github.com/TannerMidd/LANCET-model/blob/main/bundle/MODEL_CARD.md">Model card</a>
   </div>
   <div class="stats">
-    <div class="stat"><div class="l">Risky caught</div><div class="v" style="color:var(--green)">83.9%</div><div class="s">177 / 211 fresh commands</div></div>
-    <div class="stat"><div class="l">Safe stopped</div><div class="v">5.8%</div><div class="s">11 / 189 fresh commands</div></div>
-    <div class="stat"><div class="l">Parameters</div><div class="v">35 M</div><div class="s">CodeT5-small encoder</div></div>
-    <div class="stat"><div class="l">On disk</div><div class="v">38 MB</div><div class="s">INT8 ONNX</div></div>
-    <div class="stat"><div class="l">Per command</div><div class="v">2.7 ms</div><div class="s">median, CPU, offline</div></div>
+    <div class="stat"><div class="l">Risky caught</div><div class="v" style="color:var(--green)">85.8%</div><div class="s">351 / 409 benchmark commands</div></div>
+    <div class="stat"><div class="l">Safe stopped</div><div class="v">5.5%</div><div class="s">21 / 384 benchmark commands</div></div>
+    <div class="stat"><div class="l">Parameters</div><div class="v">110 M</div><div class="s">CodeT5-base encoder</div></div>
+    <div class="stat"><div class="l">On disk</div><div class="v">111 MB</div><div class="s">INT8 ONNX</div></div>
+    <div class="stat"><div class="l">Per command</div><div class="v">~22 ms</div><div class="s">median, CPU, offline</div></div>
   </div>
 </div>
 
 <section id="results">
-  <h2>Results on 400 fresh commands</h2>
-  <figure class="fig"><img src="charts/nano-vs-jev.svg" alt="Parameters drawn to scale, footprint table and accuracy bars for LANCET Nano, Laya and Jev">
-    <figcaption>Each model was scored in a single pass on a sealed suite: 211 risky and 189 safe commands across 85 tool families, none used in LANCET training. Jev's size is an estimate from its pricing and latency; it has not been disclosed.</figcaption></figure>
+  <h2>Results on the 793-command release benchmark</h2>
+  <figure class="fig"><img src="charts/bench1-operating-points.svg" alt="Risky commands caught against safe commands wrongly stopped for LANCET Nano v0.3.0, v0.2.0, v0.1.0 and Jev">
+    <figcaption>Up and to the left is better. Each model was scored once, at its own frozen threshold, on <code>lancet-bench-1</code>: 409 risky and 384 safe commands across 37 tool areas, frozen and screened against all training data before v0.3.0's training data existed.</figcaption></figure>
   <div class="two">
-    <figure class="fig"><img src="charts/nano-roc.svg" alt="ROC curves for LANCET Nano, Laya and Jev"><figcaption>How well each model separates risky from safe commands at every threshold. The circles mark the thresholds each model actually uses.</figcaption></figure>
-    <figure class="fig"><img src="charts/nano-operating-points.svg" alt="Catch rate against wrongly stopped for the three models"><figcaption>Up and to the left is better. Nano catches more than Laya and stops about one seventh as many safe commands.</figcaption></figure>
+    <figure class="fig"><img src="charts/bench1-roc.svg" alt="ROC curves for the four models"><figcaption>How well each model separates risky from safe commands at every threshold. The circles mark the thresholds each model actually uses.</figcaption></figure>
+    <figure class="fig"><img src="charts/weakspots-radar.svg" alt="Risky commands caught by tool area"><figcaption>By tool area. v0.3.0 improves most on secrets (24% → 66%) but is weaker on network/remote execution. Counts per area are small, so read these as indicative.</figcaption></figure>
   </div>
-  <figure class="fig"><img src="charts/nano-by-area.svg" alt="Risky commands caught by tool area"><figcaption>By tool area. The counts per area are small, so read these as indicative only.</figcaption></figure>
   <table>
-    <tr><th>Model</th><th>Risky caught</th><th>Safe stopped</th><th>AUROC</th><th>Parameters</th><th>Runs on</th></tr>
-    <tr><td style="color:var(--green)">LANCET Nano</td><td class="n">83.9%</td><td>5.8%</td><td>0.935</td><td>35 M</td><td>CPU, local, offline</td></tr>
-    <tr><td>LANCET V5 (v0.1.0)</td><td>76.3%</td><td>8.5%</td><td>0.902</td><td>35 M</td><td>CPU, local, offline</td></tr>
-    <tr><td style="color:var(--violet)">Laya</td><td>77.7%</td><td>42.9%</td><td>0.738</td><td>421 M</td><td>GPU, local</td></tr>
-    <tr><td style="color:var(--amber)">Jev (hosted)</td><td>97.6%</td><td>4.8%</td><td>0.993</td><td>~7.5 B (est.)</td><td>hosted API</td></tr>
+    <tr><th>Model</th><th>Risky caught</th><th>Safe stopped</th><th>AUROC</th><th>Secrets caught</th><th>Parameters</th><th>Runs on</th></tr>
+    <tr><td style="color:var(--green)">LANCET Nano v0.3.0</td><td class="n">85.8%</td><td>5.5%</td><td>0.962</td><td>66%</td><td>110 M</td><td>CPU, local, offline</td></tr>
+    <tr><td>LANCET Nano v0.2.0</td><td>73.6%</td><td>6.2%</td><td>0.896</td><td>24%</td><td>35 M</td><td>CPU, local, offline</td></tr>
+    <tr><td>LANCET Nano v0.1.0</td><td>65.5%</td><td>5.5%</td><td>0.860</td><td>14%</td><td>35 M</td><td>CPU, local, offline</td></tr>
+    <tr><td style="color:var(--amber)">Jev (hosted)</td><td>96.8%</td><td>7.8%</td><td>0.982</td><td>98%</td><td>undisclosed</td><td>hosted API</td></tr>
   </table>
   <p class="note">
-    The suite's labels were written by the developer, an AI agent, and screened against all training data. This is diagnostic evidence, not independent acceptance.<br>
-    Jev and Laya received a fixed task context; Nano sees only the command. The timings come from different hardware.
+    The benchmark's labels were written by the developer, an AI agent, so this is diagnostic evidence, not independent acceptance. Jev received a fixed task context; Nano sees only the command.<br>
+    On the upstream ShellRisk sets (not agent-authored, never trained on), v0.3.0 caught 48.9% vs v0.2.0's 48.3% and stopped 6.3% vs 9.7% of safe commands; on the smaller holdout set it caught fewer (41.9% vs 45.9%).<br>
+    v0.3.0 was released by owner exception after one overly strict preregistered check (the ShellRisk catch-rate lower bound) failed; the details are in the model card.
   </p>
 </section>
 
@@ -104,7 +105,7 @@ footer{padding:28px 0 60px;color:var(--dim);font-size:12.5px}
   <div class="cols">
   <div>
 <pre><code><span class="c"># 1. verify the download, then the bundle</span>
-certutil -hashfile lancet-v0.2.0-nano-cpu-int8.zip SHA256
+certutil -hashfile lancet-v0.3.0-nano-cpu-int8.zip SHA256
 python verify_bundle.py --strict
 
 <span class="c"># 2. install three pinned CPU dependencies</span>
@@ -135,25 +136,29 @@ $env:OPENBLAS_NUM_THREADS = '1'
   <h2>How it was trained</h2>
   <div class="cols">
   <div>
-    <p>Nano starts from LANCET V5 (Salesforce CodeT5-small) and is fine-tuned with class-balanced sampling. Its new labels come from <strong>documentation written by people, not from another model's opinions</strong>:</p>
+    <p>v0.3.0 fine-tunes the Salesforce CodeT5-base encoder from its pinned upstream weights, with no earlier LANCET checkpoint, using class-balanced sampling. Its labels come from <strong>project authoring and documentation, not from another model's opinions</strong>:</p>
     <ul>
-      <li><strong>tldr-pages</strong>: each example command's one-line description sets the label. "Delete a specific pod" becomes risky; "List all volumes" becomes benign; ambiguous wording is dropped.</li>
-      <li><strong>AWS botocore</strong>: the operation verb sets the label. <code>Delete*</code>, <code>Terminate*</code>, <code>Revoke*</code> and secret reads are risky; <code>List*</code>, <code>Describe*</code> and <code>Get*</code> are benign.</li>
-      <li>LANCET's project-authored risky/safe pairs, plus developer commands from SWE-smith, Terminal-Bench and NL2Bash.</li>
+      <li><strong>tldr-pages</strong>: each example's one-line description sets the label. "Delete a specific pod" is risky; "List all volumes" is benign.</li>
+      <li><strong>AWS botocore</strong>: the operation verb, plus AWS's own <code>sensitive</code> markings on returned fields, so commands that print credentials are risky.</li>
+      <li><strong>Azure CLI, GitHub CLI, kubectl, Docker CLI</strong> reference examples, labelled by verb and description, including documented secret reveals such as <code>keys list</code> and <code>--with-decryption</code>.</li>
+      <li>LANCET's project-authored risky/safe pairs, a secrets family, earlier agent-authored evaluation suites (retired into training, original labels), and developer commands from SWE-smith, Terminal-Bench and NL2Bash.</li>
     </ul>
   </div>
   <div>
     <table>
       <tr><th>Training source</th><th>Rows</th></tr>
-      <tr><td>Project-authored pairs</td><td>10,342</td></tr>
-      <tr><td>tldr-pages examples</td><td>5,852</td></tr>
+      <tr><td>Project-authored pairs</td><td>9,906</td></tr>
+      <tr><td>tldr-pages examples</td><td>6,126</td></tr>
+      <tr><td>Secrets family (project-authored)</td><td>5,328</td></tr>
+      <tr><td>Retired evaluation suites</td><td>4,358</td></tr>
       <tr><td>Developer commands (V5 pool)</td><td>3,054</td></tr>
-      <tr><td>AWS CLI operations</td><td>880</td></tr>
+      <tr><td>Azure / GitHub / kubectl / Docker CLI</td><td>1,428</td></tr>
+      <tr><td>AWS CLI operations</td><td>927</td></tr>
     </table>
     <p class="note">
       No language model, hosted API or human labeler produced any training label.<br>
-      Development and calibration used tools held out from training.<br>
-      The label rules are heuristic, with an estimated 85–90% precision on risky labels from sample reading. They were not human-adjudicated.
+      Development and calibration used tools and families held out from training.<br>
+      The label rules are heuristic and were not human-adjudicated.
     </p>
   </div>
   </div>
@@ -164,22 +169,22 @@ $env:OPENBLAS_NUM_THREADS = '1'
   <ul>
     <li><strong>Bash only.</strong> Nano does not inspect files, fetch scripts or know the task. Other shells, invalid input, more than 8,192 bytes or more than 512 tokens return <code>review</code>, with no silent truncation.</li>
     <li><strong><code>not_flagged</code> is not execution authorization or a safety guarantee.</strong></li>
-    <li>It misses about 1 in 6 risky commands on the fresh suite; its weakest areas are infrastructure-as-code and secrets.</li>
-    <li>Nano starts from V5, which saw historical benchmark data. Independent acceptance and human label adjudication remain unavailable.</li>
-    <li>Raspberry Pi and other ARM devices are plausible at this size but untested.</li>
+    <li>It misses about 1 in 7 risky commands on the release benchmark; secrets (66% caught) and network/remote execution remain its weakest areas.</li>
+    <li>v0.3.0 is about 3× larger and slower than v0.2.0, which remains available for tighter footprints.</li>
+    <li>The benchmark and much of the training data were written by the same AI agent. Independent acceptance and human label adjudication remain unavailable.</li>
   </ul>
 </section>
 
 <section id="credits">
   <h2>Credits &amp; licenses</h2>
   <p>
-    Built on <strong>Salesforce CodeT5-small</strong> by Yue Wang, Weishi Wang, Shafiq Joty and Steven C. H. Hoi (Apache-2.0).<br>
-    Training commands come from <a href="https://github.com/tldr-pages/tldr">tldr-pages</a> (CC BY 4.0, © the tldr-pages team and contributors) and <a href="https://github.com/boto/botocore">botocore</a> (Apache-2.0, © Amazon.com, Inc. or its affiliates), plus the datasets credited in the notices. None of them endorses LANCET.<br>
+    Built on <strong>Salesforce CodeT5-base</strong> by Yue Wang, Weishi Wang, Shafiq Joty and Steven C. H. Hoi (Apache-2.0).<br>
+    Training commands come from <a href="https://github.com/tldr-pages/tldr">tldr-pages</a> (CC BY 4.0, © the tldr-pages team and contributors), <a href="https://github.com/boto/botocore">botocore</a> (Apache-2.0, © Amazon.com, Inc. or its affiliates), the <a href="https://github.com/Azure/azure-cli">Azure CLI</a> and <a href="https://github.com/cli/cli">GitHub CLI</a> (MIT), and <a href="https://github.com/kubernetes/kubectl">kubectl</a> and <a href="https://github.com/docker/cli">Docker CLI</a> (Apache-2.0), plus the datasets credited in the notices. None of them endorses LANCET.<br>
     Model: Apache-2.0. Runtime: MIT. Datasets are not included or relicensed.<br>
     See the <a href="https://github.com/TannerMidd/LANCET-model/blob/main/bundle/NOTICE.txt">NOTICE</a>, the <a href="https://github.com/TannerMidd/LANCET-model/blob/main/bundle/THIRD-PARTY-NOTICES.md">third-party notices</a> and the <a href="https://github.com/TannerMidd/LANCET-model/blob/main/LICENSE.md">licenses</a>.
   </p>
 </section>
 </div>
-<footer><div class="wrap">LANCET · Tanner Middleton · <a href="https://github.com/TannerMidd/LANCET-model">github.com/TannerMidd/LANCET-model</a> · <a href="https://github.com/TannerMidd/LANCET-model/releases/tag/v0.1.0">previous: v0.1.0 (V5)</a></div></footer>
+<footer><div class="wrap">LANCET · Tanner Middleton · <a href="https://github.com/TannerMidd/LANCET-model">github.com/TannerMidd/LANCET-model</a> · <a href="https://github.com/TannerMidd/LANCET-model/releases/tag/v0.2.0">previous: v0.2.0</a> · <a href="https://github.com/TannerMidd/LANCET-model/releases/tag/v0.1.0">v0.1.0</a></div></footer>
 </body>
 </html>

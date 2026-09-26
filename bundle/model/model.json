@@ -1,48 +1,58 @@
 {
   "format": "lancet-nano-v1",
   "name": "LANCET Nano",
-  "version": "0.2.0",
-  "internalId": "doc-labels-1/N2",
-  "seed": 8201,
+  "version": "0.3.0",
+  "internalId": "doc-labels-6/B3",
+  "seed": 9201,
   "kind": "codet5",
-  "parameters": 35318017,
+  "parameters": 109609345,
   "base": {
-    "repo": "Salesforce/codet5-small",
-    "revision": "b1ee9570c289f21b5922b9c768a1ce12957bf968"
+    "repo": "Salesforce/codet5-base",
+    "revision": "02cd2d31bb7c6d0e4d91156167b2de044989c733"
   },
-  "initialization": "LANCET V5 (v0.1.0), weights sha256 1e83f69147850f970bcb35b7926b5ed78878accb7d5e3ff73491cae3c1d568f2",
+  "initialization": "pinned upstream Salesforce/codet5-base weights (sha256 053fbafd36f4011e13fe10f45d588102ffa7448f338443ff787e85360cd5e13c); no LANCET checkpoint",
   "maxTokens": 512,
   "maxRawBytes": 8192,
   "supportedShells": [
     "bash"
   ],
   "calibration": {
-    "scale": 1.022610154824388,
-    "bias": -0.6326081110722507,
+    "scale": 0.8416362250422593,
+    "bias": -0.7429544835543572,
     "method": "positive-slope group/domain-balanced Platt; calibration only"
   },
-  "reviewThreshold": 0.6294868088136047,
-  "riskyThreshold": 0.9609579634556733,
+  "reviewThreshold": 0.7715354869912129,
+  "riskyThreshold": 0.8965157725433559,
   "calibrationDomainInterruption": {
-    "api-docs": 0.0,
+    "api-docs": 0.02631578947368421,
     "authored": 0.0,
-    "inspection": 0.00315955766192733,
-    "tool-docs": 0.04949238578680203
+    "cli-docs": 0.013888888888888888,
+    "eval-retired": 0.012698412698412698,
+    "inspection": 0.0,
+    "secrets-authored": 0.14285714285714285,
+    "tool-docs": 0.04871060171919771
   },
   "calibrationDomainRecall": {
-    "api-docs": 0.95,
-    "authored": 0.869334619093539,
-    "tool-docs": 0.6936936936936937
+    "api-docs": 0.9473684210526315,
+    "authored": 0.9758919961427194,
+    "cli-docs": 1.0,
+    "eval-retired": 0.8823529411764706,
+    "secrets-authored": 0.8571428571428571,
+    "tool-docs": 0.8015873015873016
   },
   "labelSources": [
     "project-authored recipes",
+    "project-authored secrets family",
+    "retired agent-authored evaluation suites (original labels)",
     "source-inferred benign (V5 inspection pool)",
     "tldr-pages description wording (rules)",
-    "botocore operation verbs (rules)"
+    "botocore operation verbs and sensitive output fields (rules)",
+    "Azure/GitHub/kubectl/Docker CLI examples (rules)"
   ],
+  "releaseDecision": "owner exception to one failed preregistered gate check; see provenance/release-gate.json",
   "hostedModelOutputsUsed": false,
-  "researchModelJsonSha256": "593d27c4a0f880549944f48a22cd0517b682eff6f12e6579efc818b3ebde8ae8",
+  "researchModelJsonSha256": "1cbac18c9ef939d62b73da99e7762c37e8d9ebe57f6acf35edcefb01f92598ed",
   "experimental": true,
   "executionAuthorized": false,
-  "claimLimit": "Development evidence + one agent-authored sealed diagnostic. Heuristic documentation labels, not human-adjudicated. V5 initialization is not a clean experiment. No Jev-derived data anywhere in fitting or selection."
+  "claimLimit": "Development evidence + an agent-authored release benchmark that has now informed two rounds (adaptive; disclosed). B0-B2 start from V5 (Nano v0.1.0) and are not clean; B3 starts from upstream CodeT5-base. Heuristic documentation labels are not human-adjudicated. No Jev-derived data in fitting or selection."
 }

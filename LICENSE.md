@@ -7,4 +7,4 @@
 
 Use, modification and redistribution, including commercial use, are permitted under the respective terms. Preserve the applicable notices. Experimental-status and safety guidance are not additional license restrictions.
 
-Third-party training data is not included or relicensed. See the [source-specific notices](bundle/THIRD-PARTY-NOTICES.md) and the [credits](bundle/NOTICE.txt). The previous V5 model and its notices remain available unchanged in the [v0.1.0 release](https://github.com/TannerMidd/LANCET-model/releases/tag/v0.1.0).
+Third-party training data is not included or relicensed. See the [source-specific notices](bundle/THIRD-PARTY-NOTICES.md) and the [credits](bundle/NOTICE.txt). Earlier models and their notices remain available unchanged in the [v0.2.0](https://github.com/TannerMidd/LANCET-model/releases/tag/v0.2.0) and [v0.1.0](https://github.com/TannerMidd/LANCET-model/releases/tag/v0.1.0) releases.

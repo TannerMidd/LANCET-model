@@ -2,15 +2,15 @@
   "validationComplete": true,
   "method": "ORT dynamic QUInt8 per-channel MatMul/Gather (research export, unchanged)",
   "sha256": {
-    "model-int8.onnx": "183ae5051fffe8578267c524efb78ef82c2f668f1e575690923ced8c5f1827f5",
+    "model-int8.onnx": "b635571b0c55fba5224a00e2c9132918db816b76c433e8c8dc75d151ef03de1c",
     "tokenizer.json": "d30700d23490c46559dcade4d52f0b32950b6d358e00c6d8b340ff819b91c9e7",
-    "model.json": "27371553b4c30a6eee410b6b8b2007b18383b97f79ae611d1448b7339d3686da"
+    "model.json": "1c7e2595b6a74032b6104024c87862c434b9d6fc0216094efb5a9bbf512649b3"
   },
   "bytes": {
-    "model-int8.onnx": 35727419,
+    "model-int8.onnx": 110560712,
     "tokenizer.json": 2270240,
-    "model.json": 1648
+    "model.json": 2332
   },
-  "researchExportSha256": "bec33b415c6261770fd7d8ab004754381b62d8bcd831b400532c26282162ab86",
+  "researchExportSha256": "5a513f647934375e85867f7814dc24da8978790c86b74f90686cc90f90d7980a",
   "fp32Shipped": false
 }
