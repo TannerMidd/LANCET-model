@@ -1,51 +1,56 @@
-# LANCET v0.1.0 — experimental V5 CPU INT8
+# LANCET Nano v0.2.0 (experimental, CPU INT8)
 
-A local, 35.3M-parameter Bash command-risk classifier. This package contains the existing **V5 `codet5-balanced` / `recall95`** model, not V6 or a current research candidate. No model, tokenizer, runtime, calibration or threshold bytes were changed for the release.
+A local Bash command-risk classifier with 35.3M parameters. It classifies each command as `risky`, `review` or `not_flagged` in a few milliseconds on a CPU, with no network access.
 
 **Model: Apache-2.0. Runtime: MIT.** Use, modification and redistribution, including commercial use, are permitted under the respective licenses. See [MODEL-LICENSE.md](MODEL-LICENSE.md), [LICENSE.md](LICENSE.md), [NOTICE.txt](NOTICE.txt) and [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md). Datasets are not included or relicensed.
 
 ## Verify before use
 
-Check the downloaded ZIP against the accompanying `SHA256SUMS.txt`, then extract it and run:
+Check the downloaded ZIP against `SHA256SUMS.txt`, extract it, and run:
 
 ```text
 python verify_bundle.py --strict
 ```
 
-This checks every packaged file against the release manifest without loading a model or executing inputs. Checksums verify consistency with the trusted downloaded checksum/manifest; they are not a digital signature or independent validation.
+This checks every packaged file against the release manifest. It does not load the model or execute any input. Checksums confirm consistency with the downloaded manifest; they are not a digital signature.
 
 ## Run locally
 
-Python 3.12, Windows / PowerShell:
+With Python 3.12 on Windows / PowerShell:
 
 ```powershell
 python -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -r requirements.txt
 $env:OPENBLAS_NUM_THREADS = '1'
-.\.venv\Scripts\python.exe classify.py --model model
+'{"command": "kubectl delete namespace prod", "shell": "bash"}' | .\.venv\Scripts\python.exe classify.py --model model
 ```
 
-Send one JSON object per line on stdin, with a `command` string and `shell` set to `bash`. Keep the process running to reuse the loaded model. Inputs are classified as inert text, **never executed**. No API key or network access is needed for inference after dependencies are installed.
+On macOS or Linux, use `.venv/bin/python` and set `OPENBLAS_NUM_THREADS=1`. Those platforms were not benchmarked.
 
-On macOS/Linux use `.venv/bin/python` and set `OPENBLAS_NUM_THREADS=1`. Those platforms were not benchmarked here. Runtime dependencies are pinned but are not vendored; install their distributions with their own licenses/notices.
+- **Input:** one JSON object per line on stdin, with a `command` string and `shell` set to `bash`.
+- **Speed:** keep the process running to reuse the loaded model.
+- **Safety of input:** commands are classified as inert text and are **never executed**.
 
-Outputs: `risky`, `not_flagged`, or `review`. **`not_flagged` is not execution authorization or a safety guarantee.** PowerShell, unsupported/invalid input, more than 8,192 UTF-8 bytes or more than 512 tokens require review; there is no silent truncation. The model does not inspect files, retrieve scripts or know task context.
+Each output line includes:
+- `classification`: `risky`, `review` or `not_flagged`
+- `score`: the calibrated score
+- both thresholds
+- `experimental: true` and `executionAuthorized: false`
+
+**`not_flagged` is not execution authorization or a safety guarantee.** Other shells, invalid input, more than 8,192 UTF-8 bytes or more than 512 tokens return `review`. Inputs are never silently truncated.
 
 ## Evidence and limits
 
-- Weights plus tokenizer: approximately 37.85 MB decimal; CPU inference.
-- Historical classifier-only eval150 replay: **138/150** required interventions caught; **14/128** controls interrupted. These are adaptive research results, not independent test accuracy.
-- Historical mean warm inference: **3.1 ms**, about **115 MB** resident RAM after warmup and **151 MB** observed peak, on Ryzen 9 3900X / Windows 11. Four ONNX Runtime intra-op threads, one inter-op thread, batch one, `OPENBLAS_NUM_THREADS=1`. Startup is excluded; longer supported inputs may take substantially longer. These are observations, not hardware-independent guarantees.
-- Independent acceptance and human label adjudication remain **unavailable and unmet**. No new benchmark scoring was performed to prepare this package.
+- On a fresh, sealed 400-command diagnostic suite (one pass), Nano caught **83.9%** of risky commands and interrupted **5.8%** of benign ones. V5 caught 76.3% and interrupted 8.5%.
+- The suite's labels were written by the developer (an AI agent), so this is not independent acceptance.
+- Median warm time was 2.7 ms per command on Ryzen 9 3900X / Windows 11, with four ONNX Runtime threads.
+- Training labels for the new data come from documentation wording and AWS operation verbs, applied by deterministic rules. No language model output was used.
 
-**Development and programmatic evidence; not independently validated.** Experimental/safety guidance is not an additional license restriction.
+See [MODEL_CARD.md](MODEL_CARD.md).
 
-## Provenance and contents
+## Contents
 
-- `model/`: original frozen INT8 ONNX model, tokenizer, metadata, runtime and historical bundle README. The FP32 graph and fitting checkpoints are not included.
-- `MODEL_CARD.md`: release-specific identity, provenance and limitations.
-- `MODEL-LICENSE.md`, `LICENSE.md`, `NOTICE.txt`, `MODIFICATIONS.md`, `THIRD-PARTY-NOTICES.md`, `licenses/`: current grants, full notices and source-specific evidence.
-- `provenance/`: aggregate V4/V5 lineage receipt and original source-commit model card. No raw commands, datasets, private logs or evaluation corpora are included there.
-- `RELEASE-MANIFEST.json`: per-file hashes, the exact original artifact commit and hashes of the additional release-preparation sources. The release overlay is identified separately; it is not falsely attributed to that older commit.
-
-Frozen runtime/model source commit: `c9a571fa40452ad26d3b8bf75399af91c41416c0` in <https://github.com/TannerMidd/LANCET>. Historical pre-release documents are preserved, not rewritten; the current model grant is [MODEL-LICENSE.md](MODEL-LICENSE.md).
+- `model/`: INT8 ONNX model, tokenizer, `model.json` (calibration and thresholds), `export.json` (hashes), runtime.
+- `MODEL_CARD.md`, licenses and notices, and `licenses/`.
+- `provenance/`: the aggregate Nano training receipt and the inherited V5 lineage audit. These contain no commands or datasets.
+- `RELEASE-MANIFEST.json`: per-file hashes.

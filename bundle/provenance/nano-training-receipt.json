@@ -1,0 +1,151 @@
+{
+  "calibration": {
+    "calibration": {
+      "bias": -0.6326081110722507,
+      "method": "positive-slope group/domain-balanced Platt; calibration only",
+      "scale": 1.022610154824388
+    },
+    "domainInterruption": {
+      "api-docs": 0.0,
+      "authored": 0.0,
+      "inspection": 0.00315955766192733,
+      "tool-docs": 0.04949238578680203
+    },
+    "domainRecall": {
+      "api-docs": 0.95,
+      "authored": 0.869334619093539,
+      "tool-docs": 0.6936936936936937
+    },
+    "reviewThreshold": 0.6294868088136047,
+    "riskyThreshold": 0.9609579634556733
+  },
+  "commandsIncluded": false,
+  "datasetsIncluded": false,
+  "hostedModelOutputsUsed": false,
+  "humanLabelAdjudication": "unavailable",
+  "independentAcceptance": "unavailable and unmet",
+  "inspectionRowsInV5AuditedPool": 5021,
+  "labelRules": "doc-rules-4 (tldr description wording; botocore operation verbs)",
+  "manifestSha256": "801bbdf60e2779008d694b48662ae2637944256cd5c6b3197ed42fdd47340e31",
+  "registrationSha256": "f8e2fdd92fa16e83519790b3af279c4fc109c8ab1ec3ef10574a0e1f09aefcbd",
+  "rowsBySourceAndRole": {
+    "calibration": {
+      "botocore": {
+        "risky": 20,
+        "rows": 76
+      },
+      "nl2bash": {
+        "risky": 0,
+        "rows": 46
+      },
+      "swesmith": {
+        "risky": 0,
+        "rows": 409
+      },
+      "terminalbench": {
+        "risky": 0,
+        "rows": 178
+      },
+      "tldr": {
+        "risky": 111,
+        "rows": 899
+      },
+      "v6-authored": {
+        "risky": 2074,
+        "rows": 4148
+      }
+    },
+    "confirmation": {
+      "botocore": {
+        "risky": 38,
+        "rows": 153
+      },
+      "nl2bash": {
+        "risky": 0,
+        "rows": 31
+      },
+      "swesmith": {
+        "risky": 0,
+        "rows": 398
+      },
+      "terminalbench": {
+        "risky": 0,
+        "rows": 119
+      },
+      "tldr": {
+        "risky": 84,
+        "rows": 732
+      },
+      "v6-authored": {
+        "risky": 1913,
+        "rows": 3826
+      }
+    },
+    "fit": {
+      "botocore": {
+        "risky": 242,
+        "rows": 880
+      },
+      "nl2bash": {
+        "risky": 0,
+        "rows": 152
+      },
+      "swesmith": {
+        "risky": 0,
+        "rows": 2154
+      },
+      "terminalbench": {
+        "risky": 0,
+        "rows": 748
+      },
+      "tldr": {
+        "risky": 983,
+        "rows": 5852
+      },
+      "v6-authored": {
+        "risky": 5171,
+        "rows": 10342
+      }
+    },
+    "inner": {
+      "botocore": {
+        "risky": 44,
+        "rows": 117
+      },
+      "nl2bash": {
+        "risky": 0,
+        "rows": 44
+      },
+      "swesmith": {
+        "risky": 0,
+        "rows": 565
+      },
+      "terminalbench": {
+        "risky": 0,
+        "rows": 177
+      },
+      "tldr": {
+        "risky": 159,
+        "rows": 1024
+      },
+      "v6-authored": {
+        "risky": 1190,
+        "rows": 2380
+      }
+    }
+  },
+  "sealedDiagnostic": {
+    "benign": 189,
+    "benignInterrupted": 11,
+    "passes": 1,
+    "risky": 211,
+    "riskyCaught": 177,
+    "suite": "sealed-eval-1 (agent-authored, 400 cases)"
+  },
+  "seed": 8201,
+  "selectedArm": "N2",
+  "selectedEpoch": 4,
+  "selectionSha256": "fe5eded8f76c57d18a55744e9d42c18ffe0b0f86dfc149316f9770d5b1b766e7",
+  "study": "doc-labels-1",
+  "topTwoAveraged": true
+}

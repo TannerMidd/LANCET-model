@@ -1,115 +1,48 @@
 {
-  "format": "command-risk-v4",
-  "experiment": "v5-benign-rehearsal",
-  "candidate": "codet5-balanced",
+  "format": "lancet-nano-v1",
+  "name": "LANCET Nano",
+  "version": "0.2.0",
+  "internalId": "doc-labels-1/N2",
+  "seed": 8201,
   "kind": "codet5",
-  "repo": "Salesforce/codet5-small",
-  "revision": "b1ee9570c289f21b5922b9c768a1ce12957bf968",
-  "parent": "v4/models/codet5-small",
-  "epochs": 12,
-  "learningRate": 1e-05,
-  "headLearningRate": 3e-05,
   "parameters": 35318017,
-  "selectedEpoch": 8,
-  "selectionKey": [
-    1.0,
-    0.9478114478114478,
-    -0.0017331022530329288
-  ],
-  "calibration": {
-    "scale": 0.22771991209775302,
-    "bias": 0.054543697791719276,
-    "method": "positive-slope Platt fit on calibration partition only"
+  "base": {
+    "repo": "Salesforce/codet5-small",
+    "revision": "b1ee9570c289f21b5922b9c768a1ce12957bf968"
   },
-  "threshold": 0.576954030455576,
-  "calibrationDomains": {
-    "project": {
-      "rows": 92,
-      "risky": 56,
-      "benign": 36,
-      "threshold": 0.576954030455576,
-      "riskyFlagged": 54,
-      "dangerousUnflagged": 2,
-      "riskyRejected": 0,
-      "benignFlagged": 4,
-      "benignInterrupted": 4,
-      "rejected": 0,
-      "detectionRecall": 0.9642857142857143,
-      "heldRecall": 0.9642857142857143,
-      "benignInterruptRate": 0.1111111111111111,
-      "precision": 0.9310344827586207,
-      "aurocCovered": 0.9037698412698413,
-      "coverage": 1.0,
-      "brierCovered": 0.07085383667996674
-    },
-    "inspection": {
-      "rows": 647,
-      "risky": 0,
-      "benign": 647,
-      "threshold": 0.576954030455576,
-      "riskyFlagged": 0,
-      "dangerousUnflagged": 0,
-      "riskyRejected": 0,
-      "benignFlagged": 1,
-      "benignInterrupted": 1,
-      "rejected": 0,
-      "detectionRecall": null,
-      "heldRecall": null,
-      "benignInterruptRate": 0.0015455950540958269,
-      "precision": 0.0,
-      "aurocCovered": null,
-      "coverage": 1.0,
-      "brierCovered": 0.003445872817986308
-    },
-    "authored": {
-      "rows": 2880,
-      "risky": 1440,
-      "benign": 1440,
-      "threshold": 0.576954030455576,
-      "riskyFlagged": 1359,
-      "dangerousUnflagged": 81,
-      "riskyRejected": 0,
-      "benignFlagged": 48,
-      "benignInterrupted": 48,
-      "rejected": 0,
-      "detectionRecall": 0.94375,
-      "heldRecall": 0.94375,
-      "benignInterruptRate": 0.03333333333333333,
-      "precision": 0.9658848614072495,
-      "aurocCovered": 0.9913879243827161,
-      "coverage": 1.0,
-      "brierCovered": 0.03304721929381737
-    }
-  },
+  "initialization": "LANCET V5 (v0.1.0), weights sha256 1e83f69147850f970bcb35b7926b5ed78878accb7d5e3ff73491cae3c1d568f2",
   "maxTokens": 512,
   "maxRawBytes": 8192,
   "supportedShells": [
     "bash"
   ],
-  "weightsSha256": "1e83f69147850f970bcb35b7926b5ed78878accb7d5e3ff73491cae3c1d568f2",
-  "manifestSha256": "18c95a93ce5562d65df2bbcd9b69628162672bf3095453e11f632e27d8ca836c",
-  "parentWeightsSha256": "b6bad4a0eb1a35612931ebccd67aad42a3aed2919d99e543905a80ed1b733d5b",
-  "trainSeconds": 164.5143906000012,
+  "calibration": {
+    "scale": 1.022610154824388,
+    "bias": -0.6326081110722507,
+    "method": "positive-slope group/domain-balanced Platt; calibration only"
+  },
+  "reviewThreshold": 0.6294868088136047,
+  "riskyThreshold": 0.9609579634556733,
+  "calibrationDomainInterruption": {
+    "api-docs": 0.0,
+    "authored": 0.0,
+    "inspection": 0.00315955766192733,
+    "tool-docs": 0.04949238578680203
+  },
+  "calibrationDomainRecall": {
+    "api-docs": 0.95,
+    "authored": 0.869334619093539,
+    "tool-docs": 0.6936936936936937
+  },
+  "labelSources": [
+    "project-authored recipes",
+    "source-inferred benign (V5 inspection pool)",
+    "tldr-pages description wording (rules)",
+    "botocore operation verbs (rules)"
+  ],
+  "hostedModelOutputsUsed": false,
+  "researchModelJsonSha256": "593d27c4a0f880549944f48a22cd0517b682eff6f12e6579efc818b3ebde8ae8",
   "experimental": true,
   "executionAuthorized": false,
-  "rejectedFitting": {
-    "train": {},
-    "dev": {},
-    "calibration": {}
-  },
-  "parentCandidate": "codet5-rehearsal",
-  "parentModelSha256": "eb91cbc01e1133dd74124ca7e30f4c5bee4f1c3d329791ea55946abb50a50749",
-  "operatingProfile": {
-    "profile": "recall95",
-    "candidate": "codet5-balanced",
-    "parentCandidate": "codet5-rehearsal",
-    "targetCalibrationRecall": 0.95,
-    "rule": "Highest threshold retaining ceil(0.95 * project calibration positives), minus 1e-6 numerical margin. Must also satisfy project <=20% and inspection <=5% interruptions. If infeasible, fail rather than fit on test.",
-    "createdAt": "2026-09-24T21:03:44.168199+00:00",
-    "parentModelSha256": "eb91cbc01e1133dd74124ca7e30f4c5bee4f1c3d329791ea55946abb50a50749",
-    "generatorSha256": "d76dfbf84eb0d747f2f4c1482413d1a4f4a5b7564a3bffe82a740e37d23ae1c7",
-    "disclosure": "Operating policy reconsidered after V5's high-friction reserved result. Profile threshold sees calibration only; previously inspected reserved set is not pristine evidence."
-  },
-  "profileProtocolSha256": "112d325ac51ca0bc4a1e0af7e2dd28f81649fb3d9230441115f310e3aaaf2b1f",
-  "additionalTraining": false
+  "claimLimit": "Development evidence + one agent-authored sealed diagnostic. Heuristic documentation labels, not human-adjudicated. V5 initialization is not a clean experiment. No Jev-derived data anywhere in fitting or selection."
 }
