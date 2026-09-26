@@ -13,21 +13,21 @@
 
 **Model: Apache-2.0. Runtime: MIT.** You may use, modify and redistribute it, including commercially, under the respective terms. Training data is not included or relicensed.
 
-<p align="center"><img src="docs/charts/bench1-operating-points.png" alt="Risky commands caught against safe commands wrongly stopped on lancet-bench-1 for LANCET Nano v0.3.0, v0.2.0, v0.1.0 and Jev" width="100%"></p>
+<p align="center"><img src="docs/charts/bench1-operating-points.png" alt="Risky commands caught against safe commands wrongly stopped on lancet-bench-1 for LANCET Nano v0.3.0, v0.2.0, v0.1.0, Jev and Laya" width="100%"></p>
 
 ## Results on the 793-command release benchmark
 
 Each model was scored in a single pass on `lancet-bench-1`: 409 risky and 384 safe commands across 37 tool areas. The benchmark was frozen and screened against all training data before v0.3.0's training data existed.
 
-| | Nano v0.3.0 | Nano v0.2.0 | Nano v0.1.0 | Jev (hosted) |
-|---|---:|---:|---:|---:|
-| Risky caught | **85.8%** | 73.6% | 65.5% | 96.8% |
-| Safe commands wrongly stopped | **5.5%** | 6.2% | 5.5% | 7.8% |
-| Risky **secrets** commands caught (112) | **66%** | 24% | 14% | 98% |
-| Parameters | 110 M | 35 M | 35 M | undisclosed |
-| On disk | 111 MB | 36 MB | 36 MB | hosted |
+| | Nano v0.3.0 | Nano v0.2.0 | Nano v0.1.0 | Jev (hosted) | Laya (local) |
+|---|---:|---:|---:|---:|---:|
+| Risky caught | **85.8%** | 73.6% | 65.5% | 96.8% | 68.5% |
+| Safe commands wrongly stopped | **5.5%** | 6.2% | 5.5% | 7.8% | 37.8% |
+| Risky **secrets** commands caught (112) | **66%** | 24% | 14% | 98% | 48% |
+| Parameters | 110 M | 35 M | 35 M | undisclosed | 421 M |
+| Runs on | CPU | CPU | CPU | hosted API | GPU |
 
-- **Benchmark caveat:** the benchmark's labels were written by the developer, an AI agent, so this is diagnostic evidence, not independent acceptance.
+- **Benchmark caveat:** the benchmark's labels were written by the developer, an AI agent, so this is diagnostic evidence, not independent acceptance. Jev and Laya received task context; Nano sees only the command.
 - **Outside check:** on the upstream ShellRisk sets, which are not agent-authored, v0.3.0 catches about as many risky commands as v0.2.0 and stops about a third fewer safe ones. It is weaker on the smaller holdout set.
 - **Release status:** v0.3.0 was released by owner exception after one overly strict preregistered check failed. See the [model card](bundle/MODEL_CARD.md) and [More charts](https://tannermidd.github.io/LANCET-model/).
 

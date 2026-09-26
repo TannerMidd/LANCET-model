@@ -7,7 +7,9 @@
 <meta name="description" content="LANCET Nano v0.3.0: a 110M-parameter, 111 MB CPU model that flags risky Bash commands in about 22 ms, offline. Apache-2.0 model, MIT runtime.">
 <meta property="og:title" content="LANCET Nano">
 <meta property="og:description" content="A local classifier for Bash command risk. 85.8% of risky commands caught, 5.5% of safe ones stopped, on a 793-command release benchmark.">
-<meta property="og:image" content="https://tannermidd.github.io/LANCET-model/charts/bench1-operating-points.png">
+<meta property="og:image" content="https://tannermidd.github.io/LANCET-model/charts/social-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://tannermidd.github.io/LANCET-model/charts/social-card.png">
 <style>
 :root{--bg:#050607;--panel:#0a0d0f;--line:#1b2328;--ink:#e6edf0;--dim:#7d8b92;--green:#2dff9a;--amber:#ffc23d;--violet:#b48cff;--red:#ff3d4f;--cyan:#27d3ff}
 *{box-sizing:border-box;border-radius:0}
@@ -80,7 +82,7 @@ footer{padding:28px 0 60px;color:var(--dim);font-size:12.5px}
 
 <section id="results">
   <h2>Results on the 793-command release benchmark</h2>
-  <figure class="fig"><img src="charts/bench1-operating-points.svg" alt="Risky commands caught against safe commands wrongly stopped for LANCET Nano v0.3.0, v0.2.0, v0.1.0 and Jev">
+  <figure class="fig"><img src="charts/bench1-operating-points.svg" alt="Risky commands caught against safe commands wrongly stopped for LANCET Nano v0.3.0, v0.2.0, v0.1.0, Jev and Laya">
     <figcaption>Up and to the left is better. Each model was scored once, at its own frozen threshold, on <code>lancet-bench-1</code>: 409 risky and 384 safe commands across 37 tool areas, frozen and screened against all training data before v0.3.0's training data existed.</figcaption></figure>
   <div class="two">
     <figure class="fig"><img src="charts/bench1-roc.svg" alt="ROC curves for the four models"><figcaption>How well each model separates risky from safe commands at every threshold. The circles mark the thresholds each model actually uses.</figcaption></figure>
@@ -92,9 +94,10 @@ footer{padding:28px 0 60px;color:var(--dim);font-size:12.5px}
     <tr><td>LANCET Nano v0.2.0</td><td>73.6%</td><td>6.2%</td><td>0.896</td><td>24%</td><td>35 M</td><td>CPU, local, offline</td></tr>
     <tr><td>LANCET Nano v0.1.0</td><td>65.5%</td><td>5.5%</td><td>0.860</td><td>14%</td><td>35 M</td><td>CPU, local, offline</td></tr>
     <tr><td style="color:var(--amber)">Jev (hosted)</td><td>96.8%</td><td>7.8%</td><td>0.982</td><td>98%</td><td>undisclosed</td><td>hosted API</td></tr>
+    <tr><td style="color:var(--violet)">Laya</td><td>68.5%</td><td>37.8%</td><td>0.718</td><td>48%</td><td>421 M</td><td>GPU, local</td></tr>
   </table>
   <p class="note">
-    The benchmark's labels were written by the developer, an AI agent, so this is diagnostic evidence, not independent acceptance. Jev received a fixed task context; Nano sees only the command.<br>
+    The benchmark's labels were written by the developer, an AI agent, so this is diagnostic evidence, not independent acceptance. Jev and Laya received a fixed task context; Nano sees only the command.<br>
     On the upstream ShellRisk sets (not agent-authored, never trained on), v0.3.0 caught 48.9% vs v0.2.0's 48.3% and stopped 6.3% vs 9.7% of safe commands; on the smaller holdout set it caught fewer (41.9% vs 45.9%).<br>
     v0.3.0 was released by owner exception after one overly strict preregistered check (the ShellRisk catch-rate lower bound) failed; the details are in the model card.
   </p>
