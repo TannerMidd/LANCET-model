@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="860" viewBox="0 0 1600 860">
+<rect width="1600" height="860" fill="#07080a"/>
+<style>text{font-family:JetBrains Mono,IBM Plex Mono,Cascadia Code,Consolas,monospace;fill:#7d8893}.t{fill:#f4f7f9;font-weight:700}.w{fill:#f4f7f9}.d{fill:#4c5661}</style>
+<text x="56" y="64" font-size="24" class="t" text-anchor="start" letter-spacing="2">LANCET NANO v0.4.0  vs  v0.3.0</text>
+<text x="56" y="94" font-size="13" class="" text-anchor="start" >Same size (110.6 MB INT8 model) and speed (~14 ms per command on a CPU). One scoring pass per model and benchmark.</text>
+<rect x="1080" y="51" width="14" height="14" fill="#8a939c"/>
+<text x="1104" y="63" font-size="13" class="w" text-anchor="start" >LANCET Nano v0.3.0</text>
+<rect x="1300" y="51" width="14" height="14" fill="#2dff9a"/>
+<text x="1324" y="63" font-size="13" class="w" text-anchor="start" >LANCET Nano v0.4.0</text>
+<line x1="40" x2="1560" y1="124" y2="124" stroke="#161a1f"/>
+<text x="56" y="166" font-size="13" class="w" text-anchor="start" letter-spacing="1">RISKY COMMANDS CAUGHT AT ≤10% OF SAFE COMMANDS STOPPED</text>
+<line x1="100" x2="916" y1="690.0" y2="690.0" stroke="#161a1f"/>
+<text x="90" y="694.0" font-size="11" class="d" text-anchor="end" >0%</text>
+<line x1="100" x2="916" y1="590.0" y2="590.0" stroke="#161a1f"/>
+<text x="90" y="594.0" font-size="11" class="d" text-anchor="end" >20%</text>
+<line x1="100" x2="916" y1="490.0" y2="490.0" stroke="#161a1f"/>
+<text x="90" y="494.0" font-size="11" class="d" text-anchor="end" >40%</text>
+<line x1="100" x2="916" y1="390.0" y2="390.0" stroke="#161a1f"/>
+<text x="90" y="394.0" font-size="11" class="d" text-anchor="end" >60%</text>
+<line x1="100" x2="916" y1="290.0" y2="290.0" stroke="#161a1f"/>
+<text x="90" y="294.0" font-size="11" class="d" text-anchor="end" >80%</text>
+<line x1="100" x2="916" y1="190.0" y2="190.0" stroke="#161a1f"/>
+<text x="90" y="194.0" font-size="11" class="d" text-anchor="end" >100%</text>
+<rect x="164.0" y="223.0073349633252" width="48" height="466.9926650366748" fill="#8a939c"/>
+<text x="188.0" y="213.0073349633252" font-size="15" class="w" text-anchor="middle" >93.4%</text>
+<rect x="220.0" y="229.119804400978" width="48" height="460.880195599022" fill="#2dff9a"/>
+<text x="244.0" y="219.119804400978" font-size="15" class="w" text-anchor="middle" >92.2%</text>
+<text x="216.0" y="716" font-size="14" class="w" text-anchor="middle" >lancet-bench-1</text>
+<text x="216.0" y="734" font-size="11" class="d" text-anchor="middle" >793 commands</text>
+<text x="216.0" y="758" font-size="14" class="" text-anchor="middle" style="fill:#ff5a6a">-1.2 pts</text>
+<rect x="364.0" y="394.66321243523316" width="48" height="295.33678756476684" fill="#8a939c"/>
+<text x="388.0" y="384.66321243523316" font-size="15" class="w" text-anchor="middle" >59.1%</text>
+<rect x="420.0" y="234.04145077720204" width="48" height="455.95854922279796" fill="#2dff9a"/>
+<text x="444.0" y="224.04145077720204" font-size="15" class="w" text-anchor="middle" >91.2%</text>
+<text x="416.0" y="716" font-size="14" class="w" text-anchor="middle" >ShellRisk-Bench test</text>
+<text x="416.0" y="734" font-size="11" class="d" text-anchor="middle" >4,194 commands</text>
+<text x="416.0" y="758" font-size="14" class="" text-anchor="middle" style="fill:#2dff9a">+32.1 pts</text>
+<rect x="564.0" y="487.6190476190476" width="48" height="202.38095238095238" fill="#8a939c"/>
+<text x="588.0" y="477.6190476190476" font-size="15" class="w" text-anchor="middle" >40.5%</text>
+<rect x="620.0" y="428.0952380952381" width="48" height="261.9047619047619" fill="#2dff9a"/>
+<text x="644.0" y="418.0952380952381" font-size="15" class="w" text-anchor="middle" >52.4%</text>
+<text x="616.0" y="716" font-size="14" class="w" text-anchor="middle" >Neutral set</text>
+<text x="616.0" y="734" font-size="11" class="d" text-anchor="middle" >66 commands</text>
+<text x="616.0" y="758" font-size="14" class="" text-anchor="middle" style="fill:#2dff9a">+11.9 pts</text>
+<rect x="722.0" y="184" width="188.0" height="588" fill="none" stroke="#2dff9a" stroke-opacity=".35" stroke-dasharray="4 4"/>
+<rect x="764.0" y="487.6190476190476" width="48" height="202.38095238095238" fill="#8a939c"/>
+<text x="788.0" y="477.6190476190476" font-size="15" class="w" text-anchor="middle" >40.5%</text>
+<rect x="820.0" y="428.0952380952381" width="48" height="261.9047619047619" fill="#2dff9a"/>
+<text x="844.0" y="418.0952380952381" font-size="15" class="w" text-anchor="middle" >52.4%</text>
+<text x="816.0" y="716" font-size="14" class="w" text-anchor="middle" >Worst of the three</text>
+<text x="816.0" y="734" font-size="11" class="d" text-anchor="middle" ></text>
+<text x="816.0" y="758" font-size="14" class="" text-anchor="middle" style="fill:#2dff9a">+11.9 pts</text>
+<text x="980" y="166" font-size="13" class="w" text-anchor="start" letter-spacing="1">AT THE SHIPPED THRESHOLDS</text>
+<text x="980" y="190" font-size="11" class="d" text-anchor="start" letter-spacing="1">BENCHMARK</text>
+<text x="1230" y="190" font-size="11" class="d" text-anchor="start" letter-spacing="1">MODEL</text>
+<text x="1325" y="190" font-size="11" class="d" text-anchor="start" letter-spacing="1">CAUGHT</text>
+<text x="1420" y="190" font-size="11" class="d" text-anchor="start" letter-spacing="1">STOPPED</text>
+<text x="1515" y="190" font-size="11" class="d" text-anchor="start" letter-spacing="1">AUROC</text>
+<text x="980" y="220" font-size="13" class="w" text-anchor="start" >lancet-bench-1</text>
+<text x="1230" y="220" font-size="13" class="" text-anchor="start" style="fill:#8a939c">v0.3.0</text>
+<text x="1325" y="220" font-size="13" class="w" text-anchor="start" >85.8%</text>
+<text x="1420" y="220" font-size="13" class="w" text-anchor="start" >5.5%</text>
+<text x="1515" y="220" font-size="13" class="w" text-anchor="start" >0.962</text>
+<text x="1230" y="244" font-size="13" class="" text-anchor="start" style="fill:#2dff9a">v0.4.0</text>
+<text x="1325" y="244" font-size="13" class="w" text-anchor="start" >89.0%</text>
+<text x="1420" y="244" font-size="13" class="w" text-anchor="start" >6.2%</text>
+<text x="1515" y="244" font-size="13" class="w" text-anchor="start" >0.974</text>
+<line x1="980" x2="1544" y1="256" y2="256" stroke="#161a1f"/>
+<text x="980" y="280" font-size="13" class="w" text-anchor="start" >ShellRisk-Bench test</text>
+<text x="1230" y="280" font-size="13" class="" text-anchor="start" style="fill:#8a939c">v0.3.0</text>
+<text x="1325" y="280" font-size="13" class="w" text-anchor="start" >46.6%</text>
+<text x="1420" y="280" font-size="13" class="w" text-anchor="start" >6.1%</text>
+<text x="1515" y="280" font-size="13" class="w" text-anchor="start" >0.827</text>
+<text x="1230" y="304" font-size="13" class="" text-anchor="start" style="fill:#2dff9a">v0.4.0</text>
+<text x="1325" y="304" font-size="13" class="w" text-anchor="start" >60.6%</text>
+<text x="1420" y="304" font-size="13" class="w" text-anchor="start" >2.3%</text>
+<text x="1515" y="304" font-size="13" class="w" text-anchor="start" >0.952</text>
+<line x1="980" x2="1544" y1="316" y2="316" stroke="#161a1f"/>
+<text x="980" y="340" font-size="13" class="w" text-anchor="start" >Neutral set</text>
+<text x="1230" y="340" font-size="13" class="" text-anchor="start" style="fill:#8a939c">v0.3.0</text>
+<text x="1325" y="340" font-size="13" class="w" text-anchor="start" >50.0%</text>
+<text x="1420" y="340" font-size="13" class="w" text-anchor="start" >20.8%</text>
+<text x="1515" y="340" font-size="13" class="w" text-anchor="start" >0.701</text>
+<text x="1230" y="364" font-size="13" class="" text-anchor="start" style="fill:#2dff9a">v0.4.0</text>
+<text x="1325" y="364" font-size="13" class="w" text-anchor="start" >52.4%</text>
+<text x="1420" y="364" font-size="13" class="w" text-anchor="start" >12.5%</text>
+<text x="1515" y="364" font-size="13" class="w" text-anchor="start" >0.746</text>
+<line x1="980" x2="1544" y1="376" y2="376" stroke="#161a1f"/>
+<text x="980" y="400" font-size="13" class="w" text-anchor="start" >Red-team holdout*</text>
+<text x="1230" y="400" font-size="13" class="" text-anchor="start" style="fill:#8a939c">v0.3.0</text>
+<text x="1325" y="400" font-size="13" class="w" text-anchor="start" >72.5%</text>
+<text x="1420" y="400" font-size="13" class="w" text-anchor="start" >22.7%</text>
+<text x="1515" y="400" font-size="13" class="w" text-anchor="start" >0.877</text>
+<text x="1230" y="424" font-size="13" class="" text-anchor="start" style="fill:#2dff9a">v0.4.0</text>
+<text x="1325" y="424" font-size="13" class="w" text-anchor="start" >85.5%</text>
+<text x="1420" y="424" font-size="13" class="w" text-anchor="start" >22.7%</text>
+<text x="1515" y="424" font-size="13" class="w" text-anchor="start" >0.937</text>
+<line x1="980" x2="1544" y1="436" y2="436" stroke="#161a1f"/>
+<text x="980" y="466" font-size="11" class="d" text-anchor="start" >* 91 red-team commands held out from training.</text>
+<line x1="40" x2="1560" y1="790" y2="790" stroke="#161a1f"/>
+<text x="56" y="818" font-size="12" class="" text-anchor="start" >Left: each model at the threshold that stops at most 10% of that benchmark's safe commands. Right: the thresholds shipped in model.json.</text>
+<text x="56" y="838" font-size="11" class="d" text-anchor="start" >ShellRisk-Bench (Kontext Security) test split; neutral set: rogue-security coding-agent-security-benchmark, Bash cases.</text>
+</svg>

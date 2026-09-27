@@ -1,402 +1,514 @@
 {
   "calibration": {
     "calibration": {
-      "bias": -0.7429544835543572,
+      "bias": -0.8842568794525207,
       "method": "positive-slope group/domain-balanced Platt; calibration only",
-      "scale": 0.8416362250422593
+      "scale": 0.8128674983663715
     },
     "domainInterruption": {
-      "api-docs": 0.02631578947368421,
+      "api-docs": 0.017543859649122806,
       "authored": 0.0,
       "cli-docs": 0.013888888888888888,
-      "eval-retired": 0.012698412698412698,
-      "inspection": 0.0,
-      "secrets-authored": 0.14285714285714285,
+      "eval-retired": 0.04155124653739612,
+      "inspection": 0.00315955766192733,
+      "redteam-gap": 0.22727272727272727,
+      "secrets-authored": 0.02976190476190476,
+      "shellrisk-train": 0.015056461731493099,
       "tool-docs": 0.04871060171919771
     },
     "domainRecall": {
-      "api-docs": 0.9473684210526315,
-      "authored": 0.9758919961427194,
-      "cli-docs": 1.0,
-      "eval-retired": 0.8823529411764706,
-      "secrets-authored": 0.8571428571428571,
-      "tool-docs": 0.8015873015873016
+      "api-docs": 0.9298245614035088,
+      "authored": 0.9411764705882353,
+      "cli-docs": 0.9473684210526315,
+      "eval-retired": 0.9601990049751243,
+      "redteam-gap": 0.9019607843137255,
+      "secrets-authored": 1.0,
+      "shellrisk-train": 0.7777777777777778,
+      "tool-docs": 0.753968253968254
     },
-    "reviewThreshold": 0.7715354869912129,
-    "riskyThreshold": 0.8965157725433559
+    "reviewThreshold": 0.8188976760554079,
+    "riskyThreshold": 0.8795421382252008
   },
   "commandsIncluded": false,
   "datasetsIncluded": false,
   "hostedModelOutputsUsed": false,
-  "humanLabelAdjudication": "unavailable",
-  "independentAcceptance": "unavailable and unmet",
   "inspectionRowsInV5AuditedPool": 5019,
-  "labelRules": "doc-rules-7 (description wording; operation verbs; documented secret reveals)",
-  "manifestSha256": "c69f32c19f86d3fea20c93e1c94b40b9bb14d2ac3280707cb1e6b5330dfba384",
-  "registrationSha256": "04e2eaebdf3f481becbedd0f4af310278eb503eda889f7d9fa4f77cda030dccc",
+  "manifestSha256": "a025b96eeb8987d85e5ad5a90bee7abfab3e4c4f4e74c62ea0c81b5547d24437",
+  "registrationSha256": "c424566c66955fe4d4fd0dea53b0269cedaf628fdf6c23aa31f72d63748cbd9a",
   "releaseBenchmark": {
     "benign": 384,
-    "benignInterrupted": 21,
+    "benignInterrupted": 24,
     "passes": 1,
     "risky": 409,
-    "riskyCaught": 351,
-    "suite": "lancet-bench-1 (agent-authored, 793 cases)",
-    "use": "use-005-doc6-B3.json"
+    "riskyCaught": 364,
+    "suite": "lancet-bench-1 (793 cases)"
   },
-  "rowsBySourceAndRole": {
+  "rowsByDomainSourceAndRole": {
     "calibration": {
-      "azure-cli": {
-        "risky": 14,
-        "rows": 49
-      },
-      "botocore": {
+      "api-docs:botocore": {
         "risky": 57,
         "rows": 171
       },
-      "devious-v2": {
-        "risky": 29,
-        "rows": 58
+      "authored:v6-authored": {
+        "risky": 2074,
+        "rows": 4148
       },
-      "docker-cli": {
+      "cli-docs:azure-cli": {
+        "risky": 14,
+        "rows": 49
+      },
+      "cli-docs:docker-cli": {
         "risky": 1,
         "rows": 12
       },
-      "eval150": {
-        "risky": 12,
-        "rows": 24
-      },
-      "gh-cli": {
+      "cli-docs:gh-cli": {
         "risky": 4,
         "rows": 30
       },
-      "matrix": {
-        "risky": 16,
-        "rows": 16
+      "eval-retired:devious-v2": {
+        "risky": 33,
+        "rows": 63
       },
-      "nl2bash": {
+      "eval-retired:eval150": {
+        "risky": 12,
+        "rows": 19
+      },
+      "eval-retired:lancet-bench-2": {
+        "risky": 38,
+        "rows": 79
+      },
+      "eval-retired:matrix": {
+        "risky": 7,
+        "rows": 7
+      },
+      "eval-retired:novel-v5-candidates-1": {
+        "risky": 39,
+        "rows": 257
+      },
+      "eval-retired:novel-v5-diagnostic-1": {
+        "risky": 29,
+        "rows": 53
+      },
+      "eval-retired:sealed-eval-1": {
+        "risky": 14,
+        "rows": 20
+      },
+      "eval-retired:sealed-eval-2": {
+        "risky": 12,
+        "rows": 28
+      },
+      "eval-retired:sealed-eval-3": {
+        "risky": 14,
+        "rows": 30
+      },
+      "eval-retired:sealed-eval-3-candidates": {
+        "risky": 1,
+        "rows": 2
+      },
+      "eval-retired:study-validation": {
+        "risky": 2,
+        "rows": 4
+      },
+      "inspection:nl2bash": {
         "risky": 0,
         "rows": 46
       },
-      "novel-v5-candidates-1": {
-        "risky": 32,
-        "rows": 226
-      },
-      "novel-v5-diagnostic-1": {
-        "risky": 18,
-        "rows": 41
-      },
-      "sealed-eval-1": {
-        "risky": 25,
-        "rows": 54
-      },
-      "sealed-eval-2": {
-        "risky": 18,
-        "rows": 28
-      },
-      "sealed-eval-3": {
-        "risky": 17,
-        "rows": 32
-      },
-      "sealed-eval-3-candidates": {
-        "risky": 1,
-        "rows": 2
-      },
-      "secrets4-authored": {
-        "risky": 504,
-        "rows": 1008
-      },
-      "study-validation": {
-        "risky": 2,
-        "rows": 4
-      },
-      "swesmith": {
+      "inspection:swesmith": {
         "risky": 0,
         "rows": 409
       },
-      "terminalbench": {
+      "inspection:terminalbench": {
         "risky": 0,
         "rows": 178
       },
-      "tldr": {
+      "redteam-gap:lancet-devious-testing": {
+        "risky": 51,
+        "rows": 63
+      },
+      "redteam-gap:lancet-devious-twins": {
+        "risky": 0,
+        "rows": 10
+      },
+      "secrets-authored:secrets4-authored": {
+        "risky": 504,
+        "rows": 1008
+      },
+      "shellrisk-train:atomicredteam": {
+        "risky": 16,
+        "rows": 16
+      },
+      "shellrisk-train:payloads": {
+        "risky": 2,
+        "rows": 2
+      },
+      "shellrisk-train:swesmith": {
+        "risky": 0,
+        "rows": 470
+      },
+      "shellrisk-train:terminalbench": {
+        "risky": 0,
+        "rows": 327
+      },
+      "tool-docs:tldr": {
         "risky": 126,
         "rows": 824
-      },
-      "v6-authored": {
-        "risky": 2074,
-        "rows": 4148
       }
     },
     "confirmation": {
-      "authored-holdout": {
-        "risky": 120,
-        "rows": 240
-      },
-      "azure-cli": {
-        "risky": 35,
-        "rows": 143
-      },
-      "botocore": {
+      "api-docs:botocore": {
         "risky": 30,
         "rows": 129
       },
-      "devious-v2": {
-        "risky": 21,
-        "rows": 31
+      "authored:v6-authored": {
+        "risky": 1769,
+        "rows": 3538
       },
-      "docker-cli": {
+      "cli-docs:azure-cli": {
+        "risky": 35,
+        "rows": 143
+      },
+      "cli-docs:docker-cli": {
         "risky": 1,
         "rows": 3
       },
-      "eval150": {
-        "risky": 14,
-        "rows": 22
-      },
-      "gh-cli": {
+      "cli-docs:gh-cli": {
         "risky": 11,
         "rows": 13
       },
-      "kubectl": {
+      "cli-docs:kubectl": {
         "risky": 2,
         "rows": 14
       },
-      "matrix": {
-        "risky": 2,
-        "rows": 3
+      "eval-retired:authored-holdout": {
+        "risky": 120,
+        "rows": 240
       },
-      "nl2bash": {
+      "eval-retired:devious-v2": {
+        "risky": 19,
+        "rows": 29
+      },
+      "eval-retired:eval150": {
+        "risky": 11,
+        "rows": 21
+      },
+      "eval-retired:lancet-bench-2": {
+        "risky": 40,
+        "rows": 78
+      },
+      "eval-retired:matrix": {
         "risky": 0,
-        "rows": 31
+        "rows": 14
       },
-      "novel-v5-candidates-1": {
-        "risky": 49,
-        "rows": 257
+      "eval-retired:novel-v5-candidates-1": {
+        "risky": 65,
+        "rows": 273
       },
-      "novel-v5-diagnostic-1": {
-        "risky": 37,
-        "rows": 64
+      "eval-retired:novel-v5-diagnostic-1": {
+        "risky": 56,
+        "rows": 99
       },
-      "sealed-eval-1": {
-        "risky": 20,
+      "eval-retired:sealed-eval-1": {
+        "risky": 15,
         "rows": 34
       },
-      "sealed-eval-2": {
-        "risky": 13,
-        "rows": 24
+      "eval-retired:sealed-eval-2": {
+        "risky": 17,
+        "rows": 39
       },
-      "sealed-eval-3": {
-        "risky": 14,
-        "rows": 27
+      "eval-retired:sealed-eval-3": {
+        "risky": 20,
+        "rows": 38
       },
-      "sealed-eval-3-candidates": {
+      "eval-retired:sealed-eval-3-candidates": {
         "risky": 0,
         "rows": 1
       },
-      "secrets4-authored": {
-        "risky": 720,
-        "rows": 1440
-      },
-      "study-validation": {
+      "eval-retired:study-validation": {
         "risky": 1,
         "rows": 2
       },
-      "swesmith": {
+      "inspection:nl2bash": {
+        "risky": 0,
+        "rows": 31
+      },
+      "inspection:swesmith": {
         "risky": 0,
         "rows": 398
       },
-      "terminalbench": {
+      "inspection:terminalbench": {
         "risky": 0,
         "rows": 119
       },
-      "tldr": {
+      "redteam-gap:lancet-devious-testing": {
+        "risky": 27,
+        "rows": 34
+      },
+      "redteam-gap:lancet-devious-twins": {
+        "risky": 0,
+        "rows": 4
+      },
+      "secrets-authored:secrets4-authored": {
+        "risky": 720,
+        "rows": 1440
+      },
+      "shellrisk-train:atomicredteam": {
+        "risky": 17,
+        "rows": 17
+      },
+      "shellrisk-train:payloads": {
+        "risky": 4,
+        "rows": 4
+      },
+      "shellrisk-train:swesmith": {
+        "risky": 0,
+        "rows": 477
+      },
+      "shellrisk-train:terminalbench": {
+        "risky": 0,
+        "rows": 334
+      },
+      "tool-docs:tldr": {
         "risky": 97,
         "rows": 754
-      },
-      "v6-authored": {
-        "risky": 1889,
-        "rows": 3778
       }
     },
     "fit": {
-      "authored-holdout": {
-        "risky": 314,
-        "rows": 629
-      },
-      "azure-cli": {
-        "risky": 414,
-        "rows": 1118
-      },
-      "botocore": {
+      "api-docs:botocore": {
         "risky": 315,
         "rows": 927
       },
-      "devious-v2": {
-        "risky": 199,
-        "rows": 346
+      "authored:v6-authored": {
+        "risky": 4592,
+        "rows": 9184
       },
-      "docker-cli": {
+      "cli-docs:azure-cli": {
+        "risky": 414,
+        "rows": 1118
+      },
+      "cli-docs:docker-cli": {
         "risky": 40,
         "rows": 99
       },
-      "eval150": {
-        "risky": 91,
-        "rows": 167
-      },
-      "gh-cli": {
+      "cli-docs:gh-cli": {
         "risky": 10,
         "rows": 156
       },
-      "kubectl": {
+      "cli-docs:kubectl": {
         "risky": 18,
         "rows": 55
       },
-      "matrix": {
-        "risky": 31,
-        "rows": 70
+      "eval-retired:authored-holdout": {
+        "risky": 314,
+        "rows": 629
       },
-      "nl2bash": {
-        "risky": 0,
-        "rows": 152
+      "eval-retired:devious-v2": {
+        "risky": 193,
+        "rows": 337
       },
-      "novel-v5-candidates-1": {
-        "risky": 348,
-        "rows": 1839
+      "eval-retired:eval150": {
+        "risky": 92,
+        "rows": 168
       },
-      "novel-v5-diagnostic-1": {
-        "risky": 232,
-        "rows": 451
+      "eval-retired:lancet-bench-2": {
+        "risky": 259,
+        "rows": 514
       },
-      "sealed-eval-1": {
-        "risky": 134,
-        "rows": 247
+      "eval-retired:matrix": {
+        "risky": 30,
+        "rows": 56
       },
-      "sealed-eval-2": {
-        "risky": 124,
-        "rows": 253
+      "eval-retired:novel-v5-candidates-1": {
+        "risky": 297,
+        "rows": 1663
       },
-      "sealed-eval-3": {
-        "risky": 161,
-        "rows": 318
+      "eval-retired:novel-v5-diagnostic-1": {
+        "risky": 181,
+        "rows": 365
       },
-      "sealed-eval-3-candidates": {
+      "eval-retired:sealed-eval-1": {
+        "risky": 158,
+        "rows": 295
+      },
+      "eval-retired:sealed-eval-2": {
+        "risky": 137,
+        "rows": 264
+      },
+      "eval-retired:sealed-eval-3": {
+        "risky": 158,
+        "rows": 309
+      },
+      "eval-retired:sealed-eval-3-candidates": {
         "risky": 10,
-        "rows": 16
+        "rows": 15
       },
-      "secrets4-authored": {
-        "risky": 2664,
-        "rows": 5328
-      },
-      "study-validation": {
+      "eval-retired:study-validation": {
         "risky": 11,
         "rows": 22
       },
-      "swesmith": {
+      "inspection:nl2bash": {
+        "risky": 0,
+        "rows": 152
+      },
+      "inspection:swesmith": {
         "risky": 0,
         "rows": 2154
       },
-      "terminalbench": {
+      "inspection:terminalbench": {
         "risky": 0,
         "rows": 748
       },
-      "tldr": {
-        "risky": 970,
-        "rows": 6126
+      "redteam-gap:lancet-devious-testing": {
+        "risky": 384,
+        "rows": 450
       },
-      "v6-authored": {
-        "risky": 4953,
-        "rows": 9906
+      "redteam-gap:lancet-devious-twins": {
+        "risky": 0,
+        "rows": 72
+      },
+      "secrets-authored:secrets4-authored": {
+        "risky": 2664,
+        "rows": 5328
+      },
+      "shellrisk-train:atomicredteam": {
+        "risky": 120,
+        "rows": 120
+      },
+      "shellrisk-train:payloads": {
+        "risky": 14,
+        "rows": 14
+      },
+      "shellrisk-train:swesmith": {
+        "risky": 0,
+        "rows": 3519
+      },
+      "shellrisk-train:terminalbench": {
+        "risky": 0,
+        "rows": 2315
+      },
+      "tool-docs:tldr": {
+        "risky": 970,
+        "rows": 6121
       }
     },
     "inner": {
-      "azure-cli": {
-        "risky": 66,
-        "rows": 194
-      },
-      "botocore": {
+      "api-docs:botocore": {
         "risky": 30,
         "rows": 88
       },
-      "devious-v2": {
-        "risky": 20,
-        "rows": 26
+      "authored:v6-authored": {
+        "risky": 1187,
+        "rows": 2374
       },
-      "docker-cli": {
+      "cli-docs:azure-cli": {
+        "risky": 66,
+        "rows": 194
+      },
+      "cli-docs:docker-cli": {
         "risky": 0,
         "rows": 26
       },
-      "eval150": {
-        "risky": 10,
-        "rows": 18
-      },
-      "gh-cli": {
+      "cli-docs:gh-cli": {
         "risky": 4,
         "rows": 8
       },
-      "kubectl": {
+      "cli-docs:kubectl": {
         "risky": 0,
         "rows": 7
       },
-      "matrix": {
-        "risky": 4,
+      "eval-retired:devious-v2": {
+        "risky": 18,
+        "rows": 26
+      },
+      "eval-retired:eval150": {
+        "risky": 12,
+        "rows": 23
+      },
+      "eval-retired:lancet-bench-2": {
+        "risky": 40,
+        "rows": 75
+      },
+      "eval-retired:novel-v5-candidates-1": {
+        "risky": 51,
+        "rows": 321
+      },
+      "eval-retired:novel-v5-diagnostic-1": {
+        "risky": 26,
+        "rows": 51
+      },
+      "eval-retired:sealed-eval-1": {
+        "risky": 11,
+        "rows": 22
+      },
+      "eval-retired:sealed-eval-2": {
+        "risky": 10,
+        "rows": 21
+      },
+      "eval-retired:sealed-eval-3": {
+        "risky": 12,
+        "rows": 26
+      },
+      "eval-retired:sealed-eval-3-candidates": {
+        "risky": 3,
         "rows": 4
       },
-      "nl2bash": {
-        "risky": 0,
-        "rows": 44
-      },
-      "novel-v5-candidates-1": {
-        "risky": 35,
-        "rows": 207
-      },
-      "novel-v5-diagnostic-1": {
-        "risky": 39,
-        "rows": 77
-      },
-      "sealed-eval-1": {
-        "risky": 23,
-        "rows": 44
-      },
-      "sealed-eval-2": {
-        "risky": 24,
-        "rows": 53
-      },
-      "sealed-eval-3": {
-        "risky": 18,
-        "rows": 36
-      },
-      "sealed-eval-3-candidates": {
-        "risky": 3,
-        "rows": 3
-      },
-      "secrets4-authored": {
-        "risky": 936,
-        "rows": 1872
-      },
-      "study-validation": {
+      "eval-retired:study-validation": {
         "risky": 2,
         "rows": 4
       },
-      "swesmith": {
+      "inspection:nl2bash": {
+        "risky": 0,
+        "rows": 44
+      },
+      "inspection:swesmith": {
         "risky": 0,
         "rows": 565
       },
-      "terminalbench": {
+      "inspection:terminalbench": {
         "risky": 0,
         "rows": 175
       },
-      "tldr": {
+      "redteam-gap:lancet-devious-testing": {
+        "risky": 29,
+        "rows": 34
+      },
+      "redteam-gap:lancet-devious-twins": {
+        "risky": 0,
+        "rows": 6
+      },
+      "secrets-authored:secrets4-authored": {
+        "risky": 936,
+        "rows": 1872
+      },
+      "shellrisk-train:atomicredteam": {
+        "risky": 16,
+        "rows": 16
+      },
+      "shellrisk-train:payloads": {
+        "risky": 2,
+        "rows": 2
+      },
+      "shellrisk-train:swesmith": {
+        "risky": 0,
+        "rows": 481
+      },
+      "shellrisk-train:terminalbench": {
+        "risky": 0,
+        "rows": 330
+      },
+      "tool-docs:tldr": {
         "risky": 159,
         "rows": 938
-      },
-      "v6-authored": {
-        "risky": 1188,
-        "rows": 2376
       }
     }
   },
-  "seed": 9201,
-  "selectedArm": "B3",
-  "selectedEpoch": 7,
-  "selectionSha256": "a9bc6ebcad215689431f21a39250966dcf677b1367810e8ae8163b99a0747ec2",
-  "study": "doc-labels-6",
-  "topTwoAveraged": false
+  "seed": 9601,
+  "selectedArm": "H1",
+  "selectedEpochs": [
+    3,
+    6,
+    8
+  ],
+  "selectionSha256": "a9bbfda8f4dfcf6ea389945d6843fd86c292b5aeec57cab4dd46ea158fdd10ac",
+  "study": "doc-labels-9b",
+  "topThreeAveraged": true
 }

@@ -1,39 +1,41 @@
-LANCET Nano v0.3.0 - experimental Bash command-risk classifier
+LANCET Nano v0.4.0 - experimental Bash command-risk classifier
 
 LANCET-specific contributions and runtime:
 Copyright (c) 2026 Tanner Middleton
 Model assets: Apache License, Version 2.0; see MODEL-LICENSE.md.
 Runtime and project-authored code: MIT; see licenses/pi-jev-guard-MIT.txt.
 
-Pretrained model: Salesforce/CodeT5-base
-Revision: 02cd2d31bb7c6d0e4d91156167b2de044989c733
-The original model card declares Apache-2.0 and is retained in
-licenses/codet5-base-upstream-model-card.md. Full license:
-licenses/Apache-2.0.txt.
-https://huggingface.co/Salesforce/codet5-base/tree/02cd2d31bb7c6d0e4d91156167b2de044989c733
+Pretrained model: Salesforce/codet5p-220m (CodeT5+ 220M)
+Revision: 2b92f36e2782341a50551759fdba0dd15e821f99
+The original model card declares BSD-3-Clause and is retained in
+licenses/codet5p-220m-upstream-model-card.md.
+https://huggingface.co/Salesforce/codet5p-220m/tree/2b92f36e2782341a50551759fdba0dd15e821f99
+Copyright (c) 2021, Salesforce.com, Inc. All rights reserved.
+Full BSD-3-Clause notice, conditions and disclaimer:
+licenses/CodeT5-BSD-3-Clause.txt.
 The tokenizer file is byte-identical to the CodeT5 tokenizer shipped with
-LANCET v0.1.0/v0.2.0 (from Salesforce/CodeT5-small, revision
+LANCET v0.1.0-v0.3.0 (from Salesforce/CodeT5-small, revision
 b1ee9570c289f21b5922b9c768a1ce12957bf968; card retained in
 licenses/codet5-small-upstream-model-card.md).
 
-CodeT5 research credit:
-Yue Wang, Weishi Wang, Shafiq Joty, and Steven C. H. Hoi.
-CodeT5: Identifier-aware Unified Pre-trained Encoder-Decoder Models for
-Code Understanding and Generation (2021).
-https://arxiv.org/abs/2109.00859
+CodeT5+ research credit:
+Yue Wang, Hung Le, Akhilesh Deepak Gotmare, Nghi D. Q. Bui, Junnan Li,
+and Steven C. H. Hoi.
+CodeT5+: Open Code Large Language Models for Code Understanding and
+Generation (2023). https://arxiv.org/abs/2305.07922
 https://github.com/salesforce/CodeT5
 
-The separate CodeT5 source-repository notice is preserved verbatim:
-Copyright (c) 2021, Salesforce.com, Inc. All rights reserved.
-Full BSD-3-Clause notice/disclaimer: licenses/CodeT5-BSD-3-Clause.txt.
-This source-code notice does not replace the model card's Apache-2.0 license.
-
-The original model cards credit the Hugging Face team and nielsr for their
-preparation and attribute the original pretraining data to CodeSearchNet
-(Husain et al., 2019) and additional C/CSharp data. No such corpus is
-distributed in this release.
-
 Training data credit (no dataset is included or relicensed):
+- ShellRisk-Bench (Kontext Security), huggingface.co/datasets/
+  kontext-security/ShellRisk-Bench, revision
+  437467862139b4e9cdd5322024ef3434a67c7ec8, training split. Used rows from:
+  - Atomic Red Team (github.com/redcanaryco/atomic-red-team), MIT,
+    Copyright (c) 2018 Red Canary, Inc.; licenses/atomic-red-team-MIT.txt.
+  - InternalAllTheThings (swisskyrepo), revision
+    203bb0c0b290bf7c9158c32d43523b8d66f292c1: no license declared.
+  - Kwai-Klear / SWE-smith trajectories (MIT declaration) and
+    yoonholee / terminalbench-trajectories (Apache-2.0 declaration).
+  Labels are ShellRisk-Bench's upstream source labels.
 - tldr-pages, revision 998e3f02b8924a7d5112fe6099993d3625fb404c.
   Copyright (c) 2014-present the tldr-pages team and contributors.
   Licensed under Creative Commons Attribution 4.0 International (CC BY 4.0),
@@ -69,13 +71,11 @@ Training data credit (no dataset is included or relicensed):
 No output of any hosted language model (including TypeSafe Jev) was used to
 label, filter, select or calibrate LANCET Nano's training data.
 
-MODIFIED UPSTREAM ARTIFACTS: LANCET uses CodeT5-base's encoder with a
+MODIFIED UPSTREAM ARTIFACTS: LANCET uses CodeT5+ 220M's encoder with a
 risk-classifier head, fine-tuning, calibration and CPU INT8 ONNX export. It is
-not the unmodified CodeT5 model. See MODIFICATIONS.md.
+not the unmodified CodeT5+ model. See MODIFICATIONS.md.
 
 These attribution notices do not amend the applicable licenses. No endorsement
-by Salesforce, the CodeT5 authors, Hugging Face, tldr-pages, Amazon, Microsoft,
-GitHub, the Kubernetes project, Docker, Kontext Security, the dataset providers
-or other credited contributors is claimed.
-The model is experimental: development and diagnostic evidence; not
-independently validated.
+by Salesforce, the CodeT5 authors, Hugging Face, Kontext Security, Red Canary,
+tldr-pages, Amazon, Microsoft, GitHub, the Kubernetes project, Docker, the
+dataset providers or other credited contributors is claimed.
