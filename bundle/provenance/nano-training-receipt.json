@@ -34,13 +34,22 @@
   "hostedModelOutputsUsed": false,
   "inspectionRowsInV5AuditedPool": 5019,
   "manifestSha256": "a025b96eeb8987d85e5ad5a90bee7abfab3e4c4f4e74c62ea0c81b5547d24437",
+  "recalibration": {
+    "data": "doc-labels-10b calibration role (registry-12 screened)",
+    "plattChanged": false,
+    "registrationSha256": "f5379565e857afd6a5205bc47929ef190844ac02b276ceb5672e95e164b5d18d",
+    "release": "v0.4.1",
+    "reviewThreshold": 0.3032267395410385,
+    "rule": "per-domain review cap 8% (was 5%), block threshold unchanged from v0.4.0",
+    "weightsChanged": false
+  },
   "registrationSha256": "c424566c66955fe4d4fd0dea53b0269cedaf628fdf6c23aa31f72d63748cbd9a",
   "releaseBenchmark": {
     "benign": 384,
-    "benignInterrupted": 24,
+    "benignInterrupted": 36,
     "passes": 1,
     "risky": 409,
-    "riskyCaught": 364,
+    "riskyCaught": 375,
     "suite": "lancet-bench-1 (793 cases)"
   },
   "rowsByDomainSourceAndRole": {

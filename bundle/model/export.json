@@ -4,12 +4,12 @@
   "sha256": {
     "model-int8.onnx": "f412c91867f769aa2b7b0bd5625b460efeb2018fcc5bddd4b39f09dfd2dc4f32",
     "tokenizer.json": "d30700d23490c46559dcade4d52f0b32950b6d358e00c6d8b340ff819b91c9e7",
-    "model.json": "809f2ec7ae6d19b462beaa0ff7e0ae97ed68cb8a259384d5b63524fc7dd18954"
+    "model.json": "226ae5426176e9075c4f97fd880849842642aaeee3c90d414bd685e8c6800a67"
   },
   "bytes": {
     "model-int8.onnx": 110560709,
     "tokenizer.json": 2270240,
-    "model.json": 2196
+    "model.json": 2492
   },
   "researchExportSha256": "f7c8f4492f5fd8069b40e1ce40c85ea92d4851ea55a86f68c624d45de2b409f0",
   "fp32Shipped": false

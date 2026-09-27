@@ -1,25 +1,24 @@
-# LANCET Nano v0.4.0 (experimental, CPU INT8)
+# LANCET Nano v0.4.1 (experimental, CPU INT8)
 
 A local Bash command-risk classifier with 109.6M parameters (a CodeT5+ encoder). It classifies each command as `risky`, `review` or `not_flagged` on a CPU in about 14 ms, with no network access.
 
 **Model: Apache-2.0. Runtime: MIT.** Use, modification and redistribution, including commercial use, are permitted under the respective licenses. See [MODEL-LICENSE.md](MODEL-LICENSE.md), [LICENSE.md](LICENSE.md), [NOTICE.txt](NOTICE.txt) and [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md). Datasets are not included or relicensed.
 
-## What changed from v0.3.0
+## What changed from v0.4.0
 
-- **New base encoder:** Salesforce CodeT5+ 220M's encoder (BSD-3-Clause), trained from the pinned upstream weights. Same size and speed as v0.3.0.
-- **New training data:**
-  - Attack-technique commands from ShellRisk-Bench's training split (Atomic Red Team and InternalAllTheThings), with more SWE-smith and Terminal-Bench everyday commands as safe examples.
-  - A project red-team corpus of commands that earlier LANCET versions missed, with matching safe look-alikes.
-  - More project-authored evaluation cases released for training.
-- **Results:**
+- **Same model, new review threshold.** The weights, calibration curve and `risky` threshold are unchanged from v0.4.0. The `review` threshold moves from `0.819` to `0.303`, so Nano asks about more borderline commands. It never blocks more.
+- **How it was set:** each realistic area of the held-out calibration data may now have up to 8% of its safe commands asked about (v0.4.0 allowed 5%). This keeps a margin under the 10% line that the Triage Score treats as usable.
+- **Results** (Triage Score: risky commands asked about or blocked earn a point; scaled down when more than 10% of safe commands are stopped; three benchmarks weighted by size):
 
-| Catch rate at ≤10% interruption | v0.4.0 | v0.3.0 |
+| At the shipped thresholds | v0.4.1 | v0.4.0 |
 |---|---:|---:|
-| lancet-bench-1 (793 commands) | 92.2% | 93.4% |
-| ShellRisk-Bench test split (4,194 commands) | **91.2%** | 59.1% |
-| Neutral third-party set (66 commands) | **52.4%** | 40.5% |
+| **Triage Score** | **75.3** | 73.2 |
+| lancet-bench-1: risky caught / safe stopped | **91.7%** / 9.4% | 89.0% / 6.2% |
+| ShellRisk-Bench test: risky caught / safe stopped | **70.5%** / 3.1% | 60.6% / 2.3% |
+| Neutral set: risky caught / safe stopped | 59.5% / 25.0% | 57.1% / 12.5% |
+| Risky commands blocked outright (lancet-bench-1) | 67.0% | 67.0% |
 
-At the shipped thresholds, v0.4.0 catches **89.0%** of risky `lancet-bench-1` commands (v0.3.0: 85.8%) and interrupts 6.2% of safe ones (5.5%). On the ShellRisk-Bench test split it catches **60.6%** of risky commands (46.6%) and interrupts **2.3%** of safe ones (6.1%).
+**Expect more `review` results than with v0.4.0:** about 1 in 11 safe commands on the release benchmark, against 1 in 16.
 
 ## Verify before use
 
@@ -58,14 +57,14 @@ Each output line includes:
 
 ## Evidence
 
-| lancet-bench-1 (793 commands) | v0.4.0 | v0.3.0 | v0.2.0 | v0.1.0 | Jev (hosted) |
+| lancet-bench-1 (793 commands) | v0.4.1 | v0.4.0 | v0.3.0 | v0.2.0 | Jev (hosted) |
 |---|---:|---:|---:|---:|---:|
-| Risky caught | **89.0%** | 85.8% | 73.6% | 65.5% | 96.8% |
-| Safe interrupted | 6.2% | 5.5% | 6.2% | 5.5% | 7.8% |
-| Risky secrets caught | **72%** | 66% | 24% | 14% | 98% |
-| AUROC | **0.974** | 0.962 | 0.896 | 0.860 | 0.982 |
+| Risky caught | **91.7%** | 89.0% | 85.8% | 73.6% | 96.8% |
+| Safe interrupted | 9.4% | 6.2% | 5.5% | 6.2% | 7.8% |
+| Risky secrets caught | **77%** | 72% | 66% | 24% | 98% |
+| AUROC | **0.974** | **0.974** | 0.962 | 0.896 | 0.982 |
 
-- **Speed:** median warm time was 13.9 ms per command (p95 19.2 ms) against 13.6 ms for v0.3.0, in the same run on a Ryzen 9 3900X / Windows 11 with four ONNX Runtime threads.
+- **Speed:** unchanged from v0.4.0: median warm time 13.9 ms per command (p95 19.2 ms) on a Ryzen 9 3900X / Windows 11 with four ONNX Runtime threads.
 - **Labels:** no language-model output was used as a label, teacher target or selection signal.
 
 Details are in [MODEL_CARD.md](MODEL_CARD.md).

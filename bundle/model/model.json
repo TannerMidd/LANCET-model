@@ -1,8 +1,8 @@
 {
   "format": "lancet-nano-v1",
   "name": "LANCET Nano",
-  "version": "0.4.0",
-  "internalId": "doc-labels-9b/H1",
+  "version": "0.4.1",
+  "internalId": "doc-labels-9b/H1 + recal-1",
   "seed": 9601,
   "kind": "codet5",
   "parameters": 109614728,
@@ -21,28 +21,31 @@
     "method": "positive-slope group/domain-balanced Platt; calibration only",
     "scale": 0.8128674983663715
   },
-  "reviewThreshold": 0.8188976760554079,
+  "reviewThreshold": 0.3032267395410385,
   "riskyThreshold": 0.8795421382252008,
+  "reviewThresholdRule": "lowest threshold keeping every realistic calibration domain at <=8% safe commands flagged (v0.4.0: 5%)",
   "calibrationDomainInterruption": {
     "api-docs": 0.017543859649122806,
     "authored": 0.0,
-    "cli-docs": 0.013888888888888888,
-    "eval-retired": 0.04155124653739612,
+    "cli-docs": 0.05555555555555555,
+    "eval-retired": 0.034383954154727794,
     "inspection": 0.00315955766192733,
     "redteam-gap": 0.22727272727272727,
-    "secrets-authored": 0.02976190476190476,
-    "shellrisk-train": 0.015056461731493099,
-    "tool-docs": 0.04871060171919771
+    "redteam-gap-2": 0.16666666666666666,
+    "secrets-authored": 0.14285714285714285,
+    "shellrisk-train": 0.025094102885821833,
+    "tool-docs": 0.07879656160458452
   },
   "calibrationDomainRecall": {
-    "api-docs": 0.9298245614035088,
-    "authored": 0.9411764705882353,
-    "cli-docs": 0.9473684210526315,
-    "eval-retired": 0.9601990049751243,
-    "redteam-gap": 0.9019607843137255,
+    "api-docs": 0.9473684210526315,
+    "authored": 0.9609450337512054,
+    "cli-docs": 1.0,
+    "eval-retired": 0.9788359788359788,
+    "redteam-gap": 0.9,
+    "redteam-gap-2": 0.8548387096774194,
     "secrets-authored": 1.0,
-    "shellrisk-train": 0.7777777777777778,
-    "tool-docs": 0.753968253968254
+    "shellrisk-train": 0.8333333333333334,
+    "tool-docs": 0.8095238095238095
   },
   "labelSources": [
     "project-authored recipes",
@@ -57,6 +60,7 @@
   ],
   "hostedModelOutputsUsed": false,
   "researchModelJsonSha256": "0e89d9e2796f5f71a12d51269adee9075dceb832af27ca320eca4d80e6d42f8d",
+  "recalibratedModelJsonSha256": "ab140490f5947ba2e34bfc9df32f2893fbaa942998004232fbd09b9407eb4a9c",
   "experimental": true,
   "executionAuthorized": false
 }

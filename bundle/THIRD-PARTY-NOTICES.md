@@ -1,4 +1,4 @@
-# Third-party notices and LANCET Nano v0.4.0 fitting provenance
+# Third-party notices and LANCET Nano v0.4.1 fitting provenance (weights identical to v0.4.0)
 
 ## Included components
 
@@ -35,7 +35,7 @@
 
 The development and calibration roles held a further 24,378 rows from tools, services, secrets tools and evaluation-suite families separate from fitting.
 
-Every inspection command belongs to the 5,213-row V5 inspection pool, which V5's provenance audit matched to the pinned ShellRisk-Bench training Parquet ([receipt](provenance/v5-lineage-audit.json)). No V5 weights were used for v0.4.0. GTFOBins rows are not in the fitting data.
+Every inspection command belongs to the 5,213-row V5 inspection pool, which V5's provenance audit matched to the pinned ShellRisk-Bench training Parquet ([receipt](provenance/v5-lineage-audit.json)). No V5 weights were used for v0.4.0 or v0.4.1. GTFOBins rows are not in the fitting data.
 
 **No hosted-model output was used.** Labels come from project authoring, the original authored labels of released evaluation suites, upstream source labels, source-inferred benign status or deterministic documentation rules. No language model, including TypeSafe's Jev, produced any label, teacher target, filter or selection signal.
 
