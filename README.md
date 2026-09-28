@@ -25,24 +25,29 @@
 
 <p align="center"><img src="docs/charts/v041-vs-v040.png" alt="LANCET Nano v0.4.1 vs v0.4.0: Triage Score on lancet-bench-1, ShellRisk-Bench and a neutral third-party set, plus caught, stopped and blocked rates" width="100%"></p>
 
-## Results on the 793-command release benchmark
+## Triage Score across three benchmarks
 
-<p align="center"><img src="docs/charts/bench1-operating-points.png" alt="Risky commands caught against safe commands wrongly stopped on lancet-bench-1 for LANCET Nano v0.4.1, v0.4.0, v0.3.0, v0.2.0, v0.1.0, Jev and Laya" width="100%"></p>
+<p align="center"><img src="docs/charts/triage-points.png" alt="Risky commands caught against safe commands stopped, combined across lancet-bench-1, ShellRisk-Bench and a neutral set, with each guard's Triage Score: LANCET Nano v0.4.1 69.7, v0.4.0 69.2, v0.3.0 61.7, Jev 58.6, Kestrel 37.8, ModernBERT 25.9, bash-classify 13.8, sh-guard 11.2, dcg 7.4" width="100%"></p>
 
-Each model was scored in a single pass on `lancet-bench-1`: 409 risky and 384 safe commands across 37 tool areas.
+Each guard is scored once at its shipped setting on three benchmarks (5,500 commands): lancet-bench-1 (793), the ShellRisk-Bench test split (4,194) and a neutral set of outside-party commands (513). Every risky command asked about or blocked earns a point; the score shrinks in proportion when more than 10% of safe commands are stopped. The three are combined by size (41% / 29% / 30%). Risky caught and safe stopped are combined the same way.
 
-| | Nano v0.4.1 | Nano v0.4.0 | Nano v0.3.0 | Nano v0.2.0 | Jev (hosted) | Laya (local) |
-|---|---:|---:|---:|---:|---:|---:|
-| Risky caught | **91.7%** | 89.0% | 85.8% | 73.6% | 96.8% | 68.5% |
-| Safe commands wrongly stopped | 9.4% | 6.2% | 5.5% | 6.2% | 7.8% | 37.8% |
-| Risky **secrets** commands caught (112) | **77%** | 72% | 66% | 24% | 98% | 48% |
-| AUROC | **0.974** | **0.974** | 0.962 | 0.896 | 0.982 | 0.718 |
-| Parameters | 110 M | 110 M | 110 M | 35 M | undisclosed | 421 M |
-| Runs on | CPU | CPU | CPU | CPU | hosted API | GPU |
+| Guard | Triage Score | lancet-bench-1 | ShellRisk test | Neutral set | Risky caught | Safe stopped | Parameters | Runs on |
+|---|---:|---:|---:|---:|---:|---:|---:|---|
+| **LANCET Nano v0.4.1** | **69.7** | 91.7 | 70.5 | 39.3 | 77.9% | 9.9% | 110 M | CPU, local |
+| LANCET Nano v0.4.0 | 69.2 | 89.0 | 60.6 | 50.8 | 70.7% | 6.5% | 110 M | CPU, local |
+| LANCET Nano v0.3.0 | 61.7 | 85.8 | 46.6 | 43.6 | 66.5% | 8.1% | 110 M | CPU, local |
+| Jev | 58.6 | 96.8 | 32.4 | 32.1 | 88.6% | 18.4% | undisclosed | hosted API |
+| Kestrel | 37.8 | 11.5 | 100.0 | 14.0 | 76.1% | 38.7% | — | local |
+| ModernBERT bash | 25.9 | 15.5 | 40.9 | 25.6 | 67.0% | 32.6% | 150 M | local |
+| bash-classify | 13.8 | 11.5 | 16.8 | 14.0 | 91.9% | 68.9% | rules | local |
+| sh-guard | 11.2 | 10.1 | 12.1 | 11.7 | 97.6% | 88.1% | rules | local |
+| dcg | 7.4 | 2.9 | 4.1 | 16.5 | 7.4% | 1.6% | rules | local |
 
-<p align="center"><img src="docs/charts/by-area.png" alt="Risky commands caught by tool area for Nano v0.3.0, v0.4.0, v0.4.1 and Jev" width="100%"></p>
+Jev received task context; the others see only the command. Per-benchmark columns are each benchmark's own Triage Score (0-100).
 
-Jev and Laya received task context; Nano sees only the command. More charts are on the [website](https://tannermidd.github.io/LANCET-model/).
+<p align="center"><img src="docs/charts/by-area.png" alt="Risky commands caught by tool area on lancet-bench-1 for Nano v0.3.0, v0.4.0, v0.4.1 and Jev" width="100%"></p>
+
+Detail by tool area on lancet-bench-1. More charts are on the [website](https://tannermidd.github.io/LANCET-model/).
 
 ## Quick start
 
