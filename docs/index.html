@@ -6,7 +6,7 @@
 <title>LANCET Nano: local Bash command-risk classifier</title>
 <meta name="description" content="LANCET Nano v0.4.1: a 110M-parameter, 111 MB CPU model that flags risky Bash commands in about 14 ms, offline. Apache-2.0 model, MIT runtime.">
 <meta property="og:title" content="LANCET Nano">
-<meta property="og:description" content="A local classifier for Bash command risk. Triage Score 75.3 across three benchmarks; 91.7% of risky commands caught on a 793-command release benchmark.">
+<meta property="og:description" content="A local classifier for Bash command risk. Triage Score 69.7 across three benchmarks; 91.7% of risky commands caught on a 793-command release benchmark.">
 <meta property="og:image" content="https://tannermidd.github.io/LANCET-model/charts/social-card.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://tannermidd.github.io/LANCET-model/charts/social-card.png">
@@ -72,7 +72,7 @@ footer{padding:28px 0 60px;color:var(--dim);font-size:12.5px}
     <a class="btn o" href="https://github.com/TannerMidd/LANCET-model/blob/main/bundle/MODEL_CARD.md">Model card</a>
   </div>
   <div class="stats">
-    <div class="stat"><div class="l">Triage Score</div><div class="v" style="color:var(--green)">75.3</div><div class="s">three benchmarks · v0.4.0: 73.2</div></div>
+    <div class="stat"><div class="l">Triage Score</div><div class="v" style="color:var(--green)">69.7</div><div class="s">three benchmarks · v0.4.0: 69.2</div></div>
     <div class="stat"><div class="l">Risky caught</div><div class="v" style="color:var(--green)">91.7%</div><div class="s">375 / 409 benchmark commands</div></div>
     <div class="stat"><div class="l">Safe stopped</div><div class="v">9.4%</div><div class="s">36 / 384 benchmark commands</div></div>
     <div class="stat"><div class="l">On disk</div><div class="v">111 MB</div><div class="s">110 M params · INT8 ONNX</div></div>
@@ -82,12 +82,12 @@ footer{padding:28px 0 60px;color:var(--dim);font-size:12.5px}
 
 <section id="results">
   <h2>Triage Score: command guards at their shipped settings</h2>
-  <figure class="fig"><img src="charts/triage.svg" alt="Triage Score ranking: LANCET Nano v0.4.1 75.3, v0.4.0 73.2, v0.3.0 64.0, Jev 63.5, Kestrel 43.5 and rule-based guards">
-    <figcaption>Every risky command asked about or blocked earns a point; allowed earns nothing. The score shrinks in proportion when more than 10% of safe commands are stopped. Three benchmarks (5,053 commands), weighted by size.</figcaption></figure>
+  <figure class="fig"><img src="charts/triage.svg" alt="Triage Score ranking: LANCET Nano v0.4.1 69.7, v0.4.0 69.2, v0.3.0 61.7, Jev 58.6, Kestrel 37.8 and rule-based guards">
+    <figcaption>Every risky command asked about or blocked earns a point; allowed earns nothing. The score shrinks in proportion when more than 10% of safe commands are stopped. Three benchmarks (5,500 commands), weighted by size.</figcaption></figure>
 
   <h2 style="margin-top:40px">v0.4.1 vs v0.4.0</h2>
   <figure class="fig"><img src="charts/v041-vs-v040.svg" alt="LANCET Nano v0.4.1 vs v0.4.0: Triage Score per benchmark and caught, stopped and blocked rates">
-    <figcaption>Same weights. v0.4.1 lowers the review threshold: it asks about more commands and catches more, and blocks exactly as v0.4.0 does. ShellRisk-Bench (Kontext Security) test split; neutral set: the rogue-security coding-agent-security-benchmark's Bash cases.</figcaption></figure>
+    <figcaption>Same weights. v0.4.1 lowers the review threshold: it asks about more commands and catches more, and blocks exactly as v0.4.0 does. Its lead is small: it stops more safe commands on the neutral set (16.9% vs 11.0%). ShellRisk-Bench (Kontext Security) test split; neutral set: 513 Bash commands from the Rogue Security coding-agent-security-benchmark and tomngdev/shell-safety-v2.</figcaption></figure>
 
   <h2 style="margin-top:40px">Results on the 793-command release benchmark</h2>
   <figure class="fig"><img src="charts/bench1-operating-points.svg" alt="Risky commands caught against safe commands wrongly stopped for LANCET Nano v0.4.1, v0.4.0, v0.3.0, v0.2.0, v0.1.0, Jev and Laya">

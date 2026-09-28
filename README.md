@@ -13,15 +13,15 @@
 
 **Model: Apache-2.0. Runtime: MIT.** You may use, modify and redistribute it, including commercially, under the respective terms. Training data is not included or relicensed.
 
-<p align="center"><img src="docs/charts/triage.png" alt="Triage Score: LANCET Nano v0.4.1 75.3, v0.4.0 73.2, v0.3.0 64.0, Jev 63.5, Kestrel 43.5 and other command guards, each at its shipped setting across 5,053 commands from three benchmarks" width="100%"></p>
+<p align="center"><img src="docs/charts/triage.png" alt="Triage Score: LANCET Nano v0.4.1 69.7, v0.4.0 69.2, v0.3.0 61.7, Jev 58.6, Kestrel 37.8 and other command guards, each at its shipped setting across 5,500 commands from three benchmarks" width="100%"></p>
 
 ## What's new in v0.4.1
 
 - **Same model, catches more.** v0.4.1 keeps v0.4.0's weights and lowers the `review` threshold, so it asks about more borderline commands. It never blocks more than v0.4.0.
-- **Triage Score 75.3** (v0.4.0: 73.2). Every risky command asked about or blocked earns a point; the score shrinks when more than 10% of safe commands are stopped. Three benchmarks, weighted by size.
+- **Triage Score 69.7** (v0.4.0: 69.2), a small lead. Every risky command asked about or blocked earns a point; the score shrinks when more than 10% of safe commands are stopped. Three benchmarks (5,500 commands), weighted by size.
 - **ShellRisk-Bench test split:** 70.5% of risky commands caught (v0.4.0: 60.6%), with 3.1% of safe commands stopped (2.3%).
 - **Release benchmark:** 91.7% caught (89.0%), 9.4% of safe commands stopped (6.2%).
-- **Trade-off:** more `review` prompts. On the small neutral third-party set, 6 of 24 safe commands are asked about (v0.4.0: 3).
+- **Trade-off:** more `review` prompts. On the 513-command neutral third-party set it catches 66.5% of risky commands (v0.4.0: 55.7%) but stops 16.9% of safe ones (11.0%), over the 10% line, so most of its gain elsewhere is given back there.
 
 <p align="center"><img src="docs/charts/v041-vs-v040.png" alt="LANCET Nano v0.4.1 vs v0.4.0: Triage Score on lancet-bench-1, ShellRisk-Bench and a neutral third-party set, plus caught, stopped and blocked rates" width="100%"></p>
 

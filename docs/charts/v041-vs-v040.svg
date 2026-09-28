@@ -26,30 +26,30 @@
 <rect x="220.0" y="231.56479217603913" width="48" height="458.43520782396087" fill="#2dff9a"/>
 <text x="244.0" y="221.56479217603913" font-size="15" class="w" text-anchor="middle" >91.7</text>
 <text x="216.0" y="716" font-size="14" class="w" text-anchor="middle" >lancet-bench-1</text>
-<text x="216.0" y="734" font-size="11" class="d" text-anchor="middle" >793 commands · weight 51%</text>
+<text x="216.0" y="734" font-size="11" class="d" text-anchor="middle" >793 commands · weight 41%</text>
 <text x="216.0" y="758" font-size="14" class="" text-anchor="middle" style="fill:#2dff9a">+2.7</text>
 <rect x="364.0" y="386.8911917098445" width="48" height="303.1088082901555" fill="#26e0ff"/>
 <text x="388.0" y="376.8911917098445" font-size="15" class="w" text-anchor="middle" >60.6</text>
 <rect x="420.0" y="337.6683937823834" width="48" height="352.3316062176166" fill="#2dff9a"/>
 <text x="444.0" y="327.6683937823834" font-size="15" class="w" text-anchor="middle" >70.5</text>
 <text x="416.0" y="716" font-size="14" class="w" text-anchor="middle" >ShellRisk-Bench test</text>
-<text x="416.0" y="734" font-size="11" class="d" text-anchor="middle" >4,194 commands · weight 36%</text>
+<text x="416.0" y="734" font-size="11" class="d" text-anchor="middle" >4,194 commands · weight 29%</text>
 <text x="416.0" y="758" font-size="14" class="" text-anchor="middle" style="fill:#2dff9a">+9.8</text>
-<rect x="564.0" y="461.42857142857144" width="48" height="228.57142857142856" fill="#26e0ff"/>
-<text x="588.0" y="451.42857142857144" font-size="15" class="w" text-anchor="middle" >45.7</text>
-<rect x="620.0" y="570.952380952381" width="48" height="119.04761904761905" fill="#2dff9a"/>
-<text x="644.0" y="560.952380952381" font-size="15" class="w" text-anchor="middle" >23.8</text>
+<rect x="564.0" y="436.15494568324755" width="48" height="253.84505431675248" fill="#26e0ff"/>
+<text x="588.0" y="426.15494568324755" font-size="15" class="w" text-anchor="middle" >50.8</text>
+<rect x="620.0" y="493.7319644839068" width="48" height="196.26803551609322" fill="#2dff9a"/>
+<text x="644.0" y="483.7319644839068" font-size="15" class="w" text-anchor="middle" >39.3</text>
 <text x="616.0" y="716" font-size="14" class="w" text-anchor="middle" >Neutral set</text>
-<text x="616.0" y="734" font-size="11" class="d" text-anchor="middle" >66 commands · weight 13%</text>
-<text x="616.0" y="758" font-size="14" class="" text-anchor="middle" style="fill:#ff5a6a">-21.9</text>
+<text x="616.0" y="734" font-size="11" class="d" text-anchor="middle" >513 commands · weight 30%</text>
+<text x="616.0" y="758" font-size="14" class="" text-anchor="middle" style="fill:#ff5a6a">-11.5</text>
 <rect x="722.0" y="184" width="188.0" height="588" fill="none" stroke="#2dff9a" stroke-opacity=".35" stroke-dasharray="4 4"/>
-<rect x="764.0" y="323.97744443637083" width="48" height="366.02255556362917" fill="#26e0ff"/>
-<text x="788.0" y="313.97744443637083" font-size="15" class="w" text-anchor="middle" >73.2</text>
-<rect x="820.0" y="313.2763945339471" width="48" height="376.7236054660529" fill="#2dff9a"/>
-<text x="844.0" y="303.2763945339471" font-size="15" class="w" text-anchor="middle" >75.3</text>
+<rect x="764.0" y="343.9563654948514" width="48" height="346.0436345051486" fill="#26e0ff"/>
+<text x="788.0" y="333.9563654948514" font-size="15" class="w" text-anchor="middle" >69.2</text>
+<rect x="820.0" y="341.68770947309264" width="48" height="348.31229052690736" fill="#2dff9a"/>
+<text x="844.0" y="331.68770947309264" font-size="15" class="w" text-anchor="middle" >69.7</text>
 <text x="816.0" y="716" font-size="14" class="w" text-anchor="middle" >Triage Score</text>
 <text x="816.0" y="734" font-size="11" class="d" text-anchor="middle" >weighted by size</text>
-<text x="816.0" y="758" font-size="14" class="" text-anchor="middle" style="fill:#2dff9a">+2.1</text>
+<text x="816.0" y="758" font-size="14" class="" text-anchor="middle" style="fill:#2dff9a">+0.5</text>
 <text x="980" y="166" font-size="13" class="w" text-anchor="start" letter-spacing="1">WHAT CHANGED</text>
 <text x="980" y="190" font-size="11" class="d" text-anchor="start" letter-spacing="1">BENCHMARK</text>
 <text x="1215" y="190" font-size="11" class="d" text-anchor="start" letter-spacing="1">MODEL</text>
@@ -78,18 +78,18 @@
 <line x1="980" x2="1544" y1="316" y2="316" stroke="#161a1f"/>
 <text x="980" y="340" font-size="13" class="w" text-anchor="start" >Neutral set</text>
 <text x="1215" y="340" font-size="13" class="" text-anchor="start" style="fill:#26e0ff">v0.4.0</text>
-<text x="1305" y="340" font-size="13" class="w" text-anchor="start" >57.1%</text>
-<text x="1395" y="340" font-size="13" class="" text-anchor="start" style="fill:#ff5a6a">12.5%</text>
-<text x="1485" y="340" font-size="13" class="w" text-anchor="start" >11.9%</text>
+<text x="1305" y="340" font-size="13" class="w" text-anchor="start" >55.7%</text>
+<text x="1395" y="340" font-size="13" class="" text-anchor="start" style="fill:#ff5a6a">11.0%</text>
+<text x="1485" y="340" font-size="13" class="w" text-anchor="start" >29.7%</text>
 <text x="1215" y="364" font-size="13" class="" text-anchor="start" style="fill:#2dff9a">v0.4.1</text>
-<text x="1305" y="364" font-size="13" class="w" text-anchor="start" >59.5%</text>
-<text x="1395" y="364" font-size="13" class="" text-anchor="start" style="fill:#ff5a6a">25.0%</text>
-<text x="1485" y="364" font-size="13" class="w" text-anchor="start" >11.9%</text>
+<text x="1305" y="364" font-size="13" class="w" text-anchor="start" >66.5%</text>
+<text x="1395" y="364" font-size="13" class="" text-anchor="start" style="fill:#ff5a6a">16.9%</text>
+<text x="1485" y="364" font-size="13" class="w" text-anchor="start" >29.7%</text>
 <line x1="980" x2="1544" y1="376" y2="376" stroke="#161a1f"/>
 <text x="980" y="410" font-size="12" class="d" text-anchor="start" >caught = risky commands asked about or blocked</text>
 <text x="980" y="430" font-size="12" class="d" text-anchor="start" >stopped = safe commands asked about or blocked (red: over 10%)</text>
 <text x="980" y="450" font-size="12" class="d" text-anchor="start" >blocked = risky commands blocked outright</text>
 <line x1="40" x2="1560" y1="790" y2="790" stroke="#161a1f"/>
 <text x="56" y="818" font-size="12" class="" text-anchor="start" >Triage Score: every risky command asked about or blocked earns a point; the score shrinks in proportion when more than 10% of safe commands are stopped.</text>
-<text x="56" y="838" font-size="11" class="d" text-anchor="start" >ShellRisk-Bench (Kontext Security) test split; neutral set: rogue-security coding-agent-security-benchmark, Bash cases.</text>
+<text x="56" y="838" font-size="11" class="d" text-anchor="start" >ShellRisk-Bench (Kontext Security) test split; neutral set: Rogue Security coding-agent-security-benchmark + tomngdev/shell-safety-v2 (Bash cases).</text>
 </svg>
