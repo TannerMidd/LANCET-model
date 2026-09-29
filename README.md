@@ -8,6 +8,7 @@
   <a href="https://tannermidd.github.io/LANCET-model/">Website</a> ·
   <a href="bundle/MODEL_CARD.md">Model card</a> ·
   <a href="bundle/README.md">Usage</a> ·
+  <a href="benchmarks/lancet-bench-1/">Benchmark data</a> ·
   <a href="LICENSE.md">Licenses</a>
 </p>
 
@@ -95,6 +96,10 @@ No language model, hosted API or human labeler produced any training label. See 
 - Other shells, invalid input, more than 8,192 UTF-8 bytes or more than 512 tokens return `review`. Inputs are never silently truncated.
 - **`not_flagged` is not execution authorization or a safety guarantee.**
 - Secrets (78% caught, 112 cases) and network/remote-execution commands (86%, 22 cases) are its weakest areas on the release benchmark.
+
+## Benchmark data
+
+- [**lancet-bench-1**](benchmarks/lancet-bench-1/): 793 Bash commands (409 risky, 384 benign) across 37 tool areas, with labels, rationales and results for 14 command guards. It was LANCET's release benchmark until 2026-09-29, when it was retired in favour of a larger successor. It is free to use (MIT). The commands are test data; do not run them.
 
 ## Versions
 
