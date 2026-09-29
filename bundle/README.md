@@ -1,24 +1,23 @@
-# LANCET Nano v0.4.1 (experimental, CPU INT8)
+# LANCET Nano v0.4.2 (experimental, CPU INT8)
 
 A local Bash command-risk classifier with 109.6M parameters (a CodeT5+ encoder). It classifies each command as `risky`, `review` or `not_flagged` on a CPU in about 14 ms, with no network access.
 
 **Model: Apache-2.0. Runtime: MIT.** Use, modification and redistribution, including commercial use, are permitted under the respective licenses. See [MODEL-LICENSE.md](MODEL-LICENSE.md), [LICENSE.md](LICENSE.md), [NOTICE.txt](NOTICE.txt) and [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md). Datasets are not included or relicensed.
 
-## What changed from v0.4.0
+## What changed from v0.4.1
 
-- **Same model, new review threshold.** The weights, calibration curve and `risky` threshold are unchanged from v0.4.0. The `review` threshold moves from `0.819` to `0.303`, so Nano asks about more borderline commands. It never blocks more.
-- **How it was set:** each realistic area of the held-out calibration data may now have up to 8% of its safe commands asked about (v0.4.0 allowed 5%). This keeps a margin under the 10% line that the Triage Score treats as usable.
+- **A newly trained model.** v0.4.2 is fine-tuned again from the pinned upstream CodeT5+ 220M base, on a larger and more balanced mix (43,418 rows). New in the mix: the Shell Safety v2 training split (MIT) and project-authored contrast sets of agent-style, `exec`-style and shell-escape commands with safe look-alikes.
+- **Far fewer interruptions on everyday commands.** On the 513-command neutral set, v0.4.2 stops 7.0% of safe commands (v0.4.1: 16.9%) while catching 91.0% of risky ones (v0.4.1: 66.5%).
+- **More asking, less outright blocking.** v0.4.2 answers `review` for more of the risky commands it catches and `risky` for fewer.
 - **Results** (Triage Score: risky commands asked about or blocked earn a point; scaled down when more than 10% of safe commands are stopped; three benchmarks weighted by size):
 
-| At the shipped thresholds | v0.4.1 | v0.4.0 |
+| At the shipped thresholds | v0.4.2 | v0.4.1 |
 |---|---:|---:|
-| **Triage Score** | **75.3** | 73.2 |
-| lancet-bench-1: risky caught / safe stopped | **91.7%** / 9.4% | 89.0% / 6.2% |
-| ShellRisk-Bench test: risky caught / safe stopped | **70.5%** / 3.1% | 60.6% / 2.3% |
-| Neutral set: risky caught / safe stopped | 59.5% / 25.0% | 57.1% / 12.5% |
-| Risky commands blocked outright (lancet-bench-1) | 67.0% | 67.0% |
-
-**Expect more `review` results than with v0.4.0:** about 1 in 11 safe commands on the release benchmark, against 1 in 16.
+| **Triage Score** | **82.7** | 69.7 |
+| lancet-bench-1: risky caught / safe stopped | **92.4%** / 9.9% | 91.7% / 9.4% |
+| ShellRisk-Bench test: risky caught / safe stopped | 60.1% / **2.7%** | **70.5%** / 3.1% |
+| Neutral set (513 commands): risky caught / safe stopped | **91.0%** / **7.0%** | 66.5% / 16.9% |
+| Risky commands blocked outright (lancet-bench-1) | 32.5% | 67.0% |
 
 ## Verify before use
 
@@ -57,14 +56,15 @@ Each output line includes:
 
 ## Evidence
 
-| lancet-bench-1 (793 commands) | v0.4.1 | v0.4.0 | v0.3.0 | v0.2.0 | Jev (hosted) |
-|---|---:|---:|---:|---:|---:|
-| Risky caught | **91.7%** | 89.0% | 85.8% | 73.6% | 96.8% |
-| Safe interrupted | 9.4% | 6.2% | 5.5% | 6.2% | 7.8% |
-| Risky secrets caught | **77%** | 72% | 66% | 24% | 98% |
-| AUROC | **0.974** | **0.974** | 0.962 | 0.896 | 0.982 |
+| lancet-bench-1 (793 commands) | v0.4.2 | v0.4.1 | v0.4.0 | v0.3.0 | v0.2.0 | Jev (hosted) |
+|---|---:|---:|---:|---:|---:|---:|
+| Risky caught | **92.4%** | 91.7% | 89.0% | 85.8% | 73.6% | 96.8% |
+| Safe interrupted | 9.9% | 9.4% | 6.2% | 5.5% | 6.2% | 7.8% |
+| Risky secrets caught | **78%** | 77% | 72% | 66% | 24% | 98% |
+| AUROC | 0.963 | **0.974** | **0.974** | 0.962 | 0.896 | 0.982 |
 
-- **Speed:** unchanged from v0.4.0: median warm time 13.9 ms per command (p95 19.2 ms) on a Ryzen 9 3900X / Windows 11 with four ONNX Runtime threads.
+- **Triage Score across all three benchmarks:** v0.4.2 82.7, v0.4.1 69.7, Jev (hosted) 58.6.
+- **Speed:** same architecture and size as v0.4.0 and v0.4.1: median warm time about 14 ms per command on a Ryzen 9 3900X / Windows 11 with four ONNX Runtime threads.
 - **Labels:** no language-model output was used as a label, teacher target or selection signal.
 
 Details are in [MODEL_CARD.md](MODEL_CARD.md).

@@ -1,4 +1,4 @@
-LANCET Nano v0.4.1 - experimental Bash command-risk classifier
+LANCET Nano v0.4.2 - experimental Bash command-risk classifier
 
 LANCET-specific contributions and runtime:
 Copyright (c) 2026 Tanner Middleton
@@ -36,6 +36,10 @@ Training data credit (no dataset is included or relicensed):
   - Kwai-Klear / SWE-smith trajectories (MIT declaration) and
     yoonholee / terminalbench-trajectories (Apache-2.0 declaration).
   Labels are ShellRisk-Bench's upstream source labels.
+- Shell Safety v2 (tomngdev), huggingface.co/datasets/tomngdev/shell-safety-v2,
+  revision 3258db497dae218f23d1d648ef2eb7cb6ab5e70c, training split. MIT
+  declaration; licenses/shell-safety-v2-license-declaration.md. Labels are
+  the dataset author's allow/deny labels.
 - tldr-pages, revision 998e3f02b8924a7d5112fe6099993d3625fb404c.
   Copyright (c) 2014-present the tldr-pages team and contributors.
   Licensed under Creative Commons Attribution 4.0 International (CC BY 4.0),
