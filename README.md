@@ -28,6 +28,12 @@
 
 <p align="center"><img src="docs/charts/v043-vs-v042.png" alt="LANCET Nano v0.4.3 vs v0.4.2: Triage Score on lancet-bench-2-next, ShellRisk-Bench and a neutral third-party set, plus caught, stopped and blocked rates" width="100%"></p>
 
+## LANCET Nano vs other command guards
+
+<p align="center"><img src="docs/charts/vs-others.png" alt="LANCET Nano v0.4.3 vs 13 other command guards, Triage Score at shipped settings on 7,911 commands (risky caught, safe stopped): LANCET Nano v0.4.3 68.3 (77.0%, 9.0%), Jev 38.9 (90.0%, 23.4%), verdict-shell-safety 32.4 (56.3%, 18.0%), Kestrel 30.7 (68.1%, 37.1%), ModernBERT bash 23.2 (48.1%, 22.8%), dcg 19.8 (19.8%, 6.9%), AutoShell-0.8B 19.2 (98.8%, 70.9%), Gyra 17.9 (28.2%, 13.4%), bash-classify 14.3 (92.9%, 65.8%), Laya 13.3 (87.3%, 69.6%), bev-decider 13.3 (94.4%, 75.3%), laya-cli-gate 12.5 (71.2%, 57.5%), sh-guard 10.9 (97.9%, 90.5%), Shieldstral-1.0-3B 6.1 (6.1%, 0.2%)" width="100%"></p>
+
+LANCET Nano v0.4.3 against every other command guard we have tested, each scored once at its own shipped setting on the same 7,911 commands. Every other guard either stops more than 10% of safe commands or catches fewer than a third of risky ones; Nano catches 77.0% of risky commands while stopping 9.0% of safe ones.
+
 ## Why every score dropped: a harder benchmark
 
 Until v0.4.2, the Triage Score used **lancet-bench-1** (793 Bash commands). It had become too easy to tell the best guards apart: Jev caught 96.8% of its risky commands and v0.4.2 92.4%. It was also narrow, with Bash only, short single-line commands, and a quarter of its cases about secrets.
@@ -68,12 +74,18 @@ Each bar is one guard's Triage Score on 7,911 commands; the colours show how man
 | LANCET Nano v0.2.0 | 40.7 | 39.3 | 47.7 | 37.9 | 55.2% | 13.6% | 35 M | CPU, local |
 | LANCET Nano v0.1.0 | 40.5 | 34.9 | 45.6 | 51.0 | 58.4% | 14.1% | 35 M | CPU, local |
 | Jev | 38.9 | 43.6 | 32.4 | 32.1 | 90.0% | 23.4% | undisclosed | hosted API |
+| verdict-shell-safety | 32.4 | 27.6 | 33.3 | 44.9 | 56.3% | 18.0% | 151 M | CPU, local |
 | Kestrel | 30.7 | 12.7 | 100.0 | 14.0 | 68.1% | 37.1% | — | local |
 | ModernBERT bash | 23.2 | 16.2 | 40.9 | 25.6 | 48.1% | 22.8% | 150 M | local |
+| dcg | 19.8 | 26.4 | 4.1 | 16.5 | 19.8% | 6.9% | rules | local |
+| AutoShell-0.8B | 19.2 | 10.2 | 22.4 | 41.0 | 98.8% | 70.9% | 0.8 B | GPU, local |
+| Gyra | 17.9 | 19.0 | 4.1 | 27.8 | 28.2% | 13.4% | 421 M + rules | GPU, local |
 | bash-classify | 14.3 | 13.5 | 16.8 | 14.0 | 92.9% | 65.8% | rules | local |
 | Laya | 13.3 | 11.0 | 16.2 | 17.1 | 87.3% | 69.6% | 421 M | GPU, local |
 | bev-decider | 13.3 | 10.8 | 18.7 | 14.8 | 94.4% | 75.3% | 0.4 B | GPU, local |
+| laya-cli-gate | 12.5 | 11.8 | 12.3 | 14.5 | 71.2% | 57.5% | 421 M | GPU, local |
 | sh-guard | 10.9 | 10.2 | 12.1 | 11.7 | 97.9% | 90.5% | rules | local |
+| Shieldstral-1.0-3B | 6.1 | 4.1 | 7.8 | 9.9 | 6.1% | 0.2% | 3 B | GPU, local |
 
 Jev received task context; the others see only the command. Per-benchmark columns are each benchmark's own Triage Score (0-100). Guards that support only Bash answer the 138 PowerShell and cmd commands as "ask".
 

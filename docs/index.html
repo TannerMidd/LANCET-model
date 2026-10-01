@@ -6,7 +6,7 @@
 <title>LANCET Nano: local shell command-risk classifier</title>
 <meta name="description" content="LANCET Nano v0.4.3: a 111M-parameter CPU model that flags risky Bash, PowerShell and cmd commands in about 14 ms, offline. Apache-2.0 model, MIT runtime.">
 <meta property="og:title" content="LANCET Nano">
-<meta property="og:description" content="A local classifier for shell command risk. Triage Score 68.3 on three benchmarks (7,911 commands), the best of 14 guards tested.">
+<meta property="og:description" content="A local classifier for shell command risk. Triage Score 68.3 on three benchmarks (7,911 commands), the best of 20 guards tested.">
 <meta property="og:image" content="https://tannermidd.github.io/LANCET-model/charts/social-card.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://tannermidd.github.io/LANCET-model/charts/social-card.png">
@@ -87,6 +87,10 @@ footer{padding:28px 0 60px;color:var(--dim);font-size:12.5px}
   <figure class="fig"><img src="charts/triage.svg" alt="Triage Score at shipped settings across 7,911 commands from three benchmarks: LANCET Nano v0.4.3 68.3, LANCET Nano v0.4.2 54.4, LANCET Nano v0.4.0 47.1, LANCET Nano v0.4.1 44.9, LANCET Nano v0.3.0 44.7, LANCET Nano v0.2.0 40.7, LANCET Nano v0.1.0 40.5, Jev 38.9, Kestrel 30.7, ModernBERT bash 23.2, bash-classify 14.3, Laya 13.3, bev-decider 13.3, sh-guard 10.9">
     <figcaption>Every risky command asked about or blocked earns a point; allowed earns nothing. The score shrinks in proportion when more than 10% of safe commands are stopped. Three benchmarks (7,911 commands), weighted by size. Scores use the new lancet-bench-2-next and are lower for every guard than on the retired lancet-bench-1; see <a href="#benchmark">why</a>.</figcaption></figure>
 
+  <h2 style="margin-top:40px">LANCET Nano vs other command guards</h2>
+  <figure class="fig"><img src="charts/vs-others.svg" alt="LANCET Nano v0.4.3 vs 13 other command guards, Triage Score at shipped settings on 7,911 commands (risky caught, safe stopped): LANCET Nano v0.4.3 68.3 (77.0%, 9.0%), Jev 38.9 (90.0%, 23.4%), verdict-shell-safety 32.4 (56.3%, 18.0%), Kestrel 30.7 (68.1%, 37.1%), ModernBERT bash 23.2 (48.1%, 22.8%), dcg 19.8 (19.8%, 6.9%), AutoShell-0.8B 19.2 (98.8%, 70.9%), Gyra 17.9 (28.2%, 13.4%), bash-classify 14.3 (92.9%, 65.8%), Laya 13.3 (87.3%, 69.6%), bev-decider 13.3 (94.4%, 75.3%), laya-cli-gate 12.5 (71.2%, 57.5%), sh-guard 10.9 (97.9%, 90.5%), Shieldstral-1.0-3B 6.1 (6.1%, 0.2%)">
+    <figcaption>LANCET Nano v0.4.3 against every other command guard we have tested, each scored once at its own shipped setting on the same 7,911 commands. Every other guard either stops more than 10% of safe commands or catches fewer than a third of risky ones; Nano catches 77.0% of risky commands while stopping 9.0% of safe ones.</figcaption></figure>
+
   <h2 style="margin-top:40px">v0.4.3 vs v0.4.2</h2>
   <figure class="fig"><img src="charts/v043-vs-v042.svg" alt="LANCET Nano v0.4.3 vs v0.4.2: Triage Score per benchmark and caught, stopped and blocked rates">
     <figcaption>v0.4.3 is newly trained on a new curriculum, reads long commands in full and adds PowerShell and cmd, at the same size and speed. On lancet-bench-2-next it catches the same 78.0% of risky commands as v0.4.2 while stopping 12.4% of safe ones instead of 20.0%; on ShellRisk-Bench it catches more (64.8% vs 60.1%). The neutral set is its one Triage loss (85.8% caught vs 91.0%, with fewer safe commands stopped).</figcaption></figure>
@@ -112,12 +116,18 @@ footer{padding:28px 0 60px;color:var(--dim);font-size:12.5px}
     <tr><td>LANCET Nano v0.2.0</td><td>40.7</td><td>39.3</td><td>47.7</td><td>37.9</td><td>55.2%</td><td>13.6%</td><td>35 M</td><td>CPU, local</td></tr>
     <tr><td>LANCET Nano v0.1.0</td><td>40.5</td><td>34.9</td><td>45.6</td><td>51.0</td><td>58.4%</td><td>14.1%</td><td>35 M</td><td>CPU, local</td></tr>
     <tr><td style="color:var(--amber)">Jev</td><td>38.9</td><td>43.6</td><td>32.4</td><td>32.1</td><td>90.0%</td><td>23.4%</td><td>undisclosed</td><td>hosted API</td></tr>
+    <tr><td>verdict-shell-safety</td><td>32.4</td><td>27.6</td><td>33.3</td><td>44.9</td><td>56.3%</td><td>18.0%</td><td>151 M</td><td>CPU, local</td></tr>
     <tr><td>Kestrel</td><td>30.7</td><td>12.7</td><td>100.0</td><td>14.0</td><td>68.1%</td><td>37.1%</td><td>—</td><td>local</td></tr>
     <tr><td>ModernBERT bash</td><td>23.2</td><td>16.2</td><td>40.9</td><td>25.6</td><td>48.1%</td><td>22.8%</td><td>150 M</td><td>local</td></tr>
+    <tr><td>dcg</td><td>19.8</td><td>26.4</td><td>4.1</td><td>16.5</td><td>19.8%</td><td>6.9%</td><td>rules</td><td>local</td></tr>
+    <tr><td>AutoShell-0.8B</td><td>19.2</td><td>10.2</td><td>22.4</td><td>41.0</td><td>98.8%</td><td>70.9%</td><td>0.8 B</td><td>GPU, local</td></tr>
+    <tr><td>Gyra</td><td>17.9</td><td>19.0</td><td>4.1</td><td>27.8</td><td>28.2%</td><td>13.4%</td><td>421 M + rules</td><td>GPU, local</td></tr>
     <tr><td>bash-classify</td><td>14.3</td><td>13.5</td><td>16.8</td><td>14.0</td><td>92.9%</td><td>65.8%</td><td>rules</td><td>local</td></tr>
     <tr><td>Laya</td><td>13.3</td><td>11.0</td><td>16.2</td><td>17.1</td><td>87.3%</td><td>69.6%</td><td>421 M</td><td>GPU, local</td></tr>
     <tr><td>bev-decider</td><td>13.3</td><td>10.8</td><td>18.7</td><td>14.8</td><td>94.4%</td><td>75.3%</td><td>0.4 B</td><td>GPU, local</td></tr>
+    <tr><td>laya-cli-gate</td><td>12.5</td><td>11.8</td><td>12.3</td><td>14.5</td><td>71.2%</td><td>57.5%</td><td>421 M</td><td>GPU, local</td></tr>
     <tr><td>sh-guard</td><td>10.9</td><td>10.2</td><td>12.1</td><td>11.7</td><td>97.9%</td><td>90.5%</td><td>rules</td><td>local</td></tr>
+    <tr><td>Shieldstral-1.0-3B</td><td>6.1</td><td>4.1</td><td>7.8</td><td>9.9</td><td>6.1%</td><td>0.2%</td><td>3 B</td><td>GPU, local</td></tr>
   </table>
   <p class="note">Jev received task context; the others see only the command. Per-benchmark columns are each benchmark's own Triage Score. Guards that support only Bash answer the 138 PowerShell and cmd commands as "ask".</p>
   <figure class="fig" style="margin-top:28px"><img src="charts/by-area.svg" alt="Triage Score by area on lancet-bench-2-next for Nano v0.4.2, v0.4.3, Jev, Kestrel and Laya">
