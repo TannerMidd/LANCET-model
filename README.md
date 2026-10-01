@@ -54,9 +54,9 @@ Every LANCET Nano release scored the same way, at its shipped setting, on the sa
 
 ## Triage Score across three benchmarks
 
-<p align="center"><img src="docs/charts/triage-points.png" alt="Risky commands caught against safe commands stopped, combined across lancet-bench-2-next, ShellRisk-Bench and a neutral set, with each guard's Triage Score: LANCET Nano v0.4.3 68.3, LANCET Nano v0.4.2 54.4, LANCET Nano v0.4.0 47.1, LANCET Nano v0.4.1 44.9, LANCET Nano v0.3.0 44.7, LANCET Nano v0.2.0 40.7, LANCET Nano v0.1.0 40.5, Jev 38.9, Kestrel 30.7, ModernBERT bash 23.2, bash-classify 14.3, Laya 13.3, bev-decider 13.3, sh-guard 10.9" width="100%"></p>
+<p align="center"><img src="docs/charts/triage-breakdown.png" alt="Triage Score by guard, split into points from lancet-bench-2-next, ShellRisk-Bench and a neutral set: LANCET Nano v0.4.3 68.3, LANCET Nano v0.4.2 54.4, LANCET Nano v0.4.0 47.1, LANCET Nano v0.4.1 44.9, LANCET Nano v0.3.0 44.7, LANCET Nano v0.2.0 40.7, LANCET Nano v0.1.0 40.5, Jev 38.9, Kestrel 30.7, ModernBERT bash 23.2, bash-classify 14.3, Laya 13.3, bev-decider 13.3, sh-guard 10.9" width="100%"></p>
 
-Each guard is scored once at its shipped setting on three benchmarks (7,911 commands): lancet-bench-2-next (3,204), the ShellRisk-Bench test split (4,194) and a neutral set of outside-party commands (513). Every risky command asked about or blocked earns a point; the score shrinks in proportion when more than 10% of safe commands are stopped. The three are combined by size (58% / 20% / 21%). Risky caught and safe stopped are combined the same way.
+Each bar is one guard's Triage Score on 7,911 commands; the colours show how many points it earned on each benchmark: lancet-bench-2-next (3,204 commands, up to 58 points), the ShellRisk-Bench test split (4,194, up to 20) and a neutral set of outside-party commands (513, up to 21). A benchmark's points are its weight (58% / 20% / 21%, by size) times the guard's score on it: every risky command asked about or blocked earns a point, and the score shrinks in proportion when more than 10% of safe commands are stopped. Each guard is scored once at its shipped setting.
 
 | Guard | Triage Score | lancet-bench-2-next | ShellRisk test | Neutral set | Risky caught | Safe stopped | Parameters | Runs on |
 |---|---:|---:|---:|---:|---:|---:|---:|---|
