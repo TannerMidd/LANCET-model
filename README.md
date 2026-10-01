@@ -77,7 +77,7 @@ Each bar is one guard's Triage Score on 7,911 commands; the colours show how man
 
 Jev received task context; the others see only the command. Per-benchmark columns are each benchmark's own Triage Score (0-100). Guards that support only Bash answer the 138 PowerShell and cmd commands as "ask".
 
-<p align="center"><img src="docs/charts/by-area.png" alt="Triage Score by area on lancet-bench-2-next for Nano v0.4.2, v0.4.3 and Jev" width="100%"></p>
+<p align="center"><img src="docs/charts/by-area.png" alt="Triage Score by area on lancet-bench-2-next for Nano v0.4.2, v0.4.3, Jev, Kestrel and Laya" width="100%"></p>
 
 Detail by area on lancet-bench-2-next. More charts are on the [website](https://tannermidd.github.io/LANCET-model/).
 
