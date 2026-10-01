@@ -1,16 +1,29 @@
 {
   "validationComplete": true,
-  "method": "ORT dynamic QUInt8 per-channel MatMul/Gather (research export, unchanged)",
+  "format": "semantic-windowed-1",
+  "method": "ORT dynamic QUInt8 per-channel MatMul/Gather encoder (research export, unchanged); head in NumPy float64",
   "sha256": {
-    "model-int8.onnx": "1b6249c369ad390682d034fb9ee872dcecaa0c3418eb89218b6fa6111594a547",
-    "tokenizer.json": "d30700d23490c46559dcade4d52f0b32950b6d358e00c6d8b340ff819b91c9e7",
-    "model.json": "0154d7f2529b64e65f802743a3e89ccc301ac2b8b23f0b61fed2834db46cd675"
+    "encoder-int8.onnx": "4e7d6a53d27a7321a2638a4bf446301e8e343c51000963331469e3ab20aae2a4",
+    "head.npz": "0dfbd5aa5a6891d05cd7bc364fa69bc662de77b11d93fa526ae863af1bac256e",
+    "vocab.json": "43bb485f4de0f2fd49b370bef4efab23ea3ab6d0019e72bdd9cec1436a6eaa2b",
+    "merges.txt": "5d346f84939a98df0cde902df7d60154b461cde1b90dc653ab9b81d74e752a4d",
+    "model.json": "85f6682e709a3dcfb59f2a9b3d79e83184a9deef0ef5f85f8912d369ae091b89",
+    "head.json": "dc4911d9cb469326cbf7a5eca7dc41328f80d9d394d10333b407345fa007cff2",
+    "head.bin": "80def54b93bd97191a6e57a09164885a479cad228a3ec83f04efec32576d3c42"
   },
   "bytes": {
-    "model-int8.onnx": 110560681,
-    "tokenizer.json": 2270240,
-    "model.json": 3027
+    "encoder-int8.onnx": 110550587,
+    "head.npz": 4732426,
+    "vocab.json": 703051,
+    "merges.txt": 294364,
+    "model.json": 1996,
+    "head.json": 1059,
+    "head.bin": 4730888
   },
-  "researchExportSha256": "65f1a57fcb052fc4dd70afca9b99c162466be866e4a38d453d89f2756f79e003",
+  "researchExportSha256": "4af37dd362ef349679f233d197c28b917b97de035a070fe6d23726be1aaabb52",
+  "parity": {
+    "nativeVsFp32MaxRiskLogitDiff": 3.168777970508074e-05,
+    "tolerance": 0.001
+  },
   "fp32Shipped": false
 }

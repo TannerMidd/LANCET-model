@@ -1,3 +1,4 @@
 * text=auto eol=lf
 bundle/** -text
 bundle/model/model-int8.onnx filter=lfs diff=lfs merge=lfs -text
+bundle/model/encoder-int8.onnx filter=lfs diff=lfs merge=lfs -text

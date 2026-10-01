@@ -1,0 +1,61 @@
+{
+  "format": "lancet-web-head-1",
+  "dtype": "float32",
+  "byteOrder": "little",
+  "order": "C",
+  "hidden": 768,
+  "normEps": 1e-05,
+  "tensors": [
+    {
+      "name": "projection",
+      "shape": [
+        768,
+        1536
+      ],
+      "offset": 0,
+      "bytes": 4718592
+    },
+    {
+      "name": "norm_weight",
+      "shape": [
+        768
+      ],
+      "offset": 4718592,
+      "bytes": 3072
+    },
+    {
+      "name": "norm_bias",
+      "shape": [
+        768
+      ],
+      "offset": 4721664,
+      "bytes": 3072
+    },
+    {
+      "name": "head_weight",
+      "shape": [
+        2,
+        768
+      ],
+      "offset": 4724736,
+      "bytes": 6144
+    },
+    {
+      "name": "head_bias",
+      "shape": [
+        2
+      ],
+      "offset": 4730880,
+      "bytes": 8
+    }
+  ],
+  "bin": {
+    "file": "head.bin",
+    "bytes": 4730888,
+    "sha256": "80def54b93bd97191a6e57a09164885a479cad228a3ec83f04efec32576d3c42"
+  },
+  "source": {
+    "file": "head.npz",
+    "sha256": "0dfbd5aa5a6891d05cd7bc364fa69bc662de77b11d93fa526ae863af1bac256e"
+  }
+}

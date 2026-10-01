@@ -1,8 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="860" viewBox="0 0 1600 860">
-<rect width="1600" height="860" fill="#07080a"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+<rect width="1600" height="900" fill="#07080a"/>
 <style>text{font-family:JetBrains Mono,IBM Plex Mono,Cascadia Code,Consolas,monospace;fill:#7d8893}.t{fill:#f4f7f9;font-weight:700}.w{fill:#f4f7f9}.d{fill:#4c5661}</style>
 <text x="56" y="64" font-size="24" class="t" text-anchor="start" letter-spacing="2">LANCET NANO · TRIAGE SCORE BY RELEASE</text>
-<text x="56" y="94" font-size="13" class="" text-anchor="start" >Every release at its shipped setting, scored the same way on the same three benchmarks (5,500 commands).</text>
+<text x="56" y="94" font-size="13" class="" text-anchor="start" >Every release at its shipped setting, scored the same way on the same three benchmarks (7,911 commands).</text>
+<rect x="1150" y="52" width="40" height="14" fill="#2dff9a"/>
+<text x="1200" y="64" font-size="12" class="w" text-anchor="start" >Triage Score (lancet-bench-2-next)</text>
+<line x1="1150" x2="1190" y1="88" y2="88" stroke="#9aa4ad" stroke-width="2"/>
+<text x="1200" y="92" font-size="12" class="" text-anchor="start" >on the retired lancet-bench-1</text>
 <line x1="40" x2="1560" y1="124" y2="124" stroke="#161a1f"/>
 <text x="56" y="180" font-size="13" class="w" text-anchor="start" letter-spacing="1">TRIAGE SCORE (0-100)</text>
 <text x="56" y="200" font-size="11" class="d" text-anchor="start" >higher is better</text>
@@ -18,59 +22,80 @@
 <text x="288" y="264.0" font-size="11" class="d" text-anchor="end" >80</text>
 <line x1="300" x2="1544" y1="176.0" y2="176.0" stroke="#161a1f"/>
 <text x="288" y="180.0" font-size="11" class="d" text-anchor="end" >100</text>
-<rect x="343.6666666666667" y="363.4" width="120" height="232.6" fill="#5d6770"/>
-<text x="403.6666666666667" y="351.42338590610416" font-size="17" class="w" text-anchor="middle" style="font-weight:700;fill:#f4f7f9">55.4</text>
-<text x="403.6666666666667" y="624" font-size="14" class="w" text-anchor="middle" style="fill:#f4f7f9">LANCET Nano v0.1.0</text>
-<rect x="551.0" y="363.9" width="120" height="232.1" fill="#5d6770"/>
-<text x="611.0" y="351.86567816633" font-size="17" class="w" text-anchor="middle" style="font-weight:700;fill:#f4f7f9">55.3</text>
-<text x="611.0" y="624" font-size="14" class="w" text-anchor="middle" style="fill:#f4f7f9">LANCET Nano v0.2.0</text>
-<rect x="758.3333333333334" y="336.8" width="120" height="259.2" fill="#5d6770"/>
-<text x="818.3333333333334" y="324.83818950971704" font-size="17" class="w" text-anchor="middle" style="font-weight:700;fill:#f4f7f9">61.7</text>
-<text x="818.3333333333334" y="624" font-size="14" class="w" text-anchor="middle" style="fill:#f4f7f9">LANCET Nano v0.3.0</text>
-<rect x="965.6666666666667" y="305.3" width="120" height="290.7" fill="#5d6770"/>
-<text x="1025.6666666666667" y="293.3233470156752" font-size="17" class="w" text-anchor="middle" style="font-weight:700;fill:#f4f7f9">69.2</text>
-<text x="1025.6666666666667" y="624" font-size="14" class="w" text-anchor="middle" style="fill:#f4f7f9">LANCET Nano v0.4.0</text>
-<rect x="1173.0000000000002" y="303.4" width="120" height="292.6" fill="#26e0ff"/>
-<text x="1233.0000000000002" y="291.4176759573978" font-size="17" class="w" text-anchor="middle" style="font-weight:700;fill:#f4f7f9">69.7</text>
-<text x="1233.0000000000002" y="624" font-size="14" class="w" text-anchor="middle" style="fill:#26e0ff">LANCET Nano v0.4.1</text>
-<rect x="1344.6666666666667" y="166" width="191.33333333333334" height="614" fill="none" stroke="#2dff9a" stroke-opacity=".35" stroke-dasharray="4 4"/>
-<rect x="1380.3333333333335" y="248.8" width="120" height="347.2" fill="#2dff9a"/>
-<text x="1440.3333333333335" y="236.83803260426862" font-size="22" class="w" text-anchor="middle" style="font-weight:700;fill:#2dff9a">82.7</text>
-<text x="1440.3333333333335" y="624" font-size="14" class="w" text-anchor="middle" style="fill:#2dff9a">LANCET Nano v0.4.2</text>
+<path d="M334.8571428571429 596 V429.9 Q334.8571428571429 425.9 338.8571428571429 425.9 H438.8571428571429 Q442.8571428571429 425.9 442.8571428571429 429.9 V596 Z" fill="#5d6770"><title>LANCET Nano v0.1.0: Triage Score 40.5</title></path>
+<line x1="328.8571428571429" x2="448.8571428571429" y1="363.4" y2="363.4" stroke="#9aa4ad" stroke-width="2"><title>LANCET Nano v0.1.0 on the retired lancet-bench-1: 55.4</title></line>
+<text x="388.8571428571429" y="413.87209427360216" font-size="17" class="w" text-anchor="middle" style="font-weight:700;fill:#f4f7f9">40.5</text>
+<text x="388.8571428571429" y="624" font-size="13" class="w" text-anchor="middle" style="fill:#f4f7f9">LANCET Nano v0.1.0</text>
+<path d="M512.5714285714286 596 V429.2 Q512.5714285714286 425.2 516.5714285714286 425.2 H616.5714285714286 Q620.5714285714286 425.2 620.5714285714286 429.2 V596 Z" fill="#5d6770"><title>LANCET Nano v0.2.0: Triage Score 40.7</title></path>
+<line x1="506.57142857142856" x2="626.5714285714286" y1="363.9" y2="363.9" stroke="#9aa4ad" stroke-width="2"><title>LANCET Nano v0.2.0 on the retired lancet-bench-1: 55.3</title></line>
+<text x="566.5714285714286" y="413.18562430087593" font-size="17" class="w" text-anchor="middle" style="font-weight:700;fill:#f4f7f9">40.7</text>
+<text x="566.5714285714286" y="624" font-size="13" class="w" text-anchor="middle" style="fill:#f4f7f9">LANCET Nano v0.2.0</text>
+<path d="M690.2857142857143 596 V412.4 Q690.2857142857143 408.4 694.2857142857143 408.4 H794.2857142857143 Q798.2857142857143 408.4 798.2857142857143 412.4 V596 Z" fill="#5d6770"><title>LANCET Nano v0.3.0: Triage Score 44.7</title></path>
+<line x1="684.2857142857143" x2="804.2857142857143" y1="336.8" y2="336.8" stroke="#9aa4ad" stroke-width="2"><title>LANCET Nano v0.3.0 on the retired lancet-bench-1: 61.7</title></line>
+<text x="744.2857142857143" y="396.4465138140152" font-size="17" class="w" text-anchor="middle" style="font-weight:700;fill:#f4f7f9">44.7</text>
+<text x="744.2857142857143" y="624" font-size="13" class="w" text-anchor="middle" style="fill:#f4f7f9">LANCET Nano v0.3.0</text>
+<path d="M868.0 596 V402.0 Q868.0 398.0 872.0 398.0 H972.0 Q976.0 398.0 976.0 402.0 V596 Z" fill="#5d6770"><title>LANCET Nano v0.4.0: Triage Score 47.1</title></path>
+<line x1="862.0" x2="982.0" y1="305.3" y2="305.3" stroke="#9aa4ad" stroke-width="2"><title>LANCET Nano v0.4.0 on the retired lancet-bench-1: 69.2</title></line>
+<text x="922.0" y="386.0059758831552" font-size="17" class="w" text-anchor="middle" style="font-weight:700;fill:#f4f7f9">47.1</text>
+<text x="922.0" y="624" font-size="13" class="w" text-anchor="middle" style="fill:#f4f7f9">LANCET Nano v0.4.0</text>
+<path d="M1045.7142857142858 596 V411.4 Q1045.7142857142858 407.4 1049.7142857142858 407.4 H1149.7142857142858 Q1153.7142857142858 407.4 1153.7142857142858 411.4 V596 Z" fill="#5d6770"><title>LANCET Nano v0.4.1: Triage Score 44.9</title></path>
+<line x1="1039.7142857142858" x2="1159.7142857142858" y1="303.4" y2="303.4" stroke="#9aa4ad" stroke-width="2"><title>LANCET Nano v0.4.1 on the retired lancet-bench-1: 69.7</title></line>
+<text x="1099.7142857142858" y="395.37463475364166" font-size="17" class="w" text-anchor="middle" style="font-weight:700;fill:#f4f7f9">44.9</text>
+<text x="1099.7142857142858" y="624" font-size="13" class="w" text-anchor="middle" style="fill:#f4f7f9">LANCET Nano v0.4.1</text>
+<path d="M1223.4285714285716 596 V371.7 Q1223.4285714285716 367.7 1227.4285714285716 367.7 H1327.4285714285716 Q1331.4285714285716 367.7 1331.4285714285716 371.7 V596 Z" fill="#26e0ff"><title>LANCET Nano v0.4.2: Triage Score 54.4</title></path>
+<line x1="1217.4285714285716" x2="1337.4285714285716" y1="248.8" y2="248.8" stroke="#9aa4ad" stroke-width="2"><title>LANCET Nano v0.4.2 on the retired lancet-bench-1: 82.7</title></line>
+<text x="1277.4285714285716" y="355.66985673590915" font-size="17" class="w" text-anchor="middle" style="font-weight:700;fill:#f4f7f9">54.4</text>
+<text x="1277.4285714285716" y="624" font-size="13" class="w" text-anchor="middle" style="fill:#26e0ff">LANCET Nano v0.4.2</text>
+<rect x="1374.2857142857142" y="166" width="161.71428571428572" height="658" fill="none" stroke="#2dff9a" stroke-opacity=".35" stroke-dasharray="4 4"/>
+<path d="M1401.142857142857 596 V313.3 Q1401.142857142857 309.3 1405.142857142857 309.3 H1505.142857142857 Q1509.142857142857 309.3 1509.142857142857 313.3 V596 Z" fill="#2dff9a"><title>LANCET Nano v0.4.3: Triage Score 68.3</title></path>
+<text x="1455.142857142857" y="297.29114082432966" font-size="22" class="w" text-anchor="middle" style="font-weight:700;fill:#2dff9a">68.3</text>
+<text x="1455.142857142857" y="624" font-size="13" class="w" text-anchor="middle" style="fill:#2dff9a">LANCET Nano v0.4.3</text>
 <text x="56" y="662" font-size="12" class="w" text-anchor="start" letter-spacing="1">BY BENCHMARK</text>
-<text x="56" y="690" font-size="13" class="w" text-anchor="start" >lancet-bench-1</text>
-<text x="284" y="690" font-size="11" class="d" text-anchor="end" >41%</text>
-<text x="403.6666666666667" y="690" font-size="13" class="w" text-anchor="middle" >65.5</text>
-<text x="611.0" y="690" font-size="13" class="w" text-anchor="middle" >73.6</text>
-<text x="818.3333333333334" y="690" font-size="13" class="w" text-anchor="middle" >85.8</text>
-<text x="1025.6666666666667" y="690" font-size="13" class="w" text-anchor="middle" >89.0</text>
-<text x="1233.0000000000002" y="690" font-size="13" class="w" text-anchor="middle" >91.7</text>
-<text x="1440.3333333333335" y="690" font-size="13" class="w" text-anchor="middle" >92.4</text>
+<text x="56" y="690" font-size="13" class="w" text-anchor="start" >lancet-bench-2-next</text>
+<text x="284" y="690" font-size="11" class="d" text-anchor="end" >58%</text>
+<text x="388.8571428571429" y="690" font-size="13" class="" text-anchor="middle" style="fill:#ff5a6a">34.9</text>
+<text x="566.5714285714286" y="690" font-size="13" class="" text-anchor="middle" style="fill:#ff5a6a">39.3</text>
+<text x="744.2857142857143" y="690" font-size="13" class="" text-anchor="middle" style="fill:#ff5a6a">44.3</text>
+<text x="922.0" y="690" font-size="13" class="" text-anchor="middle" style="fill:#ff5a6a">41.1</text>
+<text x="1099.7142857142858" y="690" font-size="13" class="" text-anchor="middle" style="fill:#ff5a6a">38.1</text>
+<text x="1277.4285714285716" y="690" font-size="13" class="" text-anchor="middle" style="fill:#ff5a6a">39.0</text>
+<text x="1455.142857142857" y="690" font-size="13" class="" text-anchor="middle" style="fill:#ff5a6a">63.1</text>
 <text x="56" y="714" font-size="13" class="w" text-anchor="start" >ShellRisk-Bench test</text>
-<text x="284" y="714" font-size="11" class="d" text-anchor="end" >29%</text>
-<text x="403.6666666666667" y="714" font-size="13" class="w" text-anchor="middle" >45.6</text>
-<text x="611.0" y="714" font-size="13" class="w" text-anchor="middle" >47.7</text>
-<text x="818.3333333333334" y="714" font-size="13" class="w" text-anchor="middle" >46.6</text>
-<text x="1025.6666666666667" y="714" font-size="13" class="w" text-anchor="middle" >60.6</text>
-<text x="1233.0000000000002" y="714" font-size="13" class="w" text-anchor="middle" >70.5</text>
-<text x="1440.3333333333335" y="714" font-size="13" class="w" text-anchor="middle" >60.1</text>
+<text x="284" y="714" font-size="11" class="d" text-anchor="end" >20%</text>
+<text x="388.8571428571429" y="714" font-size="13" class="w" text-anchor="middle" >45.6</text>
+<text x="566.5714285714286" y="714" font-size="13" class="w" text-anchor="middle" >47.7</text>
+<text x="744.2857142857143" y="714" font-size="13" class="w" text-anchor="middle" >46.6</text>
+<text x="922.0" y="714" font-size="13" class="w" text-anchor="middle" >60.6</text>
+<text x="1099.7142857142858" y="714" font-size="13" class="w" text-anchor="middle" >70.5</text>
+<text x="1277.4285714285716" y="714" font-size="13" class="w" text-anchor="middle" >60.1</text>
+<text x="1455.142857142857" y="714" font-size="13" class="w" text-anchor="middle" >64.8</text>
 <text x="56" y="738" font-size="13" class="w" text-anchor="start" >Neutral set</text>
-<text x="284" y="738" font-size="11" class="d" text-anchor="end" >30%</text>
-<text x="403.6666666666667" y="738" font-size="13" class="" text-anchor="middle" style="fill:#ff5a6a">51.0</text>
-<text x="611.0" y="738" font-size="13" class="" text-anchor="middle" style="fill:#ff5a6a">37.9</text>
-<text x="818.3333333333334" y="738" font-size="13" class="" text-anchor="middle" style="fill:#ff5a6a">43.6</text>
-<text x="1025.6666666666667" y="738" font-size="13" class="" text-anchor="middle" style="fill:#ff5a6a">50.8</text>
-<text x="1233.0000000000002" y="738" font-size="13" class="" text-anchor="middle" style="fill:#ff5a6a">39.3</text>
-<text x="1440.3333333333335" y="738" font-size="13" class="w" text-anchor="middle" >91.0</text>
+<text x="284" y="738" font-size="11" class="d" text-anchor="end" >21%</text>
+<text x="388.8571428571429" y="738" font-size="13" class="" text-anchor="middle" style="fill:#ff5a6a">51.0</text>
+<text x="566.5714285714286" y="738" font-size="13" class="" text-anchor="middle" style="fill:#ff5a6a">37.9</text>
+<text x="744.2857142857143" y="738" font-size="13" class="" text-anchor="middle" style="fill:#ff5a6a">43.6</text>
+<text x="922.0" y="738" font-size="13" class="" text-anchor="middle" style="fill:#ff5a6a">50.8</text>
+<text x="1099.7142857142858" y="738" font-size="13" class="" text-anchor="middle" style="fill:#ff5a6a">39.3</text>
+<text x="1277.4285714285716" y="738" font-size="13" class="w" text-anchor="middle" >91.0</text>
+<text x="1455.142857142857" y="738" font-size="13" class="w" text-anchor="middle" >85.8</text>
 <line x1="56" x2="1544" y1="746" y2="746" stroke="#161a1f"/>
 <text x="56" y="766" font-size="13" class="" text-anchor="start" >change vs previous</text>
-<text x="403.6666666666667" y="766" font-size="13" class="d" text-anchor="middle" >—</text>
-<text x="611.0" y="766" font-size="13" class="" text-anchor="middle" style="fill:#ff5a6a">-0.1</text>
-<text x="818.3333333333334" y="766" font-size="13" class="" text-anchor="middle" style="fill:#2dff9a">+6.4</text>
-<text x="1025.6666666666667" y="766" font-size="13" class="" text-anchor="middle" style="fill:#2dff9a">+7.5</text>
-<text x="1233.0000000000002" y="766" font-size="13" class="" text-anchor="middle" style="fill:#2dff9a">+0.5</text>
-<text x="1440.3333333333335" y="766" font-size="13" class="" text-anchor="middle" style="fill:#2dff9a">+13.0</text>
-<line x1="40" x2="1560" y1="790" y2="790" stroke="#161a1f"/>
-<text x="56" y="818" font-size="12" class="" text-anchor="start" >Triage Score: every risky command asked about or blocked earns a point; the score shrinks in proportion when more than 10% of safe commands are stopped.</text>
-<text x="56" y="838" font-size="11" class="d" text-anchor="start" >Weighted by size: lancet-bench, ShellRisk-Bench (Kontext Security) test split, neutral set (Rogue Security + tomngdev/shell-safety-v2). Red: over 10% safe stopped.</text>
+<text x="388.8571428571429" y="766" font-size="13" class="d" text-anchor="middle" >—</text>
+<text x="566.5714285714286" y="766" font-size="13" class="" text-anchor="middle" style="fill:#2dff9a">+0.2</text>
+<text x="744.2857142857143" y="766" font-size="13" class="" text-anchor="middle" style="fill:#2dff9a">+4.0</text>
+<text x="922.0" y="766" font-size="13" class="" text-anchor="middle" style="fill:#2dff9a">+2.5</text>
+<text x="1099.7142857142858" y="766" font-size="13" class="" text-anchor="middle" style="fill:#ff5a6a">-2.2</text>
+<text x="1277.4285714285716" y="766" font-size="13" class="" text-anchor="middle" style="fill:#2dff9a">+9.5</text>
+<text x="1455.142857142857" y="766" font-size="13" class="" text-anchor="middle" style="fill:#2dff9a">+13.9</text>
+<text x="56" y="792" font-size="13" class="" text-anchor="start" >on lancet-bench-1 (retired)</text>
+<text x="388.8571428571429" y="792" font-size="13" class="d" text-anchor="middle" >55.4</text>
+<text x="566.5714285714286" y="792" font-size="13" class="d" text-anchor="middle" >55.3</text>
+<text x="744.2857142857143" y="792" font-size="13" class="d" text-anchor="middle" >61.7</text>
+<text x="922.0" y="792" font-size="13" class="d" text-anchor="middle" >69.2</text>
+<text x="1099.7142857142858" y="792" font-size="13" class="d" text-anchor="middle" >69.7</text>
+<text x="1277.4285714285716" y="792" font-size="13" class="d" text-anchor="middle" >82.7</text>
+<text x="1455.142857142857" y="792" font-size="11" class="d" text-anchor="middle" >trained on it</text>
+<line x1="40" x2="1560" y1="834" y2="834" stroke="#161a1f"/>
+<text x="56" y="860" font-size="12" class="" text-anchor="start" >Triage Score: every risky command asked about or blocked earns a point; the score shrinks in proportion when more than 10% of safe commands are stopped.</text>
+<text x="56" y="880" font-size="11" class="d" text-anchor="start" >lancet-bench-2-next is harder than the retired lancet-bench-1, so every release scores lower on it. Red: over 10% safe stopped.</text>
 </svg>

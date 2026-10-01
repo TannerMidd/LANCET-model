@@ -20,7 +20,7 @@ def verify_bundle(directory, strict=False):
         raise ValueError("Unsupported release manifest")
     if manifest.get("modelLicense") != "Apache-2.0" or manifest.get("runtimeLicense") != "MIT":
         raise ValueError("Unexpected release license declarations")
-    if manifest["files"].get("model/model-int8.onnx") != manifest.get("modelSha256"):
+    if manifest["files"].get(manifest.get("modelFile", "model/model-int8.onnx")) != manifest.get("modelSha256"):
         raise ValueError("Inconsistent model fingerprint")
     if not manifest["files"]:
         raise ValueError("Empty release manifest")

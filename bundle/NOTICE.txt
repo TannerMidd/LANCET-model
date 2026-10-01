@@ -1,4 +1,4 @@
-LANCET Nano v0.4.2 - experimental Bash command-risk classifier
+LANCET Nano v0.4.3 - experimental command-risk classifier (Bash, PowerShell, cmd)
 
 LANCET-specific contributions and runtime:
 Copyright (c) 2026 Tanner Middleton
