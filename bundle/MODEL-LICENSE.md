@@ -8,12 +8,12 @@ LANCET Nano's fine-tuned model weights and associated model assets are distribut
 ## Covered assets
 
 - `model/encoder-int8.onnx`
-- `model/head.npz`
+- `model/head.npz`, `model/head.json`, and `model/head.bin`
 - `model/vocab.json` and `model/merges.txt`
 - `model/model.json`
 - `model/export.json`
 
-This grant covers the LANCET Nano v0.4.3 release, whose ONNX encoder SHA-256 is `4e7d6a53d27a7321a2638a4bf446301e8e343c51000963331469e3ab20aae2a4`. It does not license other historical, shelved or unreleased research checkpoints. Earlier releases keep their own grants.
+This grant covers the **LANCET Nano v0.5.0** release, whose ONNX encoder SHA-256 is `23f347feddc8c51517ccf2096817d6ed107a32fdbd9215691a776f59f51f74b6`. It does not license other historical, shelved or unreleased research checkpoints. Earlier releases keep their own grants.
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use these files except in compliance with the License. You may obtain a copy in [licenses/Apache-2.0.txt](licenses/Apache-2.0.txt) or at <https://www.apache.org/licenses/LICENSE-2.0>.
 

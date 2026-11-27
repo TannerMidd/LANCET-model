@@ -14,8 +14,8 @@ The model and runtime licenses permit use, modification and redistribution, incl
 
 ## Attribution and provenance
 
-The base model is Salesforce/codet5p-220m at revision `2b92f36e2782341a50551759fdba0dd15e821f99`; its [original model card](licenses/codet5p-220m-upstream-model-card.md) declares BSD-3-Clause. The tokenizer vocabulary and merges are the CodeT5 byte-BPE files shipped with earlier LANCET releases ([card](licenses/codet5-small-upstream-model-card.md)).
+The base model is `Salesforce/codet5p-220m` at revision `2b92f36e2782341a50551759fdba0dd15e821f99`; its [original model card](licenses/codet5p-220m-upstream-model-card.md) declares BSD-3-Clause. The tokenizer vocabulary and merges are the CodeT5 byte-BPE files shipped with earlier LANCET releases ([card](licenses/codet5-small-upstream-model-card.md)).
 
-Nano v0.4.3 is trained from that upstream base, not from an earlier LANCET checkpoint. It uses commands from **tldr-pages** (CC BY 4.0), AWS CLI command shapes from **botocore** (Apache-2.0), reference examples from the **Azure CLI** and **GitHub CLI** (MIT) and **kubectl** and **Docker CLI** (Apache-2.0), rows from the **ShellRisk-Bench** training split and the **Shell Safety v2** training split (MIT). It also uses project-authored material. Credits and changes are in [NOTICE.txt](NOTICE.txt), [MODIFICATIONS.md](MODIFICATIONS.md) and [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md).
+Nano v0.5.0 continues from the pinned upstream CodeT5+ 220M base through the Round 25 → Round 60 → Round 61 lineage. It uses project-authored command-semantics and wrapper-invariance contrasts, non-GPL rows from **ShellRisk-Bench** (train and test splits, excluding `gtfobins` and `nl2bash` origins), and the **Shell Safety v2** training split (MIT). Credits and changes are in [NOTICE.txt](NOTICE.txt), [MODIFICATIONS.md](MODIFICATIONS.md) and [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md).
 
 The earlier extraction-wide statement is retained unchanged in [licenses/history/LANCET-extraction-provenance.md](licenses/history/LANCET-extraction-provenance.md). Its future-release wording describes a pre-release snapshot, not a restriction on this grant.

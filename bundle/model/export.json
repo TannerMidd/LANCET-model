@@ -1,28 +1,29 @@
 {
   "validationComplete": true,
-  "format": "semantic-windowed-1",
-  "method": "ORT dynamic QUInt8 per-channel MatMul/Gather encoder (research export, unchanged); head in NumPy float64",
+  "format": "semantic-windowed-3",
+  "method": "ORT dynamic QUInt8 per-channel MatMul/Gather encoder (Round 61 research export, unchanged); head in NumPy float64",
   "sha256": {
-    "encoder-int8.onnx": "4e7d6a53d27a7321a2638a4bf446301e8e343c51000963331469e3ab20aae2a4",
-    "head.npz": "0dfbd5aa5a6891d05cd7bc364fa69bc662de77b11d93fa526ae863af1bac256e",
+    "encoder-int8.onnx": "23f347feddc8c51517ccf2096817d6ed107a32fdbd9215691a776f59f51f74b6",
+    "head.npz": "5a77449a1f037830e84eb1816e0913b162b12fc8999005c74a37ff2cee600031",
     "vocab.json": "43bb485f4de0f2fd49b370bef4efab23ea3ab6d0019e72bdd9cec1436a6eaa2b",
     "merges.txt": "5d346f84939a98df0cde902df7d60154b461cde1b90dc653ab9b81d74e752a4d",
-    "model.json": "85f6682e709a3dcfb59f2a9b3d79e83184a9deef0ef5f85f8912d369ae091b89",
-    "head.json": "dc4911d9cb469326cbf7a5eca7dc41328f80d9d394d10333b407345fa007cff2",
-    "head.bin": "80def54b93bd97191a6e57a09164885a479cad228a3ec83f04efec32576d3c42"
+    "model.json": "61bb57012d5a9bd299ff3f95468d0070d7cd2e8e3539959dc40ecfb4c778d949",
+    "head.json": "1fdfe1e1ddd69164f9cf7d21ed978097792bafdb78215050c16c695cd9c13481",
+    "head.bin": "ec3bb3234129f43d98eb275b5c25fab831614e006f8cb57ed1320c69b328af36"
   },
   "bytes": {
-    "encoder-int8.onnx": 110550587,
+    "encoder-int8.onnx": 110550532,
     "head.npz": 4732426,
     "vocab.json": 703051,
     "merges.txt": 294364,
-    "model.json": 1996,
+    "model.json": 1964,
     "head.json": 1059,
     "head.bin": 4730888
   },
-  "researchExportSha256": "4af37dd362ef349679f233d197c28b917b97de035a070fe6d23726be1aaabb52",
+  "researchExportSha256": "79a51c0d8ded64a415461241c3379c5e4dac7370ecded763d2b17fe3739f0d59",
   "parity": {
-    "nativeVsFp32MaxRiskLogitDiff": 3.168777970508074e-05,
+    "nativeVsFp32MaxRiskLogitDiff": 3.5540362484098864e-06,
+    "nativeVsFp32MaxAskLogitDiff": 4.595071601887213e-06,
     "tolerance": 0.001
   },
   "fp32Shipped": false

@@ -1,4 +1,4 @@
-LANCET Nano v0.4.3 - experimental command-risk classifier (Bash, PowerShell, cmd)
+LANCET Nano v0.5.0 - experimental command-risk classifier (Bash, PowerShell, cmd)
 
 LANCET-specific contributions and runtime:
 Copyright (c) 2026 Tanner Middleton
@@ -13,8 +13,8 @@ https://huggingface.co/Salesforce/codet5p-220m/tree/2b92f36e2782341a50551759fdba
 Copyright (c) 2021, Salesforce.com, Inc. All rights reserved.
 Full BSD-3-Clause notice, conditions and disclaimer:
 licenses/CodeT5-BSD-3-Clause.txt.
-The tokenizer file is byte-identical to the CodeT5 tokenizer shipped with
-LANCET v0.1.0-v0.3.0 (from Salesforce/CodeT5-small, revision
+The tokenizer files match the CodeT5 byte-BPE tokenizer shipped with earlier
+LANCET releases (from Salesforce/CodeT5-small, revision
 b1ee9570c289f21b5922b9c768a1ce12957bf968; card retained in
 licenses/codet5-small-upstream-model-card.md).
 
@@ -28,7 +28,8 @@ https://github.com/salesforce/CodeT5
 Training data credit (no dataset is included or relicensed):
 - ShellRisk-Bench (Kontext Security), huggingface.co/datasets/
   kontext-security/ShellRisk-Bench, revision
-  437467862139b4e9cdd5322024ef3434a67c7ec8, training split. Used rows from:
+  437467862139b4e9cdd5322024ef3434a67c7ec8 (train and test splits, excluding
+  GTFOBins and NL2Bash origins). Used rows from:
   - Atomic Red Team (github.com/redcanaryco/atomic-red-team), MIT,
     Copyright (c) 2018 Red Canary, Inc.; licenses/atomic-red-team-MIT.txt.
   - InternalAllTheThings (swisskyrepo), revision
@@ -40,37 +41,6 @@ Training data credit (no dataset is included or relicensed):
   revision 3258db497dae218f23d1d648ef2eb7cb6ab5e70c, training split. MIT
   declaration; licenses/shell-safety-v2-license-declaration.md. Labels are
   the dataset author's allow/deny labels.
-- tldr-pages, revision 998e3f02b8924a7d5112fe6099993d3625fb404c.
-  Copyright (c) 2014-present the tldr-pages team and contributors.
-  Licensed under Creative Commons Attribution 4.0 International (CC BY 4.0),
-  https://creativecommons.org/licenses/by/4.0/ ; notice retained in
-  licenses/tldr-pages-LICENSE.md. Changes: example command templates were
-  filled with placeholder names, and risk labels were derived by LANCET from
-  the example descriptions' wording. tldr-pages does not endorse LANCET.
-- Botocore 1.43.103 service models (Apache-2.0). Copyright 2012-2022
-  Amazon.com, Inc. or its affiliates. NOTICE retained in
-  licenses/botocore-NOTICE.txt. LANCET generated AWS CLI command shapes from
-  operation and required-parameter names and derived labels from operation
-  verbs and the models' `sensitive` output-field markings. Amazon does not
-  endorse LANCET.
-- Azure CLI (github.com/Azure/azure-cli, rev 7bf31a4f), MIT,
-  Copyright (c) 2016 Microsoft Corporation; licenses/azure-cli-LICENSE.txt.
-- GitHub CLI (github.com/cli/cli, rev 9b031151), MIT,
-  Copyright (c) 2019 GitHub Inc.; licenses/gh-cli-LICENSE.txt.
-- kubectl (github.com/kubernetes/kubectl, rev 269cea94), Apache-2.0,
-  The Kubernetes Authors; licenses/kubectl-LICENSE.txt.
-- Docker CLI (github.com/docker/cli, rev 7fc2dff9), Apache-2.0,
-  Copyright 2012-2017 Docker, Inc.; licenses/docker-cli-LICENSE.txt and
-  licenses/docker-cli-NOTICE.txt.
-  For these four CLIs LANCET extracted reference example commands and derived
-  labels from command verbs and descriptions. None of these projects endorses
-  LANCET.
-- Inherited from LANCET V5 (inspection examples, see THIRD-PARTY-NOTICES.md):
-  Kontext Security / ShellRisk-Bench (collection/normalization);
-  Kwai-Klear / SWE-smith-mini_swe_agent_plus-trajectories-66k (MIT declaration);
-  yoonholee / terminalbench-trajectories (Apache-2.0 declaration);
-  TellinaTool / NL2Bash data/bash (MIT; Copyright (c) 2020 NL2Bash dataset;
-  licenses/NL2Bash-data-MIT.txt).
 
 No output of any hosted language model (including TypeSafe Jev) was used to
 label, filter, select or calibrate LANCET Nano's training data.
@@ -81,5 +51,4 @@ not the unmodified CodeT5+ model. See MODIFICATIONS.md.
 
 These attribution notices do not amend the applicable licenses. No endorsement
 by Salesforce, the CodeT5 authors, Hugging Face, Kontext Security, Red Canary,
-tldr-pages, Amazon, Microsoft, GitHub, the Kubernetes project, Docker, the
-dataset providers or other credited contributors is claimed.
+the dataset providers or other credited contributors is claimed.

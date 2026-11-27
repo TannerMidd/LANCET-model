@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>LANCET Nano: local shell command-risk classifier</title>
-<meta name="description" content="LANCET Nano v0.4.3: a 111M-parameter CPU model that flags risky Bash, PowerShell and cmd commands in about 14 ms, offline. Apache-2.0 model, MIT runtime.">
-<meta property="og:title" content="LANCET Nano">
-<meta property="og:description" content="A local classifier for shell command risk. Triage Score 68.3 on three benchmarks (7,911 commands), the best of 20 guards tested.">
-<meta property="og:image" content="https://tannermidd.github.io/LANCET-model/charts/social-card.png">
+<title>LANCET Nano v0.5.0: local shell command-risk classifier</title>
+<meta name="description" content="LANCET Nano v0.5.0: a 111M-parameter local CPU model that flags risky Bash, PowerShell and cmd commands in ~70 ms, offline. #1 on Bench 3 (68.51, 5.1% safe stopped). Apache-2.0 model, MIT runtime.">
+<meta property="og:title" content="LANCET Nano v0.5.0">
+<meta property="og:description" content="A tiny local classifier for shell command risk. #1 on Bench 3 (68.51, 5.1% safe stopped, 70 ms CPU), beating hosted frontier APIs and local guards.">
+<meta property="og:image" content="https://tannermidd.github.io/LANCET-model/charts/bench3-v050.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://tannermidd.github.io/LANCET-model/charts/social-card.png">
+<meta name="twitter:image" content="https://tannermidd.github.io/LANCET-model/charts/bench3-v050.png">
 <style>
 :root{--bg:#050607;--panel:#0a0d0f;--line:#1b2328;--ink:#e6edf0;--dim:#7d8b92;--green:#2dff9a;--amber:#ffc23d;--violet:#b48cff;--red:#ff3d4f;--cyan:#27d3ff}
 *{box-sizing:border-box;border-radius:0}
@@ -39,7 +39,6 @@ h2::before{content:"";width:9px;height:9px;background:var(--green)}
 .fig{border:1px solid var(--line);background:var(--panel);margin:0 0 18px}
 .fig img{display:block;width:100%;height:auto}
 .fig figcaption{border-top:1px solid var(--line);padding:10px 16px;font-size:12.5px;color:var(--dim)}
-.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
 table{border-collapse:collapse;width:100%;font-size:14px}
 th,td{border-bottom:1px solid var(--line);padding:9px 12px;text-align:right}th:first-child,td:first-child{text-align:left}
 th{font-size:11px;letter-spacing:.14em;color:var(--dim);font-weight:400;text-transform:uppercase}
@@ -54,177 +53,123 @@ ul{padding-left:18px;margin:0}li{margin:6px 0}li::marker{color:var(--green)}
 .out b{letter-spacing:.08em}
 .note{color:var(--dim);font-size:13px}
 footer{padding:28px 0 60px;color:var(--dim);font-size:12.5px}
-@media (max-width:900px){.stats{grid-template-columns:repeat(2,1fr)}.stat{border-bottom:1px solid var(--line)}.two,.cols,.out{grid-template-columns:1fr}h1{font-size:32px}nav{display:none}}
+@media (max-width:900px){.stats{grid-template-columns:repeat(2,1fr)}.stat{border-bottom:1px solid var(--line)}.cols,.out{grid-template-columns:1fr}h1{font-size:32px}nav{display:none}}
 </style>
 </head>
 <body>
 <header><div class="wrap"><span class="logo">LANC<b>E</b>T</span>
-<nav><a href="#results">Results</a><a href="#benchmark">Benchmark</a><a href="#start">Quick start</a><a href="#training">Training</a><a href="#limits">Limits</a><a href="#credits">Credits</a><a href="https://github.com/TannerMidd/LANCET-model">GitHub</a></nav></div></header>
+<nav><a href="#results">Bench 3</a><a href="#start">Quick start</a><a href="#training">Training</a><a href="#limits">Limits</a><a href="#credits">Credits</a><a href="https://github.com/TannerMidd/LANCET-model">GitHub</a></nav></div></header>
 
 <div class="wrap">
 <div class="hero">
-  <span class="tag g">v0.4.3 · pre-release</span><span class="tag">Apache-2.0 model</span><span class="tag">MIT runtime</span><span class="tag">Bash · PowerShell · cmd</span>
-  <h1>LANCET Nano<small>A local classifier that flags risky shell commands before an agent or a person runs them.</small></h1>
+  <span class="tag g">v0.5.0 · current release</span><span class="tag">Apache-2.0 model</span><span class="tag">MIT runtime</span><span class="tag">Bash · PowerShell · cmd</span>
+  <h1>LANCET Nano<small>A tiny local classifier that flags risky shell commands before an agent or a person runs them.</small></h1>
   <div class="cta">
-    <a class="btn" href="https://github.com/TannerMidd/LANCET-model/releases/download/v0.4.3/lancet-v0.4.3-nano-cpu-int8.zip">Download ZIP · 109 MB</a>
+    <a class="btn" href="https://github.com/TannerMidd/LANCET-model/releases/download/v0.5.0/lancet-v0.5.0-nano-cpu-int8.zip">Download ZIP · 121 MB</a>
     <a class="btn o" href="https://huggingface.co/spaces/fingerthief/lancet-nano">Try it in your browser</a>
-    <a class="btn o" href="https://github.com/TannerMidd/LANCET-model/releases/tag/v0.4.3">Release notes &amp; checksum</a>
+    <a class="btn o" href="https://huggingface.co/fingerthief/lancet-nano">Hugging Face model</a>
     <a class="btn o" href="https://github.com/TannerMidd/LANCET-model/blob/main/bundle/MODEL_CARD.md">Model card</a>
   </div>
   <div class="stats">
-    <div class="stat"><div class="l">Triage Score</div><div class="v" style="color:var(--green)">68.3</div><div class="s">three benchmarks · v0.4.2: 54.4</div></div>
-    <div class="stat"><div class="l">Risky caught</div><div class="v" style="color:var(--green)">77.0%</div><div class="s">asked or blocked · three benchmarks</div></div>
-    <div class="stat"><div class="l">Safe stopped</div><div class="v">9.0%</div><div class="s">asked or blocked · three benchmarks</div></div>
-    <div class="stat"><div class="l">On disk</div><div class="v">115 MB</div><div class="s">111 M params · INT8 ONNX</div></div>
-    <div class="stat"><div class="l">Per command</div><div class="v">~14 ms</div><div class="s">median, CPU, offline</div></div>
+    <div class="stat"><div class="l">Bench 3 Score</div><div class="v" style="color:var(--green)">68.51</div><div class="s">#1 of 19 guards · v0.4.3: 43.44</div></div>
+    <div class="stat"><div class="l">Unseen Core</div><div class="v" style="color:var(--green)">71.31</div><div class="s">71.3% caught · 9.9% safe stopped</div></div>
+    <div class="stat"><div class="l">Safe Stopped</div><div class="v">5.1%</div><div class="s">pooled across 7,784 safe commands</div></div>
+    <div class="stat"><div class="l">On Disk</div><div class="v">115 MB</div><div class="s">111 M params · INT8 ONNX</div></div>
+    <div class="stat"><div class="l">Per Command</div><div class="v">~70 ms</div><div class="s">median CPU · 100% offline</div></div>
   </div>
 </div>
 </div>
 
 <div class="wrap">
 <section id="results">
-  <h2>Triage Score: command guards at their shipped settings</h2>
-  <figure class="fig"><img src="charts/triage.svg" alt="Triage Score at shipped settings across 7,911 commands from three benchmarks: LANCET Nano v0.4.3 68.3, LANCET Nano v0.4.2 54.4, LANCET Nano v0.4.0 47.1, LANCET Nano v0.4.1 44.9, LANCET Nano v0.3.0 44.7, LANCET Nano v0.2.0 40.7, LANCET Nano v0.1.0 40.5, Jev 38.9, Kestrel 30.7, ModernBERT bash 23.2, bash-classify 14.3, Laya 13.3, bev-decider 13.3, sh-guard 10.9">
-    <figcaption>Every risky command asked about or blocked earns a point; allowed earns nothing. The score shrinks in proportion when more than 10% of safe commands are stopped. Three benchmarks (7,911 commands), weighted by size. Scores use the new lancet-bench-2-next and are lower for every guard than on the retired lancet-bench-1; see <a href="#benchmark">why</a>.</figcaption></figure>
+  <h2>LANCET Bench 3: full command-risk scoreboard</h2>
+  <figure class="fig"><img src="charts/bench3-v050.svg" alt="LANCET Bench 3 scoreboard: LANCET Nano v0.5.0 #1 at 68.51 with 5.1% safe commands interrupted and 70.0 ms median CPU">
+    <figcaption>11,859 inert singleton commands across Bench 3 core (6,846 unseen commands, 66.8% weight), ShellRisk test (4,194, 15.9%), and Neutral pool (589 unseen commands: Shell Safety v2 test + Rogue, 17.3%). ShellRisk train+test were fitted per owner policy (in-distribution for v0.5.0); Bench 3 core and Neutral remain strictly unseen.</figcaption></figure>
 
-  <h2 style="margin-top:40px">LANCET Nano vs other command guards</h2>
-  <figure class="fig"><img src="charts/vs-others.svg" alt="LANCET Nano v0.4.3 vs 13 other command guards, Triage Score at shipped settings on 7,911 commands (risky caught, safe stopped): LANCET Nano v0.4.3 68.3 (77.0%, 9.0%), Jev 38.9 (90.0%, 23.4%), verdict-shell-safety 32.4 (56.3%, 18.0%), Kestrel 30.7 (68.1%, 37.1%), ModernBERT bash 23.2 (48.1%, 22.8%), dcg 19.8 (19.8%, 6.9%), AutoShell-0.8B 19.2 (98.8%, 70.9%), Gyra 17.9 (28.2%, 13.4%), bash-classify 14.3 (92.9%, 65.8%), Laya 13.3 (87.3%, 69.6%), bev-decider 13.3 (94.4%, 75.3%), laya-cli-gate 12.5 (71.2%, 57.5%), sh-guard 10.9 (97.9%, 90.5%), Shieldstral-1.0-3B 6.1 (6.1%, 0.2%)">
-    <figcaption>LANCET Nano v0.4.3 against every other command guard we have tested, each scored once at its own shipped setting on the same 7,911 commands. Every other guard either stops more than 10% of safe commands or catches fewer than a third of risky ones; Nano catches 77.0% of risky commands while stopping 9.0% of safe ones.</figcaption></figure>
-
-  <h2 style="margin-top:40px">v0.4.3 vs v0.4.2</h2>
-  <figure class="fig"><img src="charts/v043-vs-v042.svg" alt="LANCET Nano v0.4.3 vs v0.4.2: Triage Score per benchmark and caught, stopped and blocked rates">
-    <figcaption>v0.4.3 is newly trained on a new curriculum, reads long commands in full and adds PowerShell and cmd, at the same size and speed. On lancet-bench-2-next it catches the same 78.0% of risky commands as v0.4.2 while stopping 12.4% of safe ones instead of 20.0%; on ShellRisk-Bench it catches more (64.8% vs 60.1%). The neutral set is its one Triage loss (85.8% caught vs 91.0%, with fewer safe commands stopped).</figcaption></figure>
-
-  <h2 style="margin-top:40px">Where v0.4.3 gains and loses</h2>
-  <figure class="fig"><img src="charts/v043-gains-losses.svg" alt="v0.4.3 vs v0.4.2 on the same commands: Triage points gained and lost by benchmark, caught and interrupted rates per test set, and command-by-command disagreements">
-    <figcaption>Both releases on exactly the same commands. Left of centre: commands v0.4.2 handled and v0.4.3 does not; right: the reverse.</figcaption></figure>
-
-  <h2 style="margin-top:40px">Triage Score by release</h2>
-  <figure class="fig"><img src="charts/history.svg" alt="Triage Score by release on lancet-bench-2-next: v0.1.0 40.5, v0.2.0 40.7, v0.3.0 44.7, v0.4.0 47.1, v0.4.1 44.9, v0.4.2 54.4, v0.4.3 68.3">
-    <figcaption>Every LANCET Nano release scored the same way, at its shipped setting, on the same three benchmarks. Grey ticks: each release's score on the retired lancet-bench-1. v0.4.3 was trained on lancet-bench-1, so it has no tick.</figcaption></figure>
-
-  <h2 style="margin-top:40px">Triage Score across three benchmarks</h2>
-  <figure class="fig"><img src="charts/triage-breakdown.svg" alt="Triage Score by guard, split into points from lancet-bench-2-next, ShellRisk-Bench and a neutral set: LANCET Nano v0.4.3 68.3, LANCET Nano v0.4.2 54.4, LANCET Nano v0.4.0 47.1, LANCET Nano v0.4.1 44.9, LANCET Nano v0.3.0 44.7, LANCET Nano v0.2.0 40.7, LANCET Nano v0.1.0 40.5, Jev 38.9, Kestrel 30.7, ModernBERT bash 23.2, bash-classify 14.3, Laya 13.3, bev-decider 13.3, sh-guard 10.9">
-    <figcaption>Each bar is one guard's Triage Score on 7,911 commands; the colours show how many points it earned on each benchmark: lancet-bench-2-next (3,204 commands, up to 58 points), the ShellRisk-Bench test split (4,194, up to 20) and a neutral set of outside-party commands (513, up to 21). A benchmark's points are its weight (58% / 20% / 21%, by size) times the guard's score on it: every risky command asked about or blocked earns a point, and the score shrinks in proportion when more than 10% of safe commands are stopped. Each guard is scored once at its shipped setting. Hover a segment for that benchmark's own score.</figcaption></figure>
   <table>
-    <tr><th>Guard</th><th>Triage Score</th><th>lancet-bench-2-next</th><th>ShellRisk test</th><th>Neutral set</th><th>Risky caught</th><th>Safe stopped</th><th>Parameters</th><th>Runs on</th></tr>
-    <tr><td style="color:var(--green)">LANCET Nano v0.4.3</td><td class="n">68.3</td><td>63.1</td><td>64.8</td><td>85.8</td><td>77.0%</td><td>9.0%</td><td>111 M</td><td>CPU, local</td></tr>
-    <tr><td>LANCET Nano v0.4.2</td><td>54.4</td><td>39.0</td><td>60.1</td><td>91.0</td><td>77.1%</td><td>13.7%</td><td>110 M</td><td>CPU, local</td></tr>
-    <tr><td>LANCET Nano v0.4.0</td><td>47.1</td><td>41.1</td><td>60.6</td><td>50.8</td><td>55.7%</td><td>10.5%</td><td>110 M</td><td>CPU, local</td></tr>
-    <tr><td>LANCET Nano v0.4.1</td><td>44.9</td><td>38.1</td><td>70.5</td><td>39.3</td><td>67.9%</td><td>14.6%</td><td>110 M</td><td>CPU, local</td></tr>
-    <tr><td>LANCET Nano v0.3.0</td><td>44.7</td><td>44.3</td><td>46.6</td><td>43.6</td><td>55.3%</td><td>11.6%</td><td>110 M</td><td>CPU, local</td></tr>
-    <tr><td>LANCET Nano v0.2.0</td><td>40.7</td><td>39.3</td><td>47.7</td><td>37.9</td><td>55.2%</td><td>13.6%</td><td>35 M</td><td>CPU, local</td></tr>
-    <tr><td>LANCET Nano v0.1.0</td><td>40.5</td><td>34.9</td><td>45.6</td><td>51.0</td><td>58.4%</td><td>14.1%</td><td>35 M</td><td>CPU, local</td></tr>
-    <tr><td style="color:var(--amber)">Jev</td><td>38.9</td><td>43.6</td><td>32.4</td><td>32.1</td><td>90.0%</td><td>23.4%</td><td>undisclosed</td><td>hosted API</td></tr>
-    <tr><td>verdict-shell-safety</td><td>32.4</td><td>27.6</td><td>33.3</td><td>44.9</td><td>56.3%</td><td>18.0%</td><td>151 M</td><td>CPU, local</td></tr>
-    <tr><td>Kestrel</td><td>30.7</td><td>12.7</td><td>100.0</td><td>14.0</td><td>68.1%</td><td>37.1%</td><td>—</td><td>local</td></tr>
-    <tr><td>ModernBERT bash</td><td>23.2</td><td>16.2</td><td>40.9</td><td>25.6</td><td>48.1%</td><td>22.8%</td><td>150 M</td><td>local</td></tr>
-    <tr><td>dcg</td><td>19.8</td><td>26.4</td><td>4.1</td><td>16.5</td><td>19.8%</td><td>6.9%</td><td>rules</td><td>local</td></tr>
-    <tr><td>AutoShell-0.8B</td><td>19.2</td><td>10.2</td><td>22.4</td><td>41.0</td><td>98.8%</td><td>70.9%</td><td>0.8 B</td><td>GPU, local</td></tr>
-    <tr><td>Gyra</td><td>17.9</td><td>19.0</td><td>4.1</td><td>27.8</td><td>28.2%</td><td>13.4%</td><td>421 M + rules</td><td>GPU, local</td></tr>
-    <tr><td>bash-classify</td><td>14.3</td><td>13.5</td><td>16.8</td><td>14.0</td><td>92.9%</td><td>65.8%</td><td>rules</td><td>local</td></tr>
-    <tr><td>Laya</td><td>13.3</td><td>11.0</td><td>16.2</td><td>17.1</td><td>87.3%</td><td>69.6%</td><td>421 M</td><td>GPU, local</td></tr>
-    <tr><td>bev-decider</td><td>13.3</td><td>10.8</td><td>18.7</td><td>14.8</td><td>94.4%</td><td>75.3%</td><td>0.4 B</td><td>GPU, local</td></tr>
-    <tr><td>laya-cli-gate</td><td>12.5</td><td>11.8</td><td>12.3</td><td>14.5</td><td>71.2%</td><td>57.5%</td><td>421 M</td><td>GPU, local</td></tr>
-    <tr><td>sh-guard</td><td>10.9</td><td>10.2</td><td>12.1</td><td>11.7</td><td>97.9%</td><td>90.5%</td><td>rules</td><td>local</td></tr>
-    <tr><td>Shieldstral-1.0-3B</td><td>6.1</td><td>4.1</td><td>7.8</td><td>9.9</td><td>6.1%</td><td>0.2%</td><td>3 B</td><td>GPU, local</td></tr>
+    <tr><th>Rank</th><th>Guard</th><th>Mode</th><th>Overall</th><th>Bench 3 Core</th><th>ShellRisk</th><th>Neutral</th><th>Safe stopped</th><th>Median ms</th></tr>
+    <tr><td>01</td><td style="color:var(--green)">LANCET Nano v0.5.0</td><td>Local CPU INT8</td><td class="n">68.51</td><td>71.31</td><td>70.47*</td><td>55.90</td><td>5.1%</td><td>70.0</td></tr>
+    <tr><td>02</td><td style="color:var(--cyan)">Google Gemini Decision 1</td><td>Hosted API</td><td>60.03</td><td>54.32</td><td>53.37</td><td>88.21</td><td>11.6%</td><td>249.0</td></tr>
+    <tr><td>03</td><td style="color:var(--cyan)">Perplexity Decider v1.2</td><td>Hosted API</td><td>59.22</td><td>50.71</td><td>54.92</td><td>96.07</td><td>13.3%</td><td>211.0</td></tr>
+    <tr><td>04</td><td style="color:var(--cyan)">TypeSafe Jev 1.14</td><td>Hosted API</td><td>50.69</td><td>47.52</td><td>39.38</td><td>73.36</td><td>12.2%</td><td>148.2</td></tr>
+    <tr><td>05</td><td style="color:var(--cyan)">Liquid d1.2 Ultra</td><td>Hosted API</td><td>50.44</td><td>41.23</td><td>79.27</td><td>59.57</td><td>16.2%</td><td>206.0</td></tr>
+    <tr><td>06</td><td>Cat Shell Risk Commander</td><td>Local guard</td><td>44.43</td><td>22.59</td><td>90.16</td><td>86.90</td><td>10.6%</td><td>3.8</td></tr>
+    <tr><td>07</td><td style="color:var(--green)">LANCET Nano v0.4.3</td><td>Previous release</td><td>43.44</td><td>27.36</td><td>64.77</td><td>86.03</td><td>15.3%</td><td>35.3</td></tr>
+    <tr><td>08</td><td style="color:var(--cyan)">Nace.AI Drex Max</td><td>Hosted API</td><td>40.01</td><td>31.67</td><td>42.89</td><td>69.62</td><td>20.7%</td><td>166.6</td></tr>
+    <tr><td>09</td><td style="color:var(--cyan)">Microsoft Decision 1.1</td><td>Hosted API</td><td>38.43</td><td>33.37</td><td>55.65</td><td>42.19</td><td>20.0%</td><td>208.4</td></tr>
+    <tr><td>10</td><td style="color:var(--cyan)">OpenAI GPT-6 Luna Decisions</td><td>Hosted API</td><td>34.79</td><td>21.01</td><td>39.38</td><td>83.84</td><td>22.4%</td><td>247.7</td></tr>
+    <tr><td>11</td><td>Kestrel v0.1.0</td><td>Local guard</td><td>25.78</td><td>11.30</td><td>100.00</td><td>13.60</td><td>27.7%</td><td>0.09</td></tr>
+    <tr><td>12</td><td>verdict-shell-safety parse-v6</td><td>Local guard</td><td>25.44</td><td>17.54</td><td>33.26</td><td>48.80</td><td>24.5%</td><td>113.2</td></tr>
+    <tr><td>13</td><td>Aetheris Microbrains · guardrails</td><td>Local policy</td><td>13.90</td><td>11.75</td><td>13.39</td><td>22.69</td><td>44.5%</td><td>0.67</td></tr>
+    <tr><td>14</td><td>Aetheris Microbrains · dev</td><td>Local policy</td><td>13.46</td><td>10.14</td><td>22.85</td><td>17.65</td><td>65.3%</td><td>0.69</td></tr>
+    <tr><td>15</td><td>bash-classify 0.14.1</td><td>Local rules</td><td>12.83</td><td>11.65</td><td>16.78</td><td>13.79</td><td>67.1%</td><td>1.9</td></tr>
+    <tr><td>16</td><td>dcg 0.14.4</td><td>Local rules</td><td>12.25</td><td>12.84</td><td>3.63</td><td>17.90</td><td>10.6%</td><td>17.9</td></tr>
+    <tr><td>17</td><td>Aetheris Microbrains · strict</td><td>Local policy</td><td>12.17</td><td>10.12</td><td>19.95</td><td>12.95</td><td>71.0%</td><td>0.66</td></tr>
+    <tr><td>18</td><td>sh-guard 0.1.10</td><td>Local rules</td><td>10.59</td><td>10.07</td><td>12.07</td><td>11.26</td><td>86.7%</td><td>&lt;0.1</td></tr>
+    <tr><td>19</td><td>paiml shell-safety MLP</td><td>Local guard</td><td>0.00</td><td>0.00</td><td>0.00</td><td>0.00</td><td>0.0%</td><td>&lt;0.1</td></tr>
   </table>
-  <p class="note">Jev received task context; the others see only the command. Per-benchmark columns are each benchmark's own Triage Score. Guards that support only Bash answer the 138 PowerShell and cmd commands as "ask".</p>
-  <figure class="fig" style="margin-top:28px"><img src="charts/by-area.svg" alt="Triage Score by area on lancet-bench-2-next for Nano v0.4.2, v0.4.3, Jev, Kestrel and Laya">
-    <figcaption>Detail by area on lancet-bench-2-next. v0.4.3 gains most on shell semantics, language runtimes and dev tools, Windows and infrastructure as code, and gives back a few points on cloud and Kubernetes commands, where v0.4.2 was already strong. Kestrel and Laya stop most of the safe look-alikes in nearly every area.</figcaption></figure>
-</section>
-
-<section id="benchmark">
-  <h2>Why every score dropped: a harder benchmark</h2>
-  <div class="cols">
-  <div>
-    <p>Until v0.4.2 the Triage Score used <strong>lancet-bench-1</strong> (793 Bash commands). The best guards were close to its ceiling (Jev caught 96.8% of its risky commands, v0.4.2 92.4%), and it was narrow: Bash only, short single-line commands, a quarter of them about secrets.</p>
-    <p>From v0.4.3 the Triage Score uses <strong>lancet-bench-2-next</strong>, a new, much more comprehensive benchmark that no LANCET release was trained, tuned or calibrated on. Because it is much harder, <strong>every guard scores lower than before</strong>, LANCET and comparators alike: v0.4.2 scored 82.7 under the previous Triage Score and 54.4 under the new one. The model did not change; the test did. Scores are only comparable on the same benchmark.</p>
-  </div>
-  <div>
-    <ul>
-      <li><strong>3,204 commands built as 1,602 risky/safe twins.</strong> Every risky command has a safe look-alike that differs only in the detail that decides the risk, such as reading a secret's expiry date instead of its value.</li>
-      <li><strong>289 scenarios in 40 areas:</strong> cloud CLIs, Kubernetes, databases, Git and CI, containers, credentials, filesystems and backups, infrastructure as code, deceptive previews, encoded input, shell quoting, expansion, redirection and control flow, language runtimes, messaging, remote execution, macOS and Windows administration.</li>
-      <li><strong>Composition:</strong> every scenario is repeated inside a subshell, a function, a command substitution, a nested <code>bash -c</code>, a pipeline and a background job.</li>
-      <li><strong>Three shells:</strong> 3,066 Bash, 102 PowerShell and 36 cmd commands; 1,803 are multi-line (lancet-bench-1 had none).</li>
-      <li>lancet-bench-1 is retired, now part of LANCET's training data, and stays <a href="https://github.com/TannerMidd/LANCET-model/tree/main/benchmarks/lancet-bench-1">published</a>. lancet-bench-2-next is kept private so it stays an unseen test.</li>
-    </ul>
-  </div>
-  </div>
+  <p class="note">* ShellRisk train+test were fitted per owner policy (in-distribution for v0.5.0); Bench 3 Core and Neutral remain unseen. Hosted API latency includes network time; hosted training overlap is unknown.</p>
 </section>
 
 <section id="start">
   <h2>Quick start</h2>
   <div class="cols">
   <div>
-<pre><code><span class="c"># 1. verify the download, then the bundle</span>
-certutil -hashfile lancet-v0.4.3-nano-cpu-int8.zip SHA256
+<pre><code><span class="c"># 1. verify the archive, then the extracted bundle</span>
+sha256sum -c SHA256SUMS.txt
 python verify_bundle.py --strict
 
 <span class="c"># 2. install three pinned CPU dependencies</span>
 python -m venv .venv
-.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+.venv/bin/python -m pip install -r requirements.txt
 
 <span class="c"># 3. classify (JSON lines in, JSON lines out)</span>
-$env:OPENBLAS_NUM_THREADS = '1'
-'{"command": "terraform destroy -auto-approve", "shell": "bash"}' |
-  .\.venv\Scripts\python.exe classify.py --model model
-'{"command": "Stop-Computer -Force", "shell": "powershell"}' |
-  .\.venv\Scripts\python.exe classify.py --model model</code></pre>
-<pre><code>{&quot;score&quot;: 0.992, &quot;classification&quot;: &quot;risky&quot;, &quot;reason&quot;: null,
+OPENBLAS_NUM_THREADS=1 printf '{"command":"kubectl delete namespace production","shell":"bash"}\n' |
+  .venv/bin/python classify.py --model model
+OPENBLAS_NUM_THREADS=1 printf '{"command":"Get-ChildItem C:\\\\AppData\\\\Logs | Remove-Item -Force","shell":"powershell"}\n' |
+  .venv/bin/python classify.py --model model</code></pre>
+<pre><code>{&quot;score&quot;: 0.927, &quot;classification&quot;: &quot;risky&quot;, &quot;reason&quot;: null,
  &quot;experimental&quot;: true, &quot;executionAuthorized&quot;: false, ...}
-{&quot;score&quot;: 0.989, &quot;classification&quot;: &quot;review&quot;, &quot;reason&quot;: &quot;uncertainty-band&quot;,
+{&quot;score&quot;: 0.927, &quot;classification&quot;: &quot;risky&quot;, &quot;reason&quot;: null,
  &quot;experimental&quot;: true, &quot;executionAuthorized&quot;: false, ...}</code></pre>
   </div>
   <div>
-    <div class="out"><div><b style="color:var(--red)">RISKY</b><br><span class="note">High confidence. Block or require explicit approval.</span></div><div><b style="color:var(--amber)">REVIEW</b><br><span class="note">Uncertain or unsupported input. Ask a person.</span></div><div><b style="color:var(--green)">NOT_FLAGGED</b><br><span class="note">No risk found. Not a safety guarantee.</span></div></div>
+    <div class="out"><div><b style="color:var(--red)">RISKY</b><br><span class="note">High confidence. Block or require explicit approval.</span></div><div><b style="color:var(--amber)">REVIEW</b><br><span class="note">Flagged for human or policy review.</span></div><div><b style="color:var(--green)">NOT_FLAGGED</b><br><span class="note">No risk found. Not a safety guarantee.</span></div></div>
     <ul>
       <li>Python 3.12 with NumPy, tokenizers and ONNX Runtime CPU. No PyTorch, no GPU, no API key.</li>
-      <li><code>shell</code> is <code>bash</code>, <code>powershell</code> or <code>cmd</code>.</li>
+      <li><code>shell</code> is <code>bash</code>, <code>powershell</code> or <code>cmd</code> (tagged with <code>&lt;shell=...&gt;</code> in format <code>semantic-windowed-3</code>).</li>
       <li>Keep one process running and stream commands to it; the model loads once.</li>
       <li>Commands are read as text and <strong>never executed</strong>. Long commands are read in full, one 512-token window at a time.</li>
-      <li>On macOS or Linux, use <code>.venv/bin/python</code>. Those platforms were not benchmarked.</li>
-      <li>If you clone instead of downloading the ZIP: install Git LFS, run <code>git lfs pull</code>, and use <code>bundle/</code>.</li>
+      <li>Also runs completely client-side in your browser via <a href="https://huggingface.co/spaces/fingerthief/lancet-nano">ONNX Runtime Web</a>.</li>
     </ul>
   </div>
   </div>
 </section>
 
 <section id="training">
-  <h2>How it was trained</h2>
+  <h2>How v0.5.0 was trained</h2>
   <div class="cols">
   <div>
-    <p>v0.4.3 is the Salesforce CodeT5+ 220M encoder, fine-tuned from its pinned upstream weights with no earlier LANCET checkpoint, plus a small pooling head that reads long commands as overlapping windows. Training ran to convergence (cosine learning-rate decay to zero). Its labels come from <strong>project authoring, documentation and source datasets, not from another model's opinions</strong>:</p>
+    <p>LANCET Nano v0.5.0 builds on the Salesforce <strong>CodeT5+ 220M</strong> encoder (Round 25 Preview → Round 60 → Round 61 <code>wise-ep1-065</code>), trained on <code>97,662</code> protected-clean rows (<code>36,674</code> complete risky/safe pairs) using:</p>
     <ul>
-      <li><strong>Command-semantics curriculum</strong> (new): project-authored risky/safe twins for Bash, PowerShell and cmd, including long multi-line scripts.</li>
-      <li><strong>tldr-pages</strong>: each example's one-line description sets the label. "Delete a specific pod" is risky; "List all volumes" is benign.</li>
-      <li><strong>AWS botocore</strong>: the operation verb, plus AWS's own <code>sensitive</code> markings on returned fields, so commands that print credentials are risky.</li>
-      <li><strong>Azure CLI, GitHub CLI, kubectl, Docker CLI</strong> reference examples, labelled by verb and description.</li>
-      <li><strong>ShellRisk-Bench</strong> training split: attack-technique commands from Atomic Red Team and InternalAllTheThings, and everyday developer commands from SWE-smith and Terminal-Bench, with their upstream labels.</li>
-      <li><strong>Shell Safety v2</strong> training split (MIT): agent-session shell commands with their author's allow/deny labels.</li>
-      <li>LANCET's project-authored risky/safe pairs, contrast sets, a secrets family, earlier evaluation suites and the retired lancet-bench-1 (original labels).</li>
+      <li><strong>Multi-shell wrapper invariance:</strong> <code>27,920</code> paired wrapped contrasts across all 15 Bash, PowerShell, and <code>cmd</code> wrappers with an explicit unwrapped-to-wrapped consistency loss.</li>
+      <li><strong>Native-scale bounded ReLU margins</strong> (<code>safe &lt;= 3.0</code>, <code>risky &gt;= 8.0</code>) + selective parent logit anchoring so core semantics are preserved without logit collapse.</li>
+      <li><strong>WiSE-FT weight-space interpolation</strong> selected strictly on <code>13,634</code> disjoint 6-stratum hard-dev rows, with INT8 thresholds calibrated once on held-out dev safe rows.</li>
+      <li><strong>No hosted language-model output (including TypeSafe Jev)</strong> was used as a training label, teacher target, or selection signal.</li>
     </ul>
   </div>
   <div>
     <table>
-      <tr><th>Training source</th><th>Rows</th></tr>
-      <tr><td>Command-semantics curriculum (new)</td><td>21,544</td></tr>
-      <tr><td>Project-authored pairs</td><td>9,184</td></tr>
-      <tr><td>Secrets family (project-authored)</td><td>7,728</td></tr>
-      <tr><td>tldr-pages examples</td><td>6,093</td></tr>
-      <tr><td>ShellRisk-Bench training split</td><td>5,951</td></tr>
-      <tr><td>Earlier evaluation suites</td><td>5,047</td></tr>
-      <tr><td>Developer commands (V5 pool)</td><td>2,956</td></tr>
-      <tr><td>Contrast sets and shell-escape atlas</td><td>2,598</td></tr>
-      <tr><td>Shell Safety v2 training split</td><td>2,475</td></tr>
-      <tr><td>Azure / GitHub / kubectl / Docker CLI</td><td>1,418</td></tr>
-      <tr><td>Retired benchmarks (lancet-bench-1, draft)</td><td>1,300</td></tr>
-      <tr><td>AWS CLI operations</td><td>917</td></tr>
+      <tr><th>Round 61 fit stratum</th><th>Rows</th></tr>
+      <tr><td>Authored core + weak-point-24 boundary pool</td><td>37,527</td></tr>
+      <tr><td>Multi-shell wrapper-invariance pairs (15 wrappers)</td><td>27,920</td></tr>
+      <tr><td>ShellRisk-Bench train+test (excl. GPL origins)</td><td>19,144</td></tr>
+      <tr><td>Composed carriers (Round 33)</td><td>5,652</td></tr>
+      <tr><td>Targeted domain contrasts (R36 / R60 / R61)</td><td>4,698</td></tr>
+      <tr><td>Shell Safety v2 training split (MIT)</td><td>1,398</td></tr>
+      <tr><td>Explicit review / ask track</td><td>1,323</td></tr>
     </table>
-    <p class="note">
-      No language model, hosted API or human labeler produced any training label.<br>
-      Development and calibration used tools and families held out from training.
-    </p>
+    <p class="note">Bench 3 core (6,846) and Neutral (589) were strictly isolated via <code>Guard.assert_clean</code> and never entered training, development, or calibration.</p>
   </div>
   </div>
 </section>
@@ -232,9 +177,9 @@ $env:OPENBLAS_NUM_THREADS = '1'
 <section id="limits">
   <h2>Limits</h2>
   <ul>
-    <li><strong>Bash, PowerShell and cmd.</strong> PowerShell and cmd coverage is newer and smaller than Bash coverage. Nano does not inspect files, fetch scripts or know the task. Other shells, invalid input or more than 8,192 bytes return <code>review</code>, with no silent truncation.</li>
-    <li><strong><code>not_flagged</code> is not execution authorization or a safety guarantee.</strong></li>
-    <li>On lancet-bench-2-next it misses about 1 in 5 risky commands and asks about about 1 in 8 safe ones; credentials, Windows and macOS administration and deceptive previews are its weakest areas.</li>
+    <li><strong>Triage guardrail, not a sandbox:</strong> Nano sees only command text — no filesystem state, remote script contents, or task intent. Always combine with OS sandboxing and least privilege.</li>
+    <li><strong>Conservative hard-block tier:</strong> At shipped thresholds, ~98% of flagged risky commands return <code>review</code> rather than silent <code>risky</code>, keeping false hard blocks near zero (<code>7/7,784</code> pooled).</li>
+    <li><strong><code>not_flagged</code> is not execution authorization or a safety guarantee.</strong> Other shells, invalid input, or commands over 8,192 UTF-8 bytes return <code>review</code>.</li>
   </ul>
 </section>
 
@@ -242,12 +187,12 @@ $env:OPENBLAS_NUM_THREADS = '1'
   <h2>Credits &amp; licenses</h2>
   <p>
     Built on <strong>Salesforce CodeT5+ 220M</strong> by Yue Wang, Hung Le, Akhilesh Deepak Gotmare, Nghi D. Q. Bui, Junnan Li and Steven C. H. Hoi (BSD-3-Clause).<br>
-    Training commands come from <a href="https://github.com/tldr-pages/tldr">tldr-pages</a> (CC BY 4.0, © the tldr-pages team and contributors), <a href="https://github.com/boto/botocore">botocore</a> (Apache-2.0, © Amazon.com, Inc. or its affiliates), the <a href="https://github.com/Azure/azure-cli">Azure CLI</a> and <a href="https://github.com/cli/cli">GitHub CLI</a> (MIT), <a href="https://github.com/kubernetes/kubectl">kubectl</a> and <a href="https://github.com/docker/cli">Docker CLI</a> (Apache-2.0), and <a href="https://huggingface.co/datasets/kontext-security/ShellRisk-Bench">ShellRisk-Bench</a> by Kontext Security, including <a href="https://github.com/redcanaryco/atomic-red-team">Atomic Red Team</a> (MIT, © Red Canary) and InternalAllTheThings (no license declared), and <a href="https://huggingface.co/datasets/tomngdev/shell-safety-v2">Shell Safety v2</a> by tomngdev (MIT), plus the datasets credited in the notices. None of them endorses LANCET.<br>
+    Training sources include <a href="https://huggingface.co/datasets/kontext-security/ShellRisk-Bench">ShellRisk-Bench</a> by Kontext Security (with <a href="https://github.com/redcanaryco/atomic-red-team">Atomic Red Team</a>, MIT, and InternalAllTheThings), <a href="https://huggingface.co/datasets/tomngdev/shell-safety-v2">Shell Safety v2</a> by tomngdev (MIT), and project-authored curricula. None of them endorses LANCET.<br>
     Model: Apache-2.0. Runtime: MIT. Datasets are not included or relicensed.<br>
-    See the <a href="https://github.com/TannerMidd/LANCET-model/blob/main/bundle/NOTICE.txt">NOTICE</a>, the <a href="https://github.com/TannerMidd/LANCET-model/blob/main/bundle/THIRD-PARTY-NOTICES.md">third-party notices</a> and the <a href="https://github.com/TannerMidd/LANCET-model/blob/main/LICENSE.md">licenses</a>.
+    See the <a href="https://github.com/TannerMidd/LANCET-model/blob/main/bundle/NOTICE.txt">NOTICE</a>, <a href="https://github.com/TannerMidd/LANCET-model/blob/main/bundle/THIRD-PARTY-NOTICES.md">third-party notices</a> and <a href="https://github.com/TannerMidd/LANCET-model/blob/main/LICENSE.md">licenses</a>.
   </p>
 </section>
 </div>
-<footer><div class="wrap">LANCET · Tanner Middleton · <a href="https://github.com/TannerMidd/LANCET-model">github.com/TannerMidd/LANCET-model</a> · <a href="https://github.com/TannerMidd/LANCET-model/releases/tag/v0.4.2">previous: v0.4.2</a> · <a href="https://github.com/TannerMidd/LANCET-model/releases/tag/v0.4.1">v0.4.1</a> · <a href="https://github.com/TannerMidd/LANCET-model/releases/tag/v0.4.0">v0.4.0</a> · <a href="https://github.com/TannerMidd/LANCET-model/releases/tag/v0.3.0">v0.3.0</a> · <a href="https://github.com/TannerMidd/LANCET-model/releases/tag/v0.2.0">v0.2.0</a> · <a href="https://github.com/TannerMidd/LANCET-model/releases/tag/v0.1.0">v0.1.0</a></div></footer>
+<footer><div class="wrap">LANCET · Tanner Middleton · <a href="https://github.com/TannerMidd/LANCET-model">github.com/TannerMidd/LANCET-model</a> · <a href="https://huggingface.co/fingerthief/lancet-nano">huggingface.co/fingerthief/lancet-nano</a> · <a href="https://github.com/TannerMidd/LANCET-model/releases/tag/v0.4.3">previous: v0.4.3</a> · <a href="https://github.com/TannerMidd/LANCET-model/releases/tag/v0.4.2">v0.4.2</a> · <a href="https://github.com/TannerMidd/LANCET-model/releases/tag/v0.4.0">v0.4.0</a> · <a href="https://github.com/TannerMidd/LANCET-model/releases/tag/v0.3.0">v0.3.0</a> · <a href="https://github.com/TannerMidd/LANCET-model/releases/tag/v0.2.0">v0.2.0</a> · <a href="https://github.com/TannerMidd/LANCET-model/releases/tag/v0.1.0">v0.1.0</a></div></footer>
 </body>
 </html>

@@ -1,10 +1,11 @@
 <h1 align="center">LANCET Nano</h1>
-<p align="center">A local classifier for shell command risk: Bash, PowerShell and cmd.</p>
-<p align="center"><strong>v0.4.3 · 111M parameters · 115 MB · CPU INT8 ONNX · ~14 ms per command · offline</strong></p>
+<p align="center">A tiny, local classifier for shell command risk: Bash, PowerShell and cmd.</p>
+<p align="center"><strong>v0.5.0 · 111M parameters · 115 MB · CPU INT8 ONNX · ~70 ms median · offline</strong></p>
 
 <p align="center">
-  <a href="https://github.com/TannerMidd/LANCET-model/releases/tag/v0.4.3">Download v0.4.3</a> ·
+  <a href="https://github.com/TannerMidd/LANCET-model/releases/tag/v0.5.0">Download v0.5.0</a> ·
   <a href="https://huggingface.co/spaces/fingerthief/lancet-nano">Try it in your browser</a> ·
+  <a href="https://huggingface.co/fingerthief/lancet-nano">Hugging Face</a> ·
   <a href="https://tannermidd.github.io/LANCET-model/">Website</a> ·
   <a href="bundle/MODEL_CARD.md">Model card</a> ·
   <a href="bundle/README.md">Usage</a> ·
@@ -14,96 +15,55 @@
 
 **Model: Apache-2.0. Runtime: MIT.** You may use, modify and redistribute it, including commercially, under the respective terms. Training data is not included or relicensed.
 
-<p align="center"><img src="docs/charts/triage.png" alt="Triage Score at shipped settings across 7,911 commands from three benchmarks: LANCET Nano v0.4.3 68.3, LANCET Nano v0.4.2 54.4, LANCET Nano v0.4.0 47.1, LANCET Nano v0.4.1 44.9, LANCET Nano v0.3.0 44.7, LANCET Nano v0.2.0 40.7, LANCET Nano v0.1.0 40.5, Jev 38.9, Kestrel 30.7, ModernBERT bash 23.2, bash-classify 14.3, Laya 13.3, bev-decider 13.3, sh-guard 10.9" width="100%"></p>
+<p align="center"><img src="docs/charts/bench3-v050.png" alt="LANCET Bench 3 command-risk scoreboard: LANCET Nano v0.5.0 #1 at 68.51 with 5.1% safe commands interrupted and 70.0 ms median CPU, ahead of Google Gemini Decision 1 (60.03), Perplexity Decider v1.2 (59.22), TypeSafe Jev 1.14 (50.69), Cat Shell Risk Commander (44.43), and LANCET Nano v0.4.3 (43.44)" width="100%"></p>
 
-## What's new in v0.4.3
+## What's new in v0.5.0
 
-- **Triage Score 68.3** (v0.4.2: 54.4), the best of any guard tested on the new, harder benchmark. Every risky command asked about or blocked earns a point; the score shrinks when more than 10% of safe commands are stopped. Three benchmarks (7,911 commands), weighted by size.
-- **PowerShell and cmd.** v0.4.2 answered `review` for every non-Bash command; v0.4.3 classifies all three shells.
-- **Long commands read in full.** Commands longer than one 512-token window are split into overlapping windows and every token is used. Nothing is truncated.
-- **Far fewer interruptions on look-alike safe commands.** On lancet-bench-2-next it catches the same 78.0% of risky commands as v0.4.2 while stopping 12.4% of safe ones instead of 20.0%.
-- **ShellRisk-Bench test split:** 64.8% caught (v0.4.2: 60.1%), 3.0% of safe commands stopped (2.7%).
-- **Neutral set:** 85.8% caught (91.0%), 5.6% stopped (7.0%).
-- **A newly trained model** on a new command-semantics curriculum of risky/safe twins (21,544 rows), trained to convergence. Same size and CPU speed as v0.4.2.
+- **#1 on LANCET Bench 3 at `68.51` overall (`+25.07` over v0.4.3's `43.44`)**, ahead of every local guard and every hosted frontier decision API tested (`Google Gemini Decision 1`: `60.03`, `Perplexity Decider v1.2`: `59.22`, `TypeSafe Jev 1.14`: `50.69`), while running 100% locally on CPU in **`70.0 ms` median** (`110.55 MB` INT8 ONNX).
+- **Unseen Bench 3 Core leaped `27.36 → 71.31`:** The only guard tested to clear `70%+` risky catch (`71.31%`) while staying cleanly under the 10% safe-interruption cliff (**`9.93%`**, down from `30.8%` in v0.4.3).
+- **Lowest false-alarm rate among top guards (`5.13%` pooled):** Cuts pooled safe interruptions across all `7,784` safe commands from `15.3%` (v0.4.3) down to **`5.13%`** — less than half of hosted frontier APIs (`11.6%–22.4%`).
+- **Explicit shell tagging (`semantic-windowed-3`):** Prefixes commands with `<shell=bash>`, `<shell=powershell>`, or `<shell=cmd>` before 512-token overlapping windowing (no silent truncation up to 8,192 UTF-8 bytes).
+- **Multi-shell wrapper invariance & pipeline mastery:** Trained on `97,662` protected-clean rows including `27,920` paired wrapped contrasts across all 15 Bash, PowerShell, and `cmd` wrappers plus an explicit unwrapped-to-wrapped consistency loss — lifting PowerShell pipeline catch to **`76.8%`** and Bash pipeline catch to **`58.1%`** while cutting wrapper false alarms sharply.
+- **Robustness expected-action rate:** **`94.12%`**.
 
-<p align="center"><img src="docs/charts/v043-vs-v042.png" alt="LANCET Nano v0.4.3 vs v0.4.2: Triage Score on lancet-bench-2-next, ShellRisk-Bench and a neutral third-party set, plus caught, stopped and blocked rates" width="100%"></p>
+## Bench 3 scoreboard (`11,859` inert singleton commands)
 
-## LANCET Nano vs other command guards
+Bench 3 pairs safe and risky shell commands across 498 scenarios (`6,846` Core commands, `66.8%` weight), ShellRisk test (`4,194`, `15.9%`), and a Neutral pool (`589` commands: Shell Safety v2 test + Rogue, `17.3%`). Every risky command asked about or blocked earns credit; safe interruptions above 10% penalize each set proportionally.
 
-<p align="center"><img src="docs/charts/vs-others.png" alt="LANCET Nano v0.4.3 vs 13 other command guards, Triage Score at shipped settings on 7,911 commands (risky caught, safe stopped): LANCET Nano v0.4.3 68.3 (77.0%, 9.0%), Jev 38.9 (90.0%, 23.4%), verdict-shell-safety 32.4 (56.3%, 18.0%), Kestrel 30.7 (68.1%, 37.1%), ModernBERT bash 23.2 (48.1%, 22.8%), dcg 19.8 (19.8%, 6.9%), AutoShell-0.8B 19.2 (98.8%, 70.9%), Gyra 17.9 (28.2%, 13.4%), bash-classify 14.3 (92.9%, 65.8%), Laya 13.3 (87.3%, 69.6%), bev-decider 13.3 (94.4%, 75.3%), laya-cli-gate 12.5 (71.2%, 57.5%), sh-guard 10.9 (97.9%, 90.5%), Shieldstral-1.0-3B 6.1 (6.1%, 0.2%)" width="100%"></p>
+> **Disclosure:** Per owner policy (`evals/protected-19.json`), LANCET Nano v0.5.0 fitted on the upstream ShellRisk-Bench train and test splits (with GPL `gtfobins` and `nl2bash` origins excluded); **ShellRisk test is therefore in-distribution for v0.5.0 and is not an external check.** **Bench 3 Core (`6,846` commands)** and the **Neutral pool (`589` commands)** stayed strictly unseen (`Guard.assert_clean` verified, zero commands executed).
 
-LANCET Nano v0.4.3 against every other command guard we have tested, each scored once at its own shipped setting on the same 7,911 commands. Every other guard either stops more than 10% of safe commands or catches fewer than a third of risky ones; Nano catches 77.0% of risky commands while stopping 9.0% of safe ones.
-
-## Why every score dropped: a harder benchmark
-
-Until v0.4.2, the Triage Score used **lancet-bench-1** (793 Bash commands). It had become too easy to tell the best guards apart: Jev caught 96.8% of its risky commands and v0.4.2 92.4%. It was also narrow, with Bash only, short single-line commands, and a quarter of its cases about secrets.
-
-From v0.4.3 the Triage Score uses **lancet-bench-2-next**, a new, much more comprehensive benchmark:
-
-- **3,204 commands built as 1,602 risky/safe twins.** Every risky command has a safe look-alike that differs only in the detail that decides the risk, such as reading a secret's expiry date instead of its value, or a real preview instead of one that changes things first.
-- **289 scenarios in 40 areas:** AWS, Azure and GCP, Kubernetes, PostgreSQL, Redis, SQLite and other databases, Git, CI and publishing, containers, credentials, filesystems and backups, infrastructure as code, deceptive previews, encoded input, shell quoting, expansion, redirection, state and control flow, Python, JavaScript and data tools, messaging, remote execution, and macOS and Windows administration.
-- **Every scenario must survive composition.** Each one is repeated inside a subshell, a function, a command substitution, a nested `bash -c`, a pipeline and a background job.
-- **Three shells:** 3,066 Bash, 102 PowerShell and 36 cmd commands. Commands are longer and more realistic: 1,803 are multi-line; lancet-bench-1 had none.
-- **Held out.** No LANCET release was trained, tuned or calibrated on it. Each guard is scored once at its shipped setting.
-
-Because it is much harder, **every guard scores lower than before**, LANCET and comparators alike. v0.4.2 scored 82.7 under the previous Triage Score and 54.4 under the new one. The model did not change; the test did. Scores are only comparable on the same benchmark. lancet-bench-1 is retired and now part of LANCET's training data; its commands, labels and results stay [published](benchmarks/lancet-bench-1/).
-
-## Where v0.4.3 gains and loses
-
-<p align="center"><img src="docs/charts/v043-gains-losses.png" alt="v0.4.3 vs v0.4.2 on the same commands: Triage +13.9; lancet-bench-2-next catches unchanged with 122 fewer safe commands interrupted; ShellRisk catches up 4.7 points; the neutral set is the only Triage loss (-1.1 points)" width="100%"></p>
-
-## Triage Score by release
-
-<p align="center"><img src="docs/charts/history.png" alt="Triage Score by release on lancet-bench-2-next: v0.1.0 40.5, v0.2.0 40.7, v0.3.0 44.7, v0.4.0 47.1, v0.4.1 44.9, v0.4.2 54.4, v0.4.3 68.3" width="100%"></p>
-
-Every LANCET Nano release scored the same way, at its shipped setting, on the same three benchmarks. The grey ticks mark each release's score on the retired lancet-bench-1.
-
-## Triage Score across three benchmarks
-
-<p align="center"><img src="docs/charts/triage-breakdown.png" alt="Triage Score by guard, split into points from lancet-bench-2-next, ShellRisk-Bench and a neutral set: LANCET Nano v0.4.3 68.3, LANCET Nano v0.4.2 54.4, LANCET Nano v0.4.0 47.1, LANCET Nano v0.4.1 44.9, LANCET Nano v0.3.0 44.7, LANCET Nano v0.2.0 40.7, LANCET Nano v0.1.0 40.5, Jev 38.9, Kestrel 30.7, ModernBERT bash 23.2, bash-classify 14.3, Laya 13.3, bev-decider 13.3, sh-guard 10.9" width="100%"></p>
-
-Each bar is one guard's Triage Score on 7,911 commands; the colours show how many points it earned on each benchmark: lancet-bench-2-next (3,204 commands, up to 58 points), the ShellRisk-Bench test split (4,194, up to 20) and a neutral set of outside-party commands (513, up to 21). A benchmark's points are its weight (58% / 20% / 21%, by size) times the guard's score on it: every risky command asked about or blocked earns a point, and the score shrinks in proportion when more than 10% of safe commands are stopped. Each guard is scored once at its shipped setting.
-
-| Guard | Triage Score | lancet-bench-2-next | ShellRisk test | Neutral set | Risky caught | Safe stopped | Parameters | Runs on |
-|---|---:|---:|---:|---:|---:|---:|---:|---|
-| **LANCET Nano v0.4.3** | **68.3** | 63.1 | 64.8 | 85.8 | 77.0% | 9.0% | 111 M | CPU, local |
-| LANCET Nano v0.4.2 | 54.4 | 39.0 | 60.1 | 91.0 | 77.1% | 13.7% | 110 M | CPU, local |
-| LANCET Nano v0.4.0 | 47.1 | 41.1 | 60.6 | 50.8 | 55.7% | 10.5% | 110 M | CPU, local |
-| LANCET Nano v0.4.1 | 44.9 | 38.1 | 70.5 | 39.3 | 67.9% | 14.6% | 110 M | CPU, local |
-| LANCET Nano v0.3.0 | 44.7 | 44.3 | 46.6 | 43.6 | 55.3% | 11.6% | 110 M | CPU, local |
-| LANCET Nano v0.2.0 | 40.7 | 39.3 | 47.7 | 37.9 | 55.2% | 13.6% | 35 M | CPU, local |
-| LANCET Nano v0.1.0 | 40.5 | 34.9 | 45.6 | 51.0 | 58.4% | 14.1% | 35 M | CPU, local |
-| Jev | 38.9 | 43.6 | 32.4 | 32.1 | 90.0% | 23.4% | undisclosed | hosted API |
-| verdict-shell-safety | 32.4 | 27.6 | 33.3 | 44.9 | 56.3% | 18.0% | 151 M | CPU, local |
-| Kestrel | 30.7 | 12.7 | 100.0 | 14.0 | 68.1% | 37.1% | — | local |
-| ModernBERT bash | 23.2 | 16.2 | 40.9 | 25.6 | 48.1% | 22.8% | 150 M | local |
-| dcg | 19.8 | 26.4 | 4.1 | 16.5 | 19.8% | 6.9% | rules | local |
-| AutoShell-0.8B | 19.2 | 10.2 | 22.4 | 41.0 | 98.8% | 70.9% | 0.8 B | GPU, local |
-| Gyra | 17.9 | 19.0 | 4.1 | 27.8 | 28.2% | 13.4% | 421 M + rules | GPU, local |
-| bash-classify | 14.3 | 13.5 | 16.8 | 14.0 | 92.9% | 65.8% | rules | local |
-| Laya | 13.3 | 11.0 | 16.2 | 17.1 | 87.3% | 69.6% | 421 M | GPU, local |
-| bev-decider | 13.3 | 10.8 | 18.7 | 14.8 | 94.4% | 75.3% | 0.4 B | GPU, local |
-| laya-cli-gate | 12.5 | 11.8 | 12.3 | 14.5 | 71.2% | 57.5% | 421 M | GPU, local |
-| sh-guard | 10.9 | 10.2 | 12.1 | 11.7 | 97.9% | 90.5% | rules | local |
-| Shieldstral-1.0-3B | 6.1 | 4.1 | 7.8 | 9.9 | 6.1% | 0.2% | 3 B | GPU, local |
-
-Jev received task context; the others see only the command. Per-benchmark columns are each benchmark's own Triage Score (0-100). Guards that support only Bash answer the 138 PowerShell and cmd commands as "ask".
-
-<p align="center"><img src="docs/charts/by-area.png" alt="Triage Score by area on lancet-bench-2-next for Nano v0.4.2, v0.4.3, Jev, Kestrel and Laya" width="100%"></p>
-
-Detail by area on lancet-bench-2-next. More charts are on the [website](https://tannermidd.github.io/LANCET-model/).
+| Rank | Guard | Mode | Overall | Bench 3 Core *(unseen)* | ShellRisk test | Neutral pool *(unseen)* | Safe stopped (pooled) | Median ms |
+|---:|---|---|---:|---:|---:|---:|---:|---:|
+| **01** | **LANCET Nano v0.5.0** | **Current release · Local CPU** | **68.51** | **71.31** | **70.47** *(in-dist)* | 55.90 | **5.1%** | **70.0** |
+| 02 | Google Gemini Decision 1 | Hosted API (OpenRouter) | 60.03 | 54.32 | 53.37 | 88.21 | 11.6% | 249.0 |
+| 03 | Perplexity Decider v1.2 | Hosted API (OpenRouter) | 59.22 | 50.71 | 54.92 | **96.07** | 13.3% | 211.0 |
+| 04 | TypeSafe Jev 1.14 | Hosted API (OpenRouter) | 50.69 | 47.52 | 39.38 | 73.36 | 12.2% | 148.2 |
+| 05 | Liquid d1.2 Ultra | Hosted API (OpenRouter) | 50.44 | 41.23 | 79.27 | 59.57 | 16.2% | 206.0 |
+| 06 | Cat Shell Risk Commander | Local guard | 44.43 | 22.59 | 90.16 | 86.90 | 10.6% | 3.8 |
+| 07 | LANCET Nano v0.4.3 | Previous release · Local CPU | 43.44 | 27.36 | 64.77 | 86.03 | 15.3% | 35.3 |
+| 08 | Nace.AI Drex Max | Hosted API (OpenRouter) | 40.01 | 31.67 | 42.89 | 69.62 | 20.7% | 166.6 |
+| 09 | Microsoft Decision 1.1 | Hosted API (OpenRouter) | 38.43 | 33.37 | 55.65 | 42.19 | 20.0% | 208.4 |
+| 10 | OpenAI GPT-6 Luna Decisions | Hosted API (OpenRouter) | 34.79 | 21.01 | 39.38 | 83.84 | 22.4% | 247.7 |
+| 11 | Kestrel v0.1.0 | Local guard | 25.78 | 11.30 | 100.00 | 13.60 | 27.7% | 0.09 |
+| 12 | verdict-shell-safety parse-v6 | Local guard | 25.44 | 17.54 | 33.26 | 48.80 | 24.5% | 113.2 |
+| 13 | Aetheris Microbrains · guardrails | Local policy | 13.90 | 11.75 | 13.39 | 22.69 | 44.5% | 0.67 |
+| 14 | Aetheris Microbrains · dev | Local policy | 13.46 | 10.14 | 22.85 | 17.65 | 65.3% | 0.69 |
+| 15 | bash-classify 0.14.1 | Local rules | 12.83 | 11.65 | 16.78 | 13.79 | 67.1% | 1.9 |
+| 16 | dcg 0.14.4 | Local rules | 12.25 | 12.84 | 3.63 | 17.90 | 10.6% | 17.9 |
+| 17 | Aetheris Microbrains · strict | Local policy | 12.17 | 10.12 | 19.95 | 12.95 | 71.0% | 0.66 |
+| 18 | sh-guard 0.1.10 | Local rules | 10.59 | 10.07 | 12.07 | 11.26 | 86.7% | <0.1 |
+| 19 | paiml shell-safety MLP | Local guard | 0.00 | 0.00 | 0.00 | 0.00 | 0.0% | <0.1 |
 
 ## Quick start
 
-Download the [release ZIP](https://github.com/TannerMidd/LANCET-model/releases/download/v0.4.3/lancet-v0.4.3-nano-cpu-int8.zip) and its [checksum](https://github.com/TannerMidd/LANCET-model/releases/download/v0.4.3/SHA256SUMS.txt). Verify the checksum and extract the ZIP. Then, inside the extracted directory (Python 3.12, Windows / PowerShell), run:
+Download the [release ZIP](https://github.com/TannerMidd/LANCET-model/releases/download/v0.5.0/lancet-v0.5.0-nano-cpu-int8.zip) and its [checksum](https://github.com/TannerMidd/LANCET-model/releases/download/v0.5.0/SHA256SUMS.txt) (`SHA-256: 16e2d812301530ffd7c99c8df909936c4c26f2ccff1adfc6e7a193445906c671`), verify and extract it, then run:
 
-```powershell
+```bash
 python verify_bundle.py --strict
 python -m venv .venv
-.\.venv\Scripts\python.exe -m pip install -r requirements.txt
-$env:OPENBLAS_NUM_THREADS = '1'
-'{"command": "kubectl delete namespace prod", "shell": "bash"}' | .\.venv\Scripts\python.exe classify.py --model model
-'{"command": "Remove-Item -Recurse -Force C:\\Users\\me\\Documents", "shell": "powershell"}' | .\.venv\Scripts\python.exe classify.py --model model
+.venv/bin/python -m pip install -r requirements.txt
+OPENBLAS_NUM_THREADS=1 printf '{"command":"kubectl delete namespace production","shell":"bash"}\n' | .venv/bin/python classify.py --model model
+OPENBLAS_NUM_THREADS=1 printf '{"command":"Get-ChildItem C:\\\\AppData\\\\Logs | Remove-Item -Force","shell":"powershell"}\n' | .venv/bin/python classify.py --model model
 ```
 
 Send JSON lines with a `command` string and `shell` set to `bash`, `powershell` or `cmd`. Each input is classified as `risky`, `review` or `not_flagged`. Inputs are inert text and are **never executed**. No API key or network connection is needed after installation. See the [full instructions](bundle/README.md).
@@ -112,43 +72,28 @@ If you clone the repository instead of downloading the ZIP, install Git LFS, run
 
 ## How it was trained
 
-LANCET Nano v0.4.3 is the Salesforce **CodeT5+ 220M** encoder, fine-tuned from its pinned upstream weights, with a small pooling head that reads long commands as overlapping windows. It does not start from an earlier LANCET checkpoint.
+LANCET Nano v0.5.0 is built on the Salesforce **CodeT5+ 220M** encoder (`Salesforce/codet5p-220m` → Round 25 Preview → Round 60 → Round 61 `wise-ep1-065`), fine-tuned on `97,662` protected-clean rows (`36,674` complete contrast pairs) with:
+- Native raw-BCE logit scaling and bounded ReLU boundary sharpening (`safe <= 3.0`, `risky >= 8.0`)
+- Selective parent logit-preservation anchoring (`0.30 * SmoothL1`) on `43,367` already-correct base rows
+- Explicit wrapper-invariance consistency (`0.22 * SmoothL1`) across `27,920` paired wrapped commands covering all 15 Bash, PowerShell, and `cmd` wrappers
+- WiSE-FT weight-space interpolation (`0.65 * epoch-01 + 0.35 * Round 60`) selected strictly on `13,634` disjoint 6-stratum hard-dev rows, with INT8 thresholds calibrated once on held-out development safe rows
 
-Training labels come from **project authoring, documentation and source datasets, not model opinions**:
-- LANCET's new command-semantics curriculum: project-authored risky/safe twins for Bash, PowerShell and cmd, including long multi-line scripts
-- the wording of human-written example descriptions in [tldr-pages](https://github.com/tldr-pages/tldr) (CC BY 4.0)
-- AWS operation verbs and the `sensitive` output-field markings in [botocore](https://github.com/boto/botocore) service models (Apache-2.0), so commands that print credentials are risky
-- reference examples from the Azure CLI, GitHub CLI (MIT), kubectl and Docker CLI (Apache-2.0)
-- attack-technique and everyday developer commands from the [ShellRisk-Bench](https://huggingface.co/datasets/kontext-security/ShellRisk-Bench) training split, with its upstream labels
-- the [Shell Safety v2](https://huggingface.co/datasets/tomngdev/shell-safety-v2) training split (MIT), with its author's allow/deny labels
-- LANCET's project-authored risky/safe pairs, contrast sets of agent-style, `exec`-style and shell-escape commands, a secrets family, its earlier evaluation suites and the retired lancet-bench-1 (original labels)
-
-No language model, hosted API or human labeler produced any training label. See the [model card](bundle/MODEL_CARD.md) and [source notices](bundle/THIRD-PARTY-NOTICES.md).
+**No hosted language-model output (including TypeSafe Jev) was used as a training label, teacher target, or selection signal.** See the [model card](bundle/MODEL_CARD.md) and [source notices](bundle/THIRD-PARTY-NOTICES.md).
 
 ## Boundaries
 
-- **Bash, PowerShell and cmd.** PowerShell and cmd coverage is newer and smaller than Bash coverage. Nano does not inspect the filesystem, fetched scripts or task context.
-- Other shells, invalid input or more than 8,192 UTF-8 bytes return `review`. Inputs are never silently truncated.
-- **`not_flagged` is not execution authorization or a safety guarantee.**
-- Its weakest areas on lancet-bench-2-next are credentials, Windows administration, macOS administration and deceptive previews (see the chart above).
-
-## Benchmark data
-
-- [**lancet-bench-1**](benchmarks/lancet-bench-1/): 793 Bash commands (409 risky, 384 benign) across 37 tool areas, with labels, rationales and results for 14 command guards. It was LANCET's release benchmark until 2026-09-29, when it was retired in favour of lancet-bench-2-next. It is free to use (MIT). The commands are test data; do not run them.
-- **lancet-bench-2-next** is kept private so it stays a fair, unseen test for future releases. Its design and per-area results are summarized above.
+- **Triage guardrail, not a sandbox:** Nano sees only command text — no filesystem state, remote scripts, or task context. Always pair with OS sandboxing and least privilege.
+- **Conservative hard-block tier:** At the shipped thresholds, ~98% of flagged risky commands return `review` (`ask`) rather than silent `risky` (`block`), keeping false hard blocks near zero (`7/7,784` pooled).
+- **`not_flagged` is not execution authorization or a safety guarantee.** Other shells, invalid input, or more than 8,192 UTF-8 bytes return `review`, with no silent truncation.
 
 ## Versions
 
-- **v0.4.3 — LANCET Nano, CodeT5+ 220M, windowed** (current, pre-release): newly trained; Bash, PowerShell and cmd; Triage Score 68.3.
-- [v0.4.2 — LANCET Nano, CodeT5+ 220M](https://github.com/TannerMidd/LANCET-model/releases/tag/v0.4.2): Triage Score 54.4 (82.7 on the retired lancet-bench-1).
-- [v0.4.1 — LANCET Nano, CodeT5+ 220M](https://github.com/TannerMidd/LANCET-model/releases/tag/v0.4.1): v0.4.0 with a lower review threshold.
-- [v0.4.0 — LANCET Nano, CodeT5+ 220M](https://github.com/TannerMidd/LANCET-model/releases/tag/v0.4.0): the same weights with the stricter v0.4.0 thresholds.
-- [v0.3.0 — LANCET Nano, CodeT5-base](https://github.com/TannerMidd/LANCET-model/releases/tag/v0.3.0): still available unchanged.
-- [v0.2.0 — LANCET Nano, CodeT5-small](https://github.com/TannerMidd/LANCET-model/releases/tag/v0.2.0): smaller (36 MB) and faster (~3–6 ms).
-- [v0.1.0 — LANCET Nano v0.1.0 (formerly V5)](https://github.com/TannerMidd/LANCET-model/releases/tag/v0.1.0).
+- **v0.5.0 — LANCET Nano, CodeT5+ 220M, shell-tagged windowed** (current): Bench 3 score **68.51** (`#1/19`), unseen Core **71.31** (`9.93%` safe int), `5.13%` pooled safe int, `70.0 ms` CPU.
+- [v0.4.3 — LANCET Nano, CodeT5+ 220M, windowed](https://github.com/TannerMidd/LANCET-model/releases/tag/v0.4.3): Bench 3 score `43.44` (Bench 2 Triage `68.3`).
+- [v0.4.2](https://github.com/TannerMidd/LANCET-model/releases/tag/v0.4.2) · [v0.4.1](https://github.com/TannerMidd/LANCET-model/releases/tag/v0.4.1) · [v0.4.0](https://github.com/TannerMidd/LANCET-model/releases/tag/v0.4.0) · [v0.3.0](https://github.com/TannerMidd/LANCET-model/releases/tag/v0.3.0) · [v0.2.0](https://github.com/TannerMidd/LANCET-model/releases/tag/v0.2.0) · [v0.1.0](https://github.com/TannerMidd/LANCET-model/releases/tag/v0.1.0).
 
 ## Credits
 
-LANCET is built on Salesforce CodeT5+ by **Yue Wang, Hung Le, Akhilesh Deepak Gotmare, Nghi D. Q. Bui, Junnan Li and Steven C. H. Hoi**. Training commands come from the **tldr-pages** team and contributors, AWS **botocore**, the Azure CLI, GitHub CLI, kubectl and Docker CLI projects, **ShellRisk-Bench** by Kontext Security (with **Atomic Red Team** by Red Canary and **InternalAllTheThings**), **Shell Safety v2** by tomngdev, plus the datasets credited in the notices. Runtime and LANCET contributions: **Tanner Middleton**.
+LANCET is built on Salesforce CodeT5+ by **Yue Wang, Hung Le, Akhilesh Deepak Gotmare, Nghi D. Q. Bui, Junnan Li and Steven C. H. Hoi**. Training commands include **ShellRisk-Bench** by Kontext Security (with **Atomic Red Team** by Red Canary and **InternalAllTheThings**), **Shell Safety v2** by tomngdev, and project-authored curricula. Runtime and LANCET contributions: **Tanner Middleton**.
 
 See the [full credits](bundle/NOTICE.txt), [source notices](bundle/THIRD-PARTY-NOTICES.md) and [model changes](bundle/MODIFICATIONS.md).

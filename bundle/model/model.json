@@ -1,22 +1,21 @@
 {
-  "format": "semantic-windowed-1",
+  "format": "semantic-windowed-3",
   "name": "LANCET Nano",
-  "version": "0.4.3",
-  "internalId": "lancet-round-19/A-19103 (r19x-A)",
-  "seed": 19103,
-  "kind": "codet5p-encoder-windowed",
+  "version": "0.5.0",
+  "internalId": "round61 / wise-ep1-065",
+  "kind": "codet5p-encoder-windowed-shell-tagged",
   "parameters": 110789762,
   "base": {
     "repo": "Salesforce/codet5p-220m",
     "revision": "2b92f36e2782341a50551759fdba0dd15e821f99"
   },
-  "initialization": "pinned upstream Salesforce/codet5p-220m weights (sha256 27d09f5323c322333d0d846d701e865f9663ee58b5aaf201092f0ca518d067f0); no LANCET checkpoint",
+  "lineage": "Salesforce/codet5p-220m -> Round 25 Preview -> Round 60 (wise-avg12-065) -> Round 61 (wise-ep1-065)",
   "onnx": "encoder-int8.onnx",
   "input": {
     "maxUtf8Bytes": 8192,
     "maxWindowsPerForward": 8,
     "overlapTokens": 64,
-    "pooling": "Mean and maximum of owned token representations across every overlapping window; learned projection initialized to mean pooling. No truncation; no shell execution.",
+    "shellTag": "<shell={shell}>\n",
     "shells": [
       "bash",
       "powershell",
@@ -30,20 +29,22 @@
     "cmd"
   ],
   "calibration": {
-    "scale": 0.501046180687904,
-    "bias": 0.8579191016201142,
-    "method": "positive-slope group/class-balanced Platt on INT8 risk logits; reported score only"
+    "bias": -0.8978696281337076,
+    "method": "positive-slope group/class-balanced Platt on INT8 risk logits; reported score only",
+    "scale": 0.35149822580416945
   },
-  "reviewLogitThreshold": -3.4448594882714976,
-  "riskyLogitThreshold": 7.71649796562147,
-  "reviewThreshold": 0.2956467684116474,
-  "riskyThreshold": 0.991200665739696,
+  "reviewLogitThreshold": 8.935882516244185,
+  "riskyLogitThreshold": 9.677015995036761,
+  "reviewThreshold": 0.9040517154430449,
+  "riskyThreshold": 0.9243927128051093,
   "bands": "risk logit >= riskyLogitThreshold: risky; >= reviewLogitThreshold: review; otherwise not_flagged",
-  "reviewThresholdRule": "the threshold maximizing the Triage formula (catch x min(1, 10% / safe interruption)) on held-out development calibration data, each command family counted once",
-  "riskyThresholdRule": "at most 1% of safe commands blocked in each held-out development population (rows and families)",
+  "reviewThresholdRule": "dev-matched INT8 authored-core safe interruption ~2.00% (1.99% realized on 3,314 held-out dev safe rows)",
+  "riskyThresholdRule": "dev-matched INT8 authored-core safe block ~0.60% (0.57% realized on 3,314 held-out dev safe rows)",
   "askHead": "diagnostic only; never sets the band",
+  "ownerAuthorizedShellRiskAll": true,
+  "shellRiskInDistributionDisclosure": "ShellRisk-Bench train and test splits (excluding GPL gtfobins/nl2bash) were fitted per owner authorization; Bench 3 core and Neutral remain unseen.",
   "hostedModelOutputsUsed": false,
-  "researchModelJsonSha256": "e3873481c47bf503c61dbc318a09ed5620ccd6ccbd5db5cdd36e3fb83ca400be",
+  "researchModelJsonSha256": "9ee6595f07275393da56f8d36bdb704f0e1b743edeb955bd328d2ec962ee6f95",
   "experimental": true,
   "executionAuthorized": false
 }

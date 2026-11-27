@@ -52,10 +52,10 @@
   "bin": {
     "file": "head.bin",
     "bytes": 4730888,
-    "sha256": "80def54b93bd97191a6e57a09164885a479cad228a3ec83f04efec32576d3c42"
+    "sha256": "ec3bb3234129f43d98eb275b5c25fab831614e006f8cb57ed1320c69b328af36"
   },
   "source": {
     "file": "head.npz",
-    "sha256": "0dfbd5aa5a6891d05cd7bc364fa69bc662de77b11d93fa526ae863af1bac256e"
+    "sha256": "5a77449a1f037830e84eb1816e0913b162b12fc8999005c74a37ff2cee600031"
   }
 }
